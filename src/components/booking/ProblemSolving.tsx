@@ -1,3 +1,5 @@
+import { RefreshIcon, CreditCardIcon, ChatIcon, KeyIcon, CrossIcon, WrenchIcon } from '@/components/icons'
+
 export const ProblemSolving = () => {
   const problems = [
     {
@@ -14,7 +16,7 @@ export const ProblemSolving = () => {
         gr: 'Σύγχρονη διαχείριση ημερολογίου με real-time updates',
         en: 'Real-time calendar management with instant updates'
       },
-      icon: '🔄',
+      icon: <RefreshIcon size={40} className="text-current" />,
       color: 'blue'
     },
     {
@@ -31,7 +33,7 @@ export const ProblemSolving = () => {
         gr: 'Πολλαπλές μεθόδους πληρωμής με αυτόματη επεξεργασία',
         en: 'Multiple payment methods with automatic processing'
       },
-      icon: '💳',
+      icon: <CreditCardIcon size={40} className="text-current" />,
       color: 'green'
     },
     {
@@ -48,7 +50,7 @@ export const ProblemSolving = () => {
         gr: 'Σύστημα μηνυμάτων με αυτόματες ειδοποιήσεις',
         en: 'Messaging system with automatic notifications'
       },
-      icon: '💬',
+      icon: <ChatIcon size={40} className="text-current" />,
       color: 'purple'
     },
     {
@@ -65,7 +67,7 @@ export const ProblemSolving = () => {
         gr: 'Ψηφιακά κλειδιά και οδηγίες πρόσβασης',
         en: 'Digital keys and access instructions'
       },
-      icon: '🔑',
+      icon: <KeyIcon size={40} className="text-current" />,
       color: 'orange'
     },
     {
@@ -82,7 +84,7 @@ export const ProblemSolving = () => {
         gr: 'Αυτόματη επεξεργασία ακυρώσεων με διαφανείς όρους',
         en: 'Automatic cancellation processing with transparent terms'
       },
-      icon: '❌',
+      icon: <CrossIcon size={40} className="text-current" />,
       color: 'red'
     },
     {
@@ -99,7 +101,7 @@ export const ProblemSolving = () => {
         gr: '24/7 υποστήριξη με άμεση επικοινωνία τεχνικών',
         en: '24/7 support with immediate technician contact'
       },
-      icon: '🔧',
+      icon: <WrenchIcon size={40} className="text-current" />,
       color: 'gray'
     }
   ]
@@ -120,7 +122,7 @@ export const ProblemSolving = () => {
           {problems.map((problem) => (
             <div key={problem.id} className="card hover:shadow-lg transition-all duration-300">
               <div className="text-center mb-4">
-                <div className="text-4xl mb-4">{problem.icon}</div>
+                <div className="mb-4 flex justify-center text-accent-blue">{problem.icon}</div>
                 <h3 className="text-xl font-semibold text-gray-900 mb-2">
                   {problem.title.en}
                 </h3>

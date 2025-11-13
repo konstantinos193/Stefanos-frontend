@@ -26,7 +26,7 @@ export const FooterContact = () => {
         </svg>
       ),
       label: 'Email',
-      value: 'info@realestate-platform.com'
+      value: 'info@stefanosspyros.com'
     }
   ]
 

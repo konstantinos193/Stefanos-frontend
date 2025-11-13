@@ -1,4 +1,18 @@
 import { EditionCard } from './EditionCard'
+import {
+  ChartUpIcon,
+  ClockIcon,
+  CalendarIcon,
+  PartyIcon,
+  BriefcaseIcon,
+  PackageIcon,
+  HouseIcon,
+  ChatIcon,
+  MoneyIcon,
+  ChartIcon,
+  WrenchIcon,
+  ScalesIcon
+} from '@/components/icons'
 
 export const EditionsGrid = () => {
   const editions = [
@@ -80,7 +94,7 @@ export const EditionsGrid = () => {
       },
       features: ['ROI Analysis', 'Market Data', 'Legal Support', 'Management'],
       price: 'From €200/night',
-      icon: '📈',
+      icon: <ChartUpIcon size={48} className="text-accent-blue" />,
       status: 'active'
     },
     // Booking Services (5)
@@ -97,7 +111,7 @@ export const EditionsGrid = () => {
       },
       features: ['Instant Booking', 'Flexible Dates', '24/7 Support', 'Mobile App'],
       price: 'From €50/night',
-      icon: '⏰',
+      icon: <ClockIcon size={48} className="text-accent-blue" />,
       status: 'active'
     },
     {
@@ -113,7 +127,7 @@ export const EditionsGrid = () => {
       },
       features: ['Monthly Discounts', 'Utilities Included', 'Maintenance', 'Legal Support'],
       price: 'From €800/month',
-      icon: '📅',
+      icon: <CalendarIcon size={48} className="text-accent-blue" />,
       status: 'active'
     },
     {
@@ -129,7 +143,7 @@ export const EditionsGrid = () => {
       },
       features: ['Catering', 'Audio/Visual', 'Decoration', 'Staff'],
       price: 'From €200/event',
-      icon: '🎉',
+      icon: <PartyIcon size={48} className="text-accent-blue" />,
       status: 'active'
     },
     {
@@ -145,7 +159,7 @@ export const EditionsGrid = () => {
       },
       features: ['Projector', 'WiFi', 'Catering', 'Reception'],
       price: 'From €50/hour',
-      icon: '💼',
+      icon: <BriefcaseIcon size={48} className="text-accent-blue" />,
       status: 'active'
     },
     {
@@ -161,7 +175,7 @@ export const EditionsGrid = () => {
       },
       features: ['24/7 Access', 'Security', 'Climate Control', 'Insurance'],
       price: 'From €30/month',
-      icon: '📦',
+      icon: <PackageIcon size={48} className="text-accent-blue" />,
       status: 'active'
     },
     // Airbnb Integration (3)
@@ -178,7 +192,7 @@ export const EditionsGrid = () => {
       },
       features: ['Listing Optimization', 'Guest Communication', 'Pricing Strategy', 'Maintenance'],
       price: '15% commission',
-      icon: '🏠',
+      icon: <HouseIcon size={48} className="text-accent-blue" />,
       status: 'active'
     },
     {
@@ -194,7 +208,7 @@ export const EditionsGrid = () => {
       },
       features: ['Auto Messages', 'Multi-language', '24/7 Support', 'Reviews'],
       price: '€50/month',
-      icon: '💬',
+      icon: <ChatIcon size={48} className="text-accent-blue" />,
       status: 'active'
     },
     {
@@ -210,7 +224,7 @@ export const EditionsGrid = () => {
       },
       features: ['Dynamic Pricing', 'Market Analysis', 'Competitor Tracking', 'Reports'],
       price: '€100/month',
-      icon: '💰',
+      icon: <MoneyIcon size={48} className="text-accent-blue" />,
       status: 'active'
     },
     // Knowledge & Services (4)
@@ -227,7 +241,7 @@ export const EditionsGrid = () => {
       },
       features: ['Market Reports', 'Trend Analysis', 'Price Predictions', 'Investment Tips'],
       price: '€200/month',
-      icon: '📊',
+      icon: <ChartIcon size={48} className="text-accent-blue" />,
       status: 'active'
     },
     {
@@ -243,7 +257,7 @@ export const EditionsGrid = () => {
       },
       features: ['Contract Review', 'Legal Updates', 'Dispute Resolution', 'Compliance'],
       price: '€150/hour',
-      icon: '⚖️',
+      icon: <ScalesIcon size={48} className="text-accent-blue" />,
       status: 'active'
     },
     {
@@ -259,7 +273,7 @@ export const EditionsGrid = () => {
       },
       features: ['ROI Analysis', 'Tax Planning', 'Investment Strategy', 'Risk Assessment'],
       price: '€300/session',
-      icon: '💼',
+      icon: <BriefcaseIcon size={48} className="text-accent-blue" />,
       status: 'active'
     },
     {
@@ -275,7 +289,7 @@ export const EditionsGrid = () => {
       },
       features: ['Preventive Maintenance', 'Emergency Repairs', 'Quality Control', 'Cost Optimization'],
       price: '€100/month',
-      icon: '🔧',
+      icon: <WrenchIcon size={48} className="text-accent-blue" />,
       status: 'active'
     },
     // Admin & Management (3)
@@ -292,7 +306,7 @@ export const EditionsGrid = () => {
       },
       features: ['Real-time Data', 'Analytics', 'Reports', 'Alerts'],
       price: '€200/month',
-      icon: '📊',
+      icon: <ChartIcon size={48} className="text-accent-blue" />,
       status: 'active'
     },
     {
@@ -308,7 +322,7 @@ export const EditionsGrid = () => {
       },
       features: ['Calendar Sync', 'Guest Profiles', 'Payment Processing', 'Communication'],
       price: '€150/month',
-      icon: '📅',
+      icon: <CalendarIcon size={48} className="text-accent-blue" />,
       status: 'active'
     },
     {
@@ -324,7 +338,7 @@ export const EditionsGrid = () => {
       },
       features: ['Performance Metrics', 'Revenue Tracking', 'Guest Analytics', 'Custom Reports'],
       price: '€250/month',
-      icon: '📈',
+      icon: <ChartUpIcon size={48} className="text-accent-blue" />,
       status: 'active'
     }
   ]

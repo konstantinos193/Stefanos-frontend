@@ -1,3 +1,5 @@
+import { SearchIcon, CheckIcon, CreditCardIcon, KeyIcon, HouseIcon, StarIcon } from '@/components/icons'
+
 export const BookingFlow = () => {
   const steps = [
     {
@@ -10,7 +12,7 @@ export const BookingFlow = () => {
         gr: 'Βρείτε το ιδανικό ακίνητο',
         en: 'Find your perfect property'
       },
-      icon: '🔍',
+      icon: <SearchIcon size={32} className="text-current" />,
       details: [
         'Advanced search filters',
         'Real-time availability',
@@ -28,7 +30,7 @@ export const BookingFlow = () => {
         gr: 'Επιλέξτε το ακίνητο και τις ημερομηνίες',
         en: 'Choose your property and dates'
       },
-      icon: '✅',
+      icon: <CheckIcon size={32} className="text-current" />,
       details: [
         'Detailed property information',
         'Virtual tours',
@@ -46,7 +48,7 @@ export const BookingFlow = () => {
         gr: 'Ασφαλής πληρωμή με πολλαπλές επιλογές',
         en: 'Secure payment with multiple options'
       },
-      icon: '💳',
+      icon: <CreditCardIcon size={32} className="text-current" />,
       details: [
         'Multiple payment methods',
         'Secure processing',
@@ -64,7 +66,7 @@ export const BookingFlow = () => {
         gr: 'Εύκολη πρόσβαση και check-in',
         en: 'Easy access and check-in'
       },
-      icon: '🔑',
+      icon: <KeyIcon size={32} className="text-current" />,
       details: [
         'Digital key delivery',
         'Access instructions',
@@ -82,7 +84,7 @@ export const BookingFlow = () => {
         gr: 'Απολαύστε τη διαμονή σας',
         en: 'Enjoy your stay'
       },
-      icon: '🏠',
+      icon: <HouseIcon size={32} className="text-current" />,
       details: [
         'Comfortable accommodation',
         'Local recommendations',
@@ -100,7 +102,7 @@ export const BookingFlow = () => {
         gr: 'Αξιολογήστε την εμπειρία σας',
         en: 'Review your experience'
       },
-      icon: '⭐',
+      icon: <StarIcon size={32} className="text-current" />,
       details: [
         'Easy feedback system',
         'Rating and comments',
@@ -139,7 +141,7 @@ export const BookingFlow = () => {
                     {step.step}
                   </div>
                   
-                  <div className="text-3xl mb-4">{step.icon}</div>
+                  <div className="mb-4 text-accent-blue flex justify-center">{step.icon}</div>
                   
                   <h3 className="text-xl font-semibold text-gray-900 mb-2">
                     {step.title.en}

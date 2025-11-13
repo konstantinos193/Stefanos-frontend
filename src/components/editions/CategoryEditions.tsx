@@ -1,4 +1,21 @@
 import { EditionCard } from './EditionCard'
+import {
+  BuildingIcon,
+  BeachIcon,
+  CrownIcon,
+  ChartUpIcon,
+  ClockIcon,
+  CalendarIcon,
+  PartyIcon,
+  BriefcaseIcon,
+  PackageIcon,
+  HouseIcon,
+  ChatIcon,
+  MoneyIcon,
+  ChartIcon,
+  ScalesIcon,
+  WrenchIcon
+} from '@/components/icons'
 
 interface CategoryEditionsProps {
   category: string
@@ -20,7 +37,7 @@ const editionsByCategory = {
       },
       features: ['WiFi', 'Kitchen', 'Parking', 'Garden'],
       price: 'From €80/night',
-      icon: '🏢',
+      icon: <BuildingIcon size={48} className="text-accent-blue" />,
       status: 'active' as const
     },
     {
@@ -36,7 +53,7 @@ const editionsByCategory = {
       },
       features: ['WiFi', 'Meeting Rooms', 'Parking', 'Reception'],
       price: 'From €150/night',
-      icon: '🏢',
+      icon: <BuildingIcon size={48} className="text-accent-blue" />,
       status: 'active' as const
     },
     {
@@ -52,7 +69,7 @@ const editionsByCategory = {
       },
       features: ['Beach Access', 'Pool', 'WiFi', 'Kitchen'],
       price: 'From €120/night',
-      icon: '🏖️',
+      icon: <BeachIcon size={48} className="text-accent-blue" />,
       status: 'active' as const
     },
     {
@@ -68,7 +85,7 @@ const editionsByCategory = {
       },
       features: ['Concierge', 'Pool', 'Spa', 'Private Garden'],
       price: 'From €300/night',
-      icon: '👑',
+      icon: <CrownIcon size={48} className="text-accent-blue" />,
       status: 'active' as const
     },
     {
@@ -84,7 +101,7 @@ const editionsByCategory = {
       },
       features: ['ROI Analysis', 'Market Data', 'Legal Support', 'Management'],
       price: 'From €200/night',
-      icon: '📈',
+      icon: <ChartUpIcon size={48} className="text-accent-blue" />,
       status: 'active' as const
     }
   ],
@@ -102,7 +119,7 @@ const editionsByCategory = {
       },
       features: ['Instant Booking', 'Flexible Dates', '24/7 Support', 'Mobile App'],
       price: 'From €50/night',
-      icon: '⏰',
+      icon: <ClockIcon size={48} className="text-accent-blue" />,
       status: 'active' as const
     },
     {
@@ -118,7 +135,7 @@ const editionsByCategory = {
       },
       features: ['Monthly Discounts', 'Utilities Included', 'Maintenance', 'Legal Support'],
       price: 'From €800/month',
-      icon: '📅',
+      icon: <CalendarIcon size={48} className="text-accent-blue" />,
       status: 'active' as const
     },
     {
@@ -134,7 +151,7 @@ const editionsByCategory = {
       },
       features: ['Catering', 'Audio/Visual', 'Decoration', 'Staff'],
       price: 'From €200/event',
-      icon: '🎉',
+      icon: <PartyIcon size={48} className="text-accent-blue" />,
       status: 'active' as const
     },
     {
@@ -150,7 +167,7 @@ const editionsByCategory = {
       },
       features: ['Projector', 'WiFi', 'Catering', 'Reception'],
       price: 'From €50/hour',
-      icon: '💼',
+      icon: <BriefcaseIcon size={48} className="text-accent-blue" />,
       status: 'active' as const
     },
     {
@@ -166,7 +183,7 @@ const editionsByCategory = {
       },
       features: ['24/7 Access', 'Security', 'Climate Control', 'Insurance'],
       price: 'From €30/month',
-      icon: '📦',
+      icon: <PackageIcon size={48} className="text-accent-blue" />,
       status: 'active' as const
     }
   ],
@@ -184,7 +201,7 @@ const editionsByCategory = {
       },
       features: ['Listing Optimization', 'Guest Communication', 'Pricing Strategy', 'Maintenance'],
       price: '15% commission',
-      icon: '🏠',
+      icon: <HouseIcon size={48} className="text-accent-blue" />,
       status: 'active' as const
     },
     {
@@ -200,7 +217,7 @@ const editionsByCategory = {
       },
       features: ['Auto Messages', 'Multi-language', '24/7 Support', 'Reviews'],
       price: '€50/month',
-      icon: '💬',
+      icon: <ChatIcon size={48} className="text-accent-blue" />,
       status: 'active' as const
     },
     {
@@ -216,7 +233,7 @@ const editionsByCategory = {
       },
       features: ['Dynamic Pricing', 'Market Analysis', 'Competitor Tracking', 'Reports'],
       price: '€100/month',
-      icon: '💰',
+      icon: <MoneyIcon size={48} className="text-accent-blue" />,
       status: 'active' as const
     }
   ],

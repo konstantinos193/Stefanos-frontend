@@ -1,0 +1,88 @@
+{
+  "navigation": {
+    "home": "Home",
+    "editions": "20 Editions",
+    "services": "Services",
+    "properties": "Properties",
+    "booking": "Booking",
+    "about": "About"
+  },
+  "hero": {
+    "title": "Find Your",
+    "titleHighlight": "Property",
+    "description": "Property marketplace for buying, renting, and managing short-term rentals across Greece"
+  },
+  "searchModes": {
+    "realEstate": {
+      "label": "Real Estate",
+      "description": "Purchase, Lease, or List"
+    },
+    "booking": {
+      "label": "Bookings",
+      "description": "Short-term Rentals"
+    }
+  },
+  "stats": {
+    "properties": {
+      "label": "Properties",
+      "description": "Listings available"
+    },
+    "happyGuests": {
+      "label": "Satisfied Clients",
+      "description": "Verified reviews"
+    },
+    "cities": {
+      "label": "Locations",
+      "description": "Throughout Greece"
+    },
+    "support": {
+      "label": "Support",
+      "description": "24/7 assistance"
+    }
+  },
+  "results": {
+    "title": "Search Results",
+    "found": "Found {count} {count, plural, =1 {property} other {properties}}",
+    "noResults": "No properties found",
+    "noResultsDescription": "Try adjusting your search criteria or filters",
+    "showing": "Showing {current} of {total} properties",
+    "filters": {
+      "title": "Filters",
+      "clearAll": "Clear All",
+      "propertyType": "Property Type",
+      "priceRange": "Price Range",
+      "guests": "Guests",
+      "minPrice": "Min",
+      "maxPrice": "Max"
+    },
+    "sort": {
+      "label": "Sort by:",
+      "newest": "Newest First",
+      "oldest": "Oldest First",
+      "priceLow": "Price: Low to High",
+      "priceHigh": "Price: High to Low",
+      "rating": "Highest Rated"
+    },
+    "pagination": {
+      "previous": "Previous",
+      "next": "Next"
+    }
+  },
+  "intentions": {
+    "title": "What are you looking for?",
+    "subtitle": "Select your intention and find properties that match your needs",
+    "buy": {
+      "label": "Buy",
+      "description": "Find your perfect home"
+    },
+    "rent": {
+      "label": "Rent",
+      "description": "Rent a property for every need"
+    },
+    "sell": {
+      "label": "Sell",
+      "description": "Sell your property with ease"
+    }
+  }
+}
+

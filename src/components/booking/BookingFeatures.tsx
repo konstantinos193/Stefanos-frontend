@@ -1,3 +1,5 @@
+import { SearchIcon, ShieldIcon, PinIcon, HouseIcon, MoneyIcon, WrenchIcon } from '@/components/icons'
+
 export const BookingFeatures = () => {
   const features = [
     {
@@ -10,7 +12,7 @@ export const BookingFeatures = () => {
         gr: 'Πλήρης διαφάνεια σε όλες τις πληροφορίες',
         en: 'Complete transparency in all information'
       },
-      icon: '🔍',
+      icon: <SearchIcon size={40} className="text-current" />,
       benefits: [
         'No hidden fees',
         'Clear pricing',
@@ -28,7 +30,7 @@ export const BookingFeatures = () => {
         gr: 'Αξιόπιστη υπηρεσία με 24/7 υποστήριξη',
         en: 'Reliable service with 24/7 support'
       },
-      icon: '🛡️',
+      icon: <ShieldIcon size={40} className="text-current" />,
       benefits: [
         '24/7 customer support',
         'Guaranteed availability',
@@ -46,7 +48,7 @@ export const BookingFeatures = () => {
         gr: 'Αξιόπιστα - πρόσβαση shmeia',
         en: 'Reliable access points everywhere'
       },
-      icon: '📍',
+      icon: <PinIcon size={40} className="text-current" />,
       benefits: [
         'Multiple access methods',
         'Digital key management',
@@ -64,7 +66,7 @@ export const BookingFeatures = () => {
         gr: 'Σαφής πληροφόρηση για κάθε δωμάτιο',
         en: 'Clear information for every room'
       },
-      icon: '🏠',
+      icon: <HouseIcon size={40} className="text-current" />,
       benefits: [
         'Detailed room descriptions',
         'High-quality photos',
@@ -82,7 +84,7 @@ export const BookingFeatures = () => {
         gr: 'Ιδέα απλή ισοδύναμα καλάροπτα - ποσότητα κέρδος',
         en: 'Simple idea equivalents well-crafted - quantity profit'
       },
-      icon: '💰',
+      icon: <MoneyIcon size={40} className="text-current" />,
       benefits: [
         'Dynamic pricing',
         'Revenue optimization',
@@ -100,7 +102,7 @@ export const BookingFeatures = () => {
         gr: 'Πρόβλη booking λύθηκε!',
         en: 'Booking problems solved!'
       },
-      icon: '🔧',
+      icon: <WrenchIcon size={40} className="text-current" />,
       benefits: [
         'Automated conflict resolution',
         'Instant problem detection',
@@ -126,7 +128,7 @@ export const BookingFeatures = () => {
           {features.map((feature) => (
             <div key={feature.id} className="bg-gray-800 rounded-lg p-6 hover:bg-gray-700 transition-colors duration-300">
               <div className="text-center mb-4">
-                <div className="text-4xl mb-4">{feature.icon}</div>
+                <div className="mb-4 flex justify-center text-accent-blue">{feature.icon}</div>
                 <h3 className="text-xl font-semibold text-white mb-2">
                   {feature.title.en}
                 </h3>

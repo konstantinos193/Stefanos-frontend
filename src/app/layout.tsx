@@ -1,19 +1,20 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
+import { HtmlLangUpdater } from '@/components/layout/HtmlLangUpdater'
 
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: {
-    default: 'Real Estate Platform',
-    template: '%s | Real Estate Platform'
+    default: 'Stefanos Spyros Real Estate',
+    template: '%s | Stefanos Spyros Real Estate'
   },
-  description: 'Αξιόπιστη πλατφόρμα ακινήτων με σύγχρονη διαχείριση κρατήσεων',
-  keywords: ['real estate', 'ακίνητα', 'booking', 'κρατήσεις', 'property management'],
-  authors: [{ name: 'Real Estate Platform Team' }],
-  creator: 'Real Estate Platform',
-  publisher: 'Real Estate Platform',
+  description: 'Στέφανος Σπύρος Real Estate - Αξιόπιστη πλατφόρμα ακινήτων με σύγχρονη διαχείριση κρατήσεων | Stefanos Spyros Real Estate - Trusted real estate platform with modern booking management',
+  keywords: ['real estate', 'ακίνητα', 'booking', 'κρατήσεις', 'property management', 'stefanos spyros', 'στέφανος σπύρος'],
+  authors: [{ name: 'Stefanos Spyros Real Estate' }],
+  creator: 'Stefanos Spyros Real Estate',
+  publisher: 'Stefanos Spyros Real Estate',
   formatDetection: {
     email: false,
     address: false,
@@ -23,7 +24,7 @@ export const metadata: Metadata = {
   alternates: {
     canonical: '/',
     languages: {
-      'el-GR': '/gr',
+      'el-GR': '/el',
       'en-US': '/en',
     },
   },
@@ -32,14 +33,14 @@ export const metadata: Metadata = {
     locale: 'en_US',
     alternateLocale: 'el_GR',
     url: 'https://real-estate-platform.com',
-    title: 'Real Estate Platform',
-    description: 'Αξιόπιστη πλατφόρμα ακινήτων με σύγχρονη διαχείριση κρατήσεων',
-    siteName: 'Real Estate Platform',
+    title: 'Stefanos Spyros Real Estate | Στέφανος Σπύρος Real Estate',
+    description: 'Στέφανος Σπύρος Real Estate - Αξιόπιστη πλατφόρμα ακινήτων με σύγχρονη διαχείριση κρατήσεων | Stefanos Spyros Real Estate - Trusted real estate platform with modern booking management',
+    siteName: 'Stefanos Spyros Real Estate',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Real Estate Platform',
-    description: 'Αξιόπιστη πλατφόρμα ακινήτων με σύγχρονη διαχείριση κρατήσεων',
+    title: 'Stefanos Spyros Real Estate | Στέφανος Σπύρος Real Estate',
+    description: 'Στέφανος Σπύρος Real Estate - Αξιόπιστη πλατφόρμα ακινήτων με σύγχρονη διαχείριση κρατήσεων | Stefanos Spyros Real Estate - Trusted real estate platform with modern booking management',
   },
   robots: {
     index: true,
@@ -52,6 +53,11 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
+  icons: {
+    icon: '/logo.png',
+    shortcut: '/logo.png',
+    apple: '/logo.png',
+  },
 }
 
 export default function RootLayout({
@@ -62,9 +68,8 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body className={inter.className}>
-        <div className="min-h-screen flex flex-col">
-          {children}
-        </div>
+        <HtmlLangUpdater />
+        {children}
       </body>
     </html>
   )

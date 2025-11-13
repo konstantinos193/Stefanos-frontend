@@ -1,6 +1,8 @@
 'use client'
 
 import { useState } from 'react'
+import Link from 'next/link'
+import { clsx } from 'clsx'
 
 export const UserMenu = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false)
@@ -9,18 +11,18 @@ export const UserMenu = () => {
   if (!isAuthenticated) {
     return (
       <div className="flex items-center space-x-2">
-        <a
+        <Link
           href="/login"
-          className="text-header-text hover:text-gray-300 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200"
+          className="px-4 py-2 rounded-lg text-sm font-medium text-header-text hover:text-white hover:bg-gray-900 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-accent-blue focus:ring-offset-2 focus:ring-offset-black"
         >
           Login
-        </a>
-        <a
+        </Link>
+        <Link
           href="/register"
-          className="bg-accent-blue hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors duration-200"
+          className="px-4 py-2 rounded-lg text-sm font-medium bg-accent-blue hover:bg-blue-600 text-white transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-accent-blue focus:ring-offset-2 focus:ring-offset-black shadow-md hover:shadow-lg"
         >
           Register
-        </a>
+        </Link>
       </div>
     )
   }
@@ -29,16 +31,19 @@ export const UserMenu = () => {
     <div className="relative">
       <button
         onClick={() => setIsMenuOpen(!isMenuOpen)}
-        className="flex items-center space-x-2 text-header-text hover:text-gray-300 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200"
+        className="flex items-center space-x-2 px-3 py-2 rounded-lg text-sm font-medium text-header-text hover:bg-gray-900 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-accent-blue focus:ring-offset-2 focus:ring-offset-black"
+        aria-label="User menu"
+        aria-expanded={isMenuOpen}
       >
-        <div className="w-8 h-8 bg-accent-blue rounded-full flex items-center justify-center">
-          <span className="text-white text-sm font-medium">U</span>
+        <div className="w-8 h-8 bg-gradient-to-br from-accent-blue to-blue-600 rounded-full flex items-center justify-center shadow-md">
+          <span className="text-white text-sm font-semibold">U</span>
         </div>
-        <span>User</span>
+        <span className="hidden md:inline">User</span>
         <svg
-          className={`w-4 h-4 transition-transform duration-200 ${
-            isMenuOpen ? 'rotate-180' : ''
-          }`}
+          className={clsx(
+            'w-4 h-4 transition-transform duration-200',
+            isMenuOpen && 'rotate-180'
+          )}
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
@@ -53,33 +58,45 @@ export const UserMenu = () => {
       </button>
 
       {isMenuOpen && (
-        <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50">
-          <a
-            href="/profile"
-            className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-          >
-            Profile
-          </a>
-          <a
-            href="/bookings"
-            className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-          >
-            My Bookings
-          </a>
-          <a
-            href="/settings"
-            className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-          >
-            Settings
-          </a>
-          <hr className="my-1" />
-          <button
-            onClick={() => setIsAuthenticated(false)}
-            className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-          >
-            Logout
-          </button>
-        </div>
+        <>
+          <div
+            className="fixed inset-0 z-10"
+            onClick={() => setIsMenuOpen(false)}
+          />
+          <div className="absolute right-0 mt-2 w-48 bg-gray-900 border border-gray-800 rounded-lg shadow-xl py-1 z-20">
+            <Link
+              href="/profile"
+              onClick={() => setIsMenuOpen(false)}
+              className="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-800 hover:text-white transition-colors duration-200"
+            >
+              Profile
+            </Link>
+            <Link
+              href="/bookings"
+              onClick={() => setIsMenuOpen(false)}
+              className="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-800 hover:text-white transition-colors duration-200"
+            >
+              My Bookings
+            </Link>
+            <Link
+              href="/settings"
+              onClick={() => setIsMenuOpen(false)}
+              className="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-800 hover:text-white transition-colors duration-200"
+            >
+              Settings
+            </Link>
+            <hr className="my-1 border-gray-800" />
+            <button
+              onClick={() => {
+                setIsAuthenticated(false)
+                setIsMenuOpen(false)
+              }}
+              className="block w-full text-left px-4 py-2 text-sm text-gray-300 hover:bg-gray-800 hover:text-white transition-colors duration-200"
+            >
+              Logout
+            </button>
+          </div>
+        </>
       )}
     </div>
   )

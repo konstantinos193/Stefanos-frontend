@@ -1,3 +1,5 @@
+import { ReactNode } from 'react'
+
 interface Edition {
   id: string
   category: string
@@ -11,7 +13,7 @@ interface Edition {
   }
   features: string[]
   price: string
-  icon: string
+  icon: string | ReactNode
   status: 'active' | 'coming-soon' | 'beta'
 }
 
@@ -29,12 +31,18 @@ export const EditionCard = ({ edition }: EditionCardProps) => {
   return (
     <div className="card hover:shadow-lg transition-all duration-300 cursor-pointer group">
       <div className="relative">
-        <div className="mb-3">
-          <img 
-            src={edition.icon} 
-            alt={edition.title.en}
-            className="w-12 h-12 mx-auto object-contain"
-          />
+        <div className="mb-3 flex items-center justify-center">
+          {typeof edition.icon === 'string' && edition.icon.startsWith('http') ? (
+            <img 
+              src={edition.icon} 
+              alt={edition.title.en}
+              className="w-12 h-12 mx-auto object-contain"
+            />
+          ) : typeof edition.icon === 'string' ? (
+            <span className="text-4xl">{edition.icon}</span>
+          ) : (
+            <div className="text-accent-blue">{edition.icon}</div>
+          )}
         </div>
         <div className={`absolute top-0 right-0 px-2 py-1 rounded-full text-xs font-medium ${statusColors[edition.status]}`}>
           {edition.status}
