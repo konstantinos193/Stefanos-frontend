@@ -92,7 +92,7 @@ export const CustomInput = forwardRef<HTMLInputElement, CustomInputProps>(
           <label
             htmlFor={id}
             className={cn(
-              'block text-xs sm:text-sm md:text-sm font-medium text-gray-200 mb-1 sm:mb-2',
+              'block text-xs sm:text-sm md:text-sm font-medium text-gray-700 mb-1 sm:mb-2',
               labelClassName
             )}
           >
@@ -114,8 +114,8 @@ export const CustomInput = forwardRef<HTMLInputElement, CustomInputProps>(
             className={cn(
               'w-full px-2 sm:px-3 md:px-3 py-1.5 sm:py-2 md:py-2',
               'text-sm sm:text-base',
-              'bg-gray-800/60 border border-[#d4af37]/40 rounded-lg',
-              'text-white placeholder-gray-400',
+              'bg-white border border-gray-300 rounded-lg',
+              'text-gray-900 placeholder-gray-400',
               'focus:outline-none focus:ring-2 focus:ring-[#d4af37] focus:border-[#d4af37]',
               'transition-colors',
               'disabled:opacity-50 disabled:cursor-not-allowed',
@@ -126,7 +126,7 @@ export const CustomInput = forwardRef<HTMLInputElement, CustomInputProps>(
           />
         </div>
         {error && (
-          <p className="mt-1 text-xs text-red-400">{error}</p>
+          <p className="mt-1 text-xs text-red-600">{error}</p>
         )}
       </div>
     )

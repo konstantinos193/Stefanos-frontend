@@ -52,7 +52,7 @@ export const RealEstateSearchForm = ({ onSubmit }: RealEstateSearchFormProps) =>
   const lang = langMatch ? langMatch[1] : 'en'
 
   const [searchData, setSearchData] = useState<RealEstateSearchData>({
-    location: '',
+    location: 'Preveza, Greece', // Default to Preveza as per requirements
     propertyType: '',
     minPrice: '',
     maxPrice: '',
@@ -97,13 +97,13 @@ export const RealEstateSearchForm = ({ onSubmit }: RealEstateSearchFormProps) =>
   }
 
   return (
-    <form onSubmit={handleSubmit} className="bg-gradient-to-br from-gray-800/90 via-gray-900/90 to-black/90 backdrop-blur-sm rounded-lg shadow-xl border border-[#d4af37]/30 p-3 sm:p-4 md:p-5 lg:p-6">
+    <form onSubmit={handleSubmit} className="bg-white backdrop-blur-sm rounded-lg shadow-xl border border-gray-200 p-3 sm:p-4 md:p-5 lg:p-6">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-4">
         <div className="lg:col-span-1">
           <LocationAutocomplete
             id="location"
             label="Location"
-            placeholder="City, Neighborhood, or Address"
+            placeholder="Preveza, Greece"
             value={searchData.location}
             onChange={(value) => handleInputChange('location', value)}
           />

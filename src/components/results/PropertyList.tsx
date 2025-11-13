@@ -1,5 +1,6 @@
 'use client'
 
+import { memo } from 'react'
 import { Property } from '@/types/property'
 import { PropertyCard } from './PropertyCard'
 import { useTranslation } from '@/lib/hooks/useTranslation'
@@ -9,7 +10,7 @@ interface PropertyListProps {
   lang?: string
 }
 
-export const PropertyList = ({ properties, lang = 'en' }: PropertyListProps) => {
+const PropertyListComponent = ({ properties, lang = 'en' }: PropertyListProps) => {
   const t = useTranslation()
 
   if (properties.length === 0) {
@@ -45,3 +46,4 @@ export const PropertyList = ({ properties, lang = 'en' }: PropertyListProps) => 
   )
 }
 
+export const PropertyList = memo(PropertyListComponent)

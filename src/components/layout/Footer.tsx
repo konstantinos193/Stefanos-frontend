@@ -12,17 +12,17 @@ export const Footer = () => {
           <FooterContact />
           <FooterSocial />
           <div className="lg:col-span-1">
-            <h3 className="text-lg font-semibold text-white mb-4">
+            <h3 className="text-lg font-semibold text-gray-900 mb-4">
               Newsletter
             </h3>
-            <p className="text-gray-400 mb-4">
+            <p className="text-gray-700 mb-4">
               Subscribe to get updates on new properties and offers.
             </p>
             <div className="flex">
               <input
                 type="email"
                 placeholder="Enter your email"
-                className="flex-1 px-3 py-2 bg-gray-700 text-white rounded-l-md focus:outline-none focus:ring-2 focus:ring-accent-blue"
+                className="flex-1 px-3 py-2 bg-white border border-gray-300 text-gray-900 rounded-l-md focus:outline-none focus:ring-2 focus:ring-accent-blue focus:border-transparent"
               />
               <button className="bg-accent-blue hover:bg-blue-700 text-white px-4 py-2 rounded-r-md transition-colors duration-200">
                 Subscribe

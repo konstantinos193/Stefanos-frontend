@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useRef, useEffect } from 'react'
+import { useState, useRef, useEffect, useMemo, useCallback } from 'react'
 import { cn } from '@/lib/utils'
 
 type CustomDatePickerProps = {
@@ -142,31 +142,31 @@ export const CustomDatePicker = ({
     )
   }
 
-  const handleDateSelect = (day: number) => {
+  const handleDateSelect = useCallback((day: number) => {
     const newDate = new Date(currentMonth.getFullYear(), currentMonth.getMonth(), day)
     if (!isDateDisabled(newDate)) {
       onChange(formatDate(newDate))
       setIsOpen(false)
     }
-  }
+  }, [currentMonth, onChange, minDate, maxDate])
 
-  const handlePreviousMonth = () => {
+  const handlePreviousMonth = useCallback(() => {
     setCurrentMonth(new Date(currentMonth.getFullYear(), currentMonth.getMonth() - 1, 1))
-  }
+  }, [currentMonth])
 
-  const handleNextMonth = () => {
+  const handleNextMonth = useCallback(() => {
     setCurrentMonth(new Date(currentMonth.getFullYear(), currentMonth.getMonth() + 1, 1))
-  }
+  }, [currentMonth])
 
-  const handlePreviousYear = () => {
+  const handlePreviousYear = useCallback(() => {
     setCurrentMonth(new Date(currentMonth.getFullYear() - 1, currentMonth.getMonth(), 1))
-  }
+  }, [currentMonth])
 
-  const handleNextYear = () => {
+  const handleNextYear = useCallback(() => {
     setCurrentMonth(new Date(currentMonth.getFullYear() + 1, currentMonth.getMonth(), 1))
-  }
+  }, [currentMonth])
 
-  const renderCalendar = () => {
+  const calendarDays = useMemo(() => {
     const daysInMonth = getDaysInMonth(currentMonth)
     const firstDay = getFirstDayOfMonth(currentMonth)
     const days: (number | null)[] = []
@@ -217,7 +217,7 @@ export const CustomDatePicker = ({
         </button>
       )
     })
-  }
+  }, [currentMonth, selectedDate, minDate, maxDate, handleDateSelect])
 
   return (
     <div className="w-full">
@@ -374,7 +374,7 @@ export const CustomDatePicker = ({
               </div>
 
               <div className="grid grid-cols-7 gap-1">
-                {renderCalendar()}
+                {calendarDays}
               </div>
 
               {selectedDate && (

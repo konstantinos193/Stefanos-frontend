@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef, useCallback } from 'react'
 import { cn } from '@/lib/utils'
+import { API_BASE_URL } from '@/lib/api/config'
 
 interface LocationOption {
   city: string
@@ -20,8 +21,6 @@ interface LocationAutocompleteProps {
   error?: string
   disabled?: boolean
 }
-
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001/api'
 
 export const LocationAutocomplete = ({
   id,
@@ -51,7 +50,7 @@ export const LocationAutocomplete = ({
 
     setIsLoading(true)
     try {
-      const response = await fetch(`${API_URL}/properties/locations/cities?query=${encodeURIComponent(query)}`, {
+      const response = await fetch(`${API_BASE_URL}/properties/locations/cities?query=${encodeURIComponent(query)}`, {
         cache: 'no-store'
       })
       
@@ -161,7 +160,7 @@ export const LocationAutocomplete = ({
         <label
           htmlFor={id}
           className={cn(
-            'block text-xs sm:text-sm md:text-sm font-medium text-gray-200 mb-1 sm:mb-2',
+            'block text-xs sm:text-sm md:text-sm font-medium text-gray-700 mb-1 sm:mb-2',
             labelClassName
           )}
         >
@@ -184,8 +183,8 @@ export const LocationAutocomplete = ({
           className={cn(
             'w-full px-2 sm:px-3 md:px-3 py-1.5 sm:py-2 md:py-2',
             'text-sm sm:text-base',
-            'bg-gray-800/60 border border-[#d4af37]/40 rounded-lg',
-            'text-white placeholder-gray-400',
+            'bg-white border border-gray-300 rounded-lg',
+            'text-gray-900 placeholder-gray-400',
             'focus:outline-none focus:ring-2 focus:ring-[#d4af37] focus:border-[#d4af37]',
             'transition-colors',
             'disabled:opacity-50 disabled:cursor-not-allowed',
@@ -202,7 +201,7 @@ export const LocationAutocomplete = ({
           </div>
         )}
         {showSuggestions && suggestions.length > 0 && (
-          <div className="absolute z-50 w-full mt-1 bg-gray-800 border border-[#d4af37]/40 rounded-lg shadow-xl max-h-60 overflow-auto">
+          <div className="absolute z-50 w-full mt-1 bg-white border border-gray-300 rounded-lg shadow-xl max-h-60 overflow-auto">
             {suggestions.map((suggestion, index) => (
               <button
                 key={`${suggestion.city}-${suggestion.country}`}
@@ -210,9 +209,9 @@ export const LocationAutocomplete = ({
                 onClick={() => handleSelectSuggestion(suggestion)}
                 onMouseEnter={() => setSelectedIndex(index)}
                 className={cn(
-                  'w-full px-3 py-2 text-left text-sm text-white hover:bg-[#d4af37]/20 transition-colors',
+                  'w-full px-3 py-2 text-left text-sm text-gray-900 hover:bg-gray-100 transition-colors',
                   'flex items-center gap-2',
-                  index === selectedIndex && 'bg-[#d4af37]/20'
+                  index === selectedIndex && 'bg-gray-100'
                 )}
               >
                 <svg className="w-4 h-4 text-[#d4af37] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -226,7 +225,7 @@ export const LocationAutocomplete = ({
         )}
       </div>
       {error && (
-        <p className="mt-1 text-xs text-red-400">{error}</p>
+        <p className="mt-1 text-xs text-red-600">{error}</p>
       )}
     </div>
   )

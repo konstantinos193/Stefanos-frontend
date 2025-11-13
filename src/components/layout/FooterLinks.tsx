@@ -33,7 +33,7 @@ export const FooterLinks = () => {
     <div className="space-y-8">
       {linkSections.map((section, index) => (
         <div key={index}>
-          <h3 className="text-lg font-semibold text-white mb-4">
+          <h3 className="text-lg font-semibold text-gray-900 mb-4">
             {section.title}
           </h3>
           <ul className="space-y-2">
@@ -41,7 +41,7 @@ export const FooterLinks = () => {
               <li key={linkIndex}>
                 <a
                   href={link.href}
-                  className="text-gray-400 hover:text-white transition-colors duration-200"
+                  className="text-gray-700 hover:text-accent-blue transition-colors duration-200"
                 >
                   {link.label}
                 </a>

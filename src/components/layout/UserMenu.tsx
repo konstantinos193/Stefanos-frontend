@@ -1,52 +1,65 @@
-'use client'
+'use client';
 
-import { useState } from 'react'
-import Link from 'next/link'
-import { clsx } from 'clsx'
+import { useState, useEffect } from 'react';
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import { useAuthStore } from '@/lib/store/auth.store';
 
 export const UserMenu = () => {
-  const [isAuthenticated, setIsAuthenticated] = useState(false)
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const router = useRouter();
+  const { user, isAuthenticated, logout, checkAuth } = useAuthStore();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  if (!isAuthenticated) {
+  useEffect(() => {
+    if (isAuthenticated) {
+      checkAuth();
+    }
+  }, [isAuthenticated, checkAuth]);
+
+  const handleLogout = () => {
+    logout();
+    setIsMenuOpen(false);
+    router.push('/');
+  };
+
+  if (!isAuthenticated || !user) {
     return (
       <div className="flex items-center space-x-2">
         <Link
-          href="/login"
+          href="/auth/login"
           className="px-4 py-2 rounded-lg text-sm font-medium text-header-text hover:text-white hover:bg-gray-900 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-accent-blue focus:ring-offset-2 focus:ring-offset-black"
         >
           Login
         </Link>
         <Link
-          href="/register"
+          href="/auth/register"
           className="px-4 py-2 rounded-lg text-sm font-medium bg-accent-blue hover:bg-blue-600 text-white transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-accent-blue focus:ring-offset-2 focus:ring-offset-black shadow-md hover:shadow-lg"
         >
           Register
         </Link>
       </div>
-    )
+    );
   }
 
   return (
     <div className="relative">
       <button
         onClick={() => setIsMenuOpen(!isMenuOpen)}
-        className="flex items-center space-x-2 px-3 py-2 rounded-lg text-sm font-medium text-header-text hover:bg-gray-900 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-accent-blue focus:ring-offset-2 focus:ring-offset-black"
-        aria-label="User menu"
-        aria-expanded={isMenuOpen}
+        className="flex items-center space-x-2 px-3 py-2 rounded-lg hover:bg-gray-900 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-accent-blue focus:ring-offset-2 focus:ring-offset-black"
       >
-        <div className="w-8 h-8 bg-gradient-to-br from-accent-blue to-blue-600 rounded-full flex items-center justify-center shadow-md">
-          <span className="text-white text-sm font-semibold">U</span>
+        <div className="w-8 h-8 rounded-full bg-accent-blue flex items-center justify-center text-white font-medium">
+          {user.name.charAt(0).toUpperCase()}
         </div>
-        <span className="hidden md:inline">User</span>
+        <span className="hidden sm:block text-sm font-medium text-header-text">
+          {user.name}
+        </span>
         <svg
-          className={clsx(
-            'w-4 h-4 transition-transform duration-200',
-            isMenuOpen && 'rotate-180'
-          )}
+          className={`w-4 h-4 text-header-text transition-transform duration-200 ${
+            isMenuOpen ? 'rotate-180' : ''
+          }`}
           fill="none"
-          viewBox="0 0 24 24"
           stroke="currentColor"
+          viewBox="0 0 24 24"
         >
           <path
             strokeLinecap="round"
@@ -72,12 +85,37 @@ export const UserMenu = () => {
               Profile
             </Link>
             <Link
+              href="/dashboard"
+              onClick={() => setIsMenuOpen(false)}
+              className="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-800 hover:text-white transition-colors duration-200"
+            >
+              Dashboard
+            </Link>
+            <Link
               href="/bookings"
               onClick={() => setIsMenuOpen(false)}
               className="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-800 hover:text-white transition-colors duration-200"
             >
               My Bookings
             </Link>
+            {user.role === 'OWNER' && (
+              <Link
+                href="/dashboard/owner"
+                onClick={() => setIsMenuOpen(false)}
+                className="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-800 hover:text-white transition-colors duration-200"
+              >
+                Owner Dashboard
+              </Link>
+            )}
+            {user.role === 'ADMIN' && (
+              <Link
+                href="/admin"
+                onClick={() => setIsMenuOpen(false)}
+                className="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-800 hover:text-white transition-colors duration-200"
+              >
+                Admin Panel
+              </Link>
+            )}
             <Link
               href="/settings"
               onClick={() => setIsMenuOpen(false)}
@@ -87,10 +125,7 @@ export const UserMenu = () => {
             </Link>
             <hr className="my-1 border-gray-800" />
             <button
-              onClick={() => {
-                setIsAuthenticated(false)
-                setIsMenuOpen(false)
-              }}
+              onClick={handleLogout}
               className="block w-full text-left px-4 py-2 text-sm text-gray-300 hover:bg-gray-800 hover:text-white transition-colors duration-200"
             >
               Logout
@@ -99,5 +134,5 @@ export const UserMenu = () => {
         </>
       )}
     </div>
-  )
-}
+  );
+};

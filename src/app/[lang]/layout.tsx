@@ -9,7 +9,7 @@ type Props = {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { lang } = await params
-  const dict = await getDictionary(lang as 'en' | 'el')
+  const dict = await getDictionary(lang)
   
   return {
     title: {

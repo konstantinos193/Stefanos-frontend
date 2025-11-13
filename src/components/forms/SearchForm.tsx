@@ -36,7 +36,7 @@ export const SearchForm = ({ onSubmit }: SearchFormProps) => {
   const lang = langMatch ? langMatch[1] : 'en'
 
   const [searchData, setSearchData] = useState<BookingSearchData>({
-    location: '',
+    location: 'Preveza, Greece', // Default to Preveza as per requirements
     checkIn: '',
     checkOut: '',
     guests: '1'
@@ -104,7 +104,7 @@ export const SearchForm = ({ onSubmit }: SearchFormProps) => {
           <LocationAutocomplete
             id="location"
             label="Location"
-            placeholder="Where are you going?"
+            placeholder="Preveza, Greece"
             value={searchData.location}
             onChange={(value) => handleInputChange('location', value)}
           />

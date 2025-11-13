@@ -1,5 +1,6 @@
 'use client'
 
+import { memo, useMemo } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { Property } from '@/types/property'
@@ -24,17 +25,23 @@ const formatPropertyType = (type: string): string => {
   return typeMap[type] || type
 }
 
-export const PropertyCard = ({ property, lang = 'en' }: PropertyCardProps) => {
+const PropertyCardComponent = ({ property, lang = 'en' }: PropertyCardProps) => {
   const t = useTranslation()
-  const title = lang === 'el' ? property.titleGr : property.titleEn
-  const location = `${property.city}, ${property.country}`
-  const hasImage = property.images && property.images.length > 0
-  const imageUrl = hasImage ? property.images[0] : ''
-  const rating = property.averageRating || 0
-  const reviewCount = property.reviewCount || 0
-  const amenities = property.amenities.slice(0, 3).map(a => 
-    lang === 'el' ? a.amenity.nameGr : a.amenity.nameEn
-  )
+  
+  const { title, location, imageUrl, hasImage, rating, reviewCount, amenities, propertyType } = useMemo(() => {
+    const title = lang === 'el' ? property.titleGr : property.titleEn
+    const location = `${property.city}, ${property.country}`
+    const hasImage = property.images && property.images.length > 0
+    const imageUrl = hasImage ? property.images[0] : ''
+    const rating = property.averageRating || 0
+    const reviewCount = property.reviewCount || 0
+    const amenities = property.amenities.slice(0, 3).map(a => 
+      lang === 'el' ? a.amenity.nameGr : a.amenity.nameEn
+    )
+    const propertyType = formatPropertyType(property.type)
+    
+    return { title, location, imageUrl, hasImage, rating, reviewCount, amenities, propertyType }
+  }, [property, lang])
 
   return (
     <Link href={`/${lang}/properties/${property.id}`}>
@@ -56,7 +63,7 @@ export const PropertyCard = ({ property, lang = 'en' }: PropertyCardProps) => {
             </div>
           )}
           <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-medium text-gray-800">
-            {formatPropertyType(property.type)}
+            {propertyType}
           </div>
           {rating > 0 && (
             <div className="absolute top-4 left-4 flex items-center gap-1 bg-white/90 backdrop-blur-sm px-2 py-1 rounded-full text-sm">
@@ -140,4 +147,6 @@ export const PropertyCard = ({ property, lang = 'en' }: PropertyCardProps) => {
     </Link>
   )
 }
+
+export const PropertyCard = memo(PropertyCardComponent)
 

@@ -1,4 +1,4 @@
-import { searchProperties } from '@/lib/api/properties'
+import { searchPropertiesServer } from '@/lib/api/properties'
 import { PropertySearchParams } from '@/types/property'
 import { PropertyList } from './PropertyList'
 import { FiltersSidebar } from './FiltersSidebar'
@@ -12,7 +12,7 @@ interface ResultsContentProps {
 }
 
 export async function ResultsContent({ lang, searchParams }: ResultsContentProps) {
-  const dict = await getDictionary(lang as 'en' | 'el')
+  const dict = await getDictionary(lang)
   
   const params: PropertySearchParams = {
     location: typeof searchParams.location === 'string' ? searchParams.location : undefined,
@@ -31,7 +31,7 @@ export async function ResultsContent({ lang, searchParams }: ResultsContentProps
 
   let data
   try {
-    const response = await searchProperties(params)
+    const response = await searchPropertiesServer(params)
     data = response.data
   } catch (error) {
     console.error('Error fetching properties:', error)

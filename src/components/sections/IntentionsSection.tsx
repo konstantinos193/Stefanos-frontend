@@ -76,18 +76,18 @@ export const IntentionsSection = ({
 
   return (
     <section 
-      className="py-16 lg:py-24 bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white"
+      className="py-16 lg:py-24 bg-white"
       aria-labelledby="intentions-heading"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <h2 
             id="intentions-heading"
-            className="text-3xl lg:text-4xl font-bold text-white mb-4"
+            className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4"
           >
             {t('intentions.title')}
           </h2>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             {t('intentions.subtitle')}
           </p>
         </div>
@@ -110,38 +110,35 @@ export const IntentionsSection = ({
                 className={clsx(
                   'group relative p-8 sm:p-10 rounded-2xl transition-all duration-300 text-left',
                   'h-full flex flex-col overflow-hidden',
-                  'focus:outline-none focus:ring-2 focus:ring-[#d4af37]/50 focus:ring-offset-2 focus:ring-offset-gray-900',
+                  'focus:outline-none focus:ring-2 focus:ring-[#d4af37]/50 focus:ring-offset-2 focus:ring-offset-white',
                   'hover:scale-[1.02] active:scale-[0.98]',
                   'touch-manipulation min-h-[240px] sm:min-h-[260px]',
                   'cursor-pointer'
                 )}
               >
                 {/* Base background layer */}
-                <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-gray-800/60 via-gray-800/50 to-gray-900/60 group-hover:from-gray-800/80 group-hover:via-gray-800/70 group-hover:to-gray-900/80 transition-all duration-300" />
+                <div className="absolute inset-0 rounded-2xl bg-white shadow-lg group-hover:shadow-xl transition-all duration-300" />
                 
-                {/* Backdrop blur layer */}
-                <div className="absolute inset-0 rounded-2xl backdrop-blur-xl bg-black/20" />
+                {/* Gradient overlay on hover */}
+                <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-gray-50/50 via-transparent to-gray-50/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 
                 {/* Border layer */}
-                <div className="absolute inset-0 rounded-2xl border-2 border-gray-700/60 group-hover:border-[#d4af37]/60 group-hover:shadow-[0_0_20px_rgba(212,175,55,0.2)] transition-all duration-300" />
-                
-                {/* Inner depth shadow */}
-                <div className="absolute inset-0 rounded-2xl bg-black/30 pointer-events-none" />
+                <div className="absolute inset-0 rounded-2xl border-2 border-gray-200 group-hover:border-[#d4af37]/60 group-hover:shadow-[0_0_20px_rgba(212,175,55,0.2)] transition-all duration-300" />
                 
                 {/* Hover glow effect */}
                 <div className="absolute -inset-[1px] rounded-2xl bg-gradient-to-r from-[#d4af37]/20 via-transparent to-[#d4af37]/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-sm pointer-events-none" />
                 
                 {/* Content */}
                 <div className="relative z-10 flex flex-col items-start space-y-5 flex-1">
-                  <div className="mb-2 transition-all duration-300 text-gray-400 group-hover:text-[#d4af37] group-hover:drop-shadow-[0_0_8px_rgba(212,175,55,0.5)]">
+                  <div className="mb-2 transition-all duration-300 text-gray-600 group-hover:text-[#d4af37] group-hover:drop-shadow-[0_0_8px_rgba(212,175,55,0.5)]">
                     {getIcon(intention.icon)}
                   </div>
                   
                   <div className="flex-1 flex flex-col">
-                    <h3 className="text-2xl sm:text-3xl font-bold mb-3 transition-colors duration-300 text-gray-200 group-hover:text-white">
+                    <h3 className="text-2xl sm:text-3xl font-bold mb-3 transition-colors duration-300 text-gray-900 group-hover:text-[#d4af37]">
                       {label}
                     </h3>
-                    <p className="text-base sm:text-lg transition-colors duration-300 text-gray-400 group-hover:text-gray-300">
+                    <p className="text-base sm:text-lg transition-colors duration-300 text-gray-600 group-hover:text-gray-700">
                       {description}
                     </p>
                   </div>

@@ -15,14 +15,9 @@ export const Navigation = ({ className = '' }: NavigationProps) => {
   
   const navigationItems = [
     {
-      id: 'editions',
-      label: { el: '20 Εκδόσεις', en: '20 Editions' },
-      path: '/editions'
-    },
-    {
-      id: 'services',
-      label: { el: 'Εξυπηρετήσεις', en: 'Services' },
-      path: '/services'
+      id: 'home',
+      label: { el: 'Αρχική', en: 'Home' },
+      path: '/'
     },
     {
       id: 'properties',
@@ -30,14 +25,24 @@ export const Navigation = ({ className = '' }: NavigationProps) => {
       path: '/properties'
     },
     {
-      id: 'booking',
-      label: { el: 'Κράτηση', en: 'Booking' },
-      path: '/booking'
+      id: 'bookings',
+      label: { el: 'Κρατήσεις', en: 'Bookings' },
+      path: '/bookings'
     },
     {
-      id: 'about',
-      label: { el: 'Σχετικά', en: 'About' },
-      path: '/about'
+      id: 'services',
+      label: { el: 'Υπηρεσίες', en: 'Services' },
+      path: '/services'
+    },
+    {
+      id: 'knowledge',
+      label: { el: 'Γνώσεις', en: 'Knowledge' },
+      path: '/knowledge'
+    },
+    {
+      id: 'editions',
+      label: { el: 'Εκδόσεις', en: 'Editions' },
+      path: '/editions'
     }
   ]
 
@@ -54,15 +59,15 @@ export const Navigation = ({ className = '' }: NavigationProps) => {
             href={href}
             className={clsx(
               'relative px-4 py-2 text-sm font-medium transition-all duration-200',
-              'focus:outline-none focus:ring-2 focus:ring-accent-blue focus:ring-offset-2 focus:ring-offset-black',
+              'focus:outline-none focus:ring-2 focus:ring-accent-gold focus:ring-offset-2 focus:ring-offset-black',
               isActive
                 ? 'text-white'
-                : 'text-gray-400 hover:text-white'
+                : 'text-gray-400 hover:text-accent-gold'
             )}
           >
             {item.label[language]}
             {isActive && (
-              <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-accent-blue rounded-full" />
+              <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-accent-gold rounded-full" />
             )}
           </Link>
         )

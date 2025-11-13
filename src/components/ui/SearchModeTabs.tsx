@@ -19,10 +19,7 @@ export const SearchModeTabs = ({
   onChange
 }: SearchModeTabsProps) => {
   return (
-    <div className="relative inline-flex items-center gap-1 sm:gap-1.5 rounded-full bg-gradient-to-br from-gray-900/80 via-gray-900/70 to-gray-800/80 backdrop-blur-xl border border-gray-700/60 p-1 sm:p-1.5 shadow-2xl shadow-black/60">
-      {/* Inner depth shadow */}
-      <div className="absolute inset-0 rounded-full bg-black/20 pointer-events-none" />
-      
+    <div className="relative inline-flex items-center gap-1 sm:gap-1.5 rounded-full bg-white backdrop-blur-xl border border-gray-200 p-1 sm:p-1.5 shadow-lg">
       {/* Subtle inner glow accent */}
       <div className="absolute inset-0 rounded-full bg-gradient-to-r from-[#d4af37]/5 via-transparent to-[#d4af37]/5 pointer-events-none" />
       
@@ -39,10 +36,10 @@ export const SearchModeTabs = ({
             onClick={() => onChange(option.value)}
             className={clsx(
               'group relative flex items-center gap-1.5 sm:gap-2 md:gap-2.5 rounded-full px-3 sm:px-4 md:px-6 py-1.5 sm:py-2 md:py-2.5 transition-all duration-300 ease-out',
-              'focus:outline-none focus:ring-2 focus:ring-[#d4af37]/50 focus:ring-offset-2 focus:ring-offset-gray-900',
+              'focus:outline-none focus:ring-2 focus:ring-[#d4af37]/50 focus:ring-offset-2 focus:ring-offset-white',
               isActive
                 ? 'bg-gradient-to-r from-[#d4af37] via-[#d4af37] to-[#b8941f] text-black shadow-lg shadow-[#d4af37]/40 scale-[1.02]'
-                : 'text-gray-300 hover:text-white hover:bg-gray-800/70'
+                : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100'
             )}
           >
             {/* Active state layered depth */}
@@ -61,7 +58,7 @@ export const SearchModeTabs = ({
             
             <span className={clsx(
               'relative z-10 text-xs sm:text-sm md:text-sm font-bold uppercase tracking-wide sm:tracking-wider whitespace-nowrap',
-              isActive ? 'text-black drop-shadow-sm' : 'text-gray-300 group-hover:text-white'
+              isActive ? 'text-black drop-shadow-sm' : 'text-gray-600 group-hover:text-gray-900'
             )}>
               {option.label}
             </span>
@@ -70,7 +67,7 @@ export const SearchModeTabs = ({
               <span
                 className={clsx(
                   'relative z-10 hidden text-[10px] sm:text-xs md:text-xs lg:text-xs font-semibold sm:inline whitespace-nowrap transition-colors duration-300',
-                  isActive ? 'text-gray-700' : 'text-gray-400 group-hover:text-gray-200'
+                  isActive ? 'text-gray-700' : 'text-gray-500 group-hover:text-gray-700'
                 )}
               >
                 {option.description}

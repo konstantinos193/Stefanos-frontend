@@ -42,6 +42,7 @@ export interface Property {
   address: string
   city: string
   country: string
+  postalCode?: string
   latitude: number | null
   longitude: number | null
   maxGuests: number
@@ -52,13 +53,36 @@ export interface Property {
   currency: string
   cleaningFee: number | null
   serviceFee: number | null
+  serviceFeePercentage?: number
+  taxRate?: number
   taxes: number | null
+  cancellationPolicy?: 'FLEXIBLE' | 'MODERATE' | 'STRICT' | 'SUPER_STRICT'
+  hasDynamicRooms?: boolean
+  averageCleanlinessRating?: number
+  lastCleaningDate?: string
   images: string[]
   videos: string[]
   owner: PropertyOwner
   amenities: PropertyAmenityRelation[]
+  rooms?: Room[]
+  propertyGroupId?: string
   averageRating?: number
   reviewCount?: number
+  createdAt: string
+  updatedAt: string
+}
+
+export interface Room {
+  id: string
+  propertyId: string
+  type: 'BEDROOM' | 'BATHROOM' | 'LIVING_ROOM' | 'KITCHEN' | 'DINING_ROOM' | 'OTHER'
+  nameEn: string
+  nameGr: string
+  descriptionEn?: string
+  descriptionGr?: string
+  capacity?: number
+  amenities?: string[]
+  images?: string[]
   createdAt: string
   updatedAt: string
 }

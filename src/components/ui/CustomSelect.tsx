@@ -132,7 +132,7 @@ export const CustomSelect = ({
         <label
           htmlFor={id}
           className={cn(
-            'block text-xs sm:text-sm md:text-sm font-medium text-gray-200 mb-1 sm:mb-2',
+            'block text-xs sm:text-sm md:text-sm font-medium text-gray-700 mb-1 sm:mb-2',
             labelClassName
           )}
         >
@@ -148,8 +148,8 @@ export const CustomSelect = ({
           className={cn(
             'w-full px-2 sm:px-3 md:px-3 py-1.5 sm:py-2 md:py-2',
             'text-sm sm:text-base text-left',
-            'bg-gray-800/60 border border-[#d4af37]/40 rounded-lg',
-            'text-white',
+            'bg-white border border-gray-300 rounded-lg',
+            'text-gray-900',
             'focus:outline-none focus:ring-2 focus:ring-[#d4af37] focus:border-[#d4af37]',
             'transition-colors',
             'disabled:opacity-50 disabled:cursor-not-allowed',
@@ -189,7 +189,7 @@ export const CustomSelect = ({
           <div
             className={cn(
               'absolute z-50 w-full mt-1',
-              'bg-gray-800 border border-[#d4af37]/40 rounded-lg',
+              'bg-white border border-gray-300 rounded-lg',
               'shadow-xl overflow-hidden',
               'max-h-60 overflow-y-auto scrollbar-hide'
             )}
@@ -201,10 +201,10 @@ export const CustomSelect = ({
                 onClick={() => handleSelect(option.value)}
                 className={cn(
                   'w-full px-3 py-2 text-sm sm:text-base text-left',
-                  'text-white hover:bg-[#d4af37]/20',
+                  'text-gray-900 hover:bg-gray-100',
                   'transition-colors',
                   'flex items-center',
-                  value === option.value && 'bg-[#d4af37]/30 font-medium'
+                  value === option.value && 'bg-[#d4af37]/20 font-medium'
                 )}
               >
                 <span className="flex-1">{option.label}</span>
@@ -227,7 +227,7 @@ export const CustomSelect = ({
         )}
       </div>
       {error && (
-        <p className="mt-1 text-xs text-red-400">{error}</p>
+        <p className="mt-1 text-xs text-red-600">{error}</p>
       )}
     </div>
   )

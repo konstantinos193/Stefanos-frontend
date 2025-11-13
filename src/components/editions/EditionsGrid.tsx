@@ -13,9 +13,10 @@ import {
   WrenchIcon,
   ScalesIcon
 } from '@/components/icons'
+import { Edition } from '@/types/edition'
 
 export const EditionsGrid = () => {
-  const editions = [
+  const editions: Edition[] = [
     // Property Editions (5)
     {
       id: 'residential',

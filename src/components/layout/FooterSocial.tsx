@@ -40,7 +40,7 @@ export const FooterSocial = () => {
 
   return (
     <div>
-      <h3 className="text-lg font-semibold text-white mb-4">
+      <h3 className="text-lg font-semibold text-gray-900 mb-4">
         Follow Us
       </h3>
       <div className="flex space-x-4">
@@ -48,7 +48,7 @@ export const FooterSocial = () => {
           <a
             key={social.name}
             href={social.href}
-            className="text-gray-400 hover:text-white transition-colors duration-200"
+            className="text-gray-700 hover:text-accent-blue transition-colors duration-200"
             aria-label={social.name}
           >
             {social.icon}

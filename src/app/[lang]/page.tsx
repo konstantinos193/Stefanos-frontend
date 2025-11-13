@@ -1,14 +1,13 @@
+import dynamic from 'next/dynamic'
 import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
-import { HeroSection } from '@/components/sections/HeroSection'
-import { MobileHeroSection } from '@/components/sections/MobileHeroSection'
-import { IntentionsSection } from '@/components/sections/IntentionsSection'
-import { RecentAdditionsSection } from '@/components/sections/RecentAdditionsSection'
-import { PersonalizedRecommendationsSection } from '@/components/sections/PersonalizedRecommendationsSection'
-import { ServicesSection } from '@/components/sections/ServicesSection'
-import { PropertiesSection } from '@/components/sections/PropertiesSection'
-import { FeaturesSection } from '@/components/sections/FeaturesSection'
-import { SignInSection } from '@/components/sections/SignInSection'
+import { HeroWrapper } from '@/components/sections/HeroWrapper'
+
+// Dynamically import sections for optimal performance - matching requirements structure
+const RecentAdditionsSection = dynamic(() => import('@/components/sections/RecentAdditionsSection').then(mod => ({ default: mod.RecentAdditionsSection })), { ssr: true })
+const ServicesSection = dynamic(() => import('@/components/sections/ServicesSection').then(mod => ({ default: mod.ServicesSection })), { ssr: true })
+const FeaturesSection = dynamic(() => import('@/components/sections/FeaturesSection').then(mod => ({ default: mod.FeaturesSection })), { ssr: true })
+const PersonalizedRecommendationsSection = dynamic(() => import('@/components/sections/PersonalizedRecommendationsSection').then(mod => ({ default: mod.PersonalizedRecommendationsSection })), { ssr: true })
 
 type Props = {
   params: Promise<{ lang: string }>
@@ -20,49 +19,22 @@ export default async function HomePage({ params }: Props) {
   return (
     <>
       <Header />
-      <main className="flex-1 relative">
-        {/* Unified professional background for entire homepage */}
-        <div className="fixed inset-0 -z-10 pointer-events-none">
-          {/* Base gradient - clean white to subtle gray */}
-          <div className="absolute inset-0 bg-gradient-to-b from-white via-gray-50/30 to-white" />
-          
-          {/* Subtle texture pattern */}
-          <div 
-            className="absolute inset-0 opacity-[0.02]"
-            style={{
-              backgroundImage: `
-                linear-gradient(90deg, #000 1px, transparent 1px),
-                linear-gradient(180deg, #000 1px, transparent 1px)
-              `,
-              backgroundSize: '100px 100px'
-            }}
-          />
-          
-          {/* Elegant radial gradient for depth */}
-          <div 
-            className="absolute inset-0"
-            style={{
-              background: 'radial-gradient(ellipse 120% 100% at 50% 0%, rgba(0, 0, 0, 0.01) 0%, transparent 50%)'
-            }}
-          />
-        </div>
+      <main className="flex-1 relative bg-white">
+        {/* Landing Page Structure - Matching Requirements Exactly */}
+        {/* 1. Hero Section (Introduction) - with dual search mode and Preveza focus */}
+        <HeroWrapper />
         
-        {/* Hero sections with their own backgrounds */}
-        <div className="relative">
-          <MobileHeroSection />
-          <HeroSection />
-        </div>
+        {/* 2. Recent Additions Section - Preveza properties */}
+        <RecentAdditionsSection />
         
-        {/* Main content sections */}
-        <div className="relative">
-          <IntentionsSection />
-          <RecentAdditionsSection />
-          <PersonalizedRecommendationsSection />
-          <ServicesSection />
-          <PropertiesSection />
-          <FeaturesSection />
-          <SignInSection />
-        </div>
+        {/* 3. Services Section - Property Management, Booking Platform, etc. */}
+        <ServicesSection />
+        
+        {/* 4. Features Section - Key platform features and trust indicators */}
+        <FeaturesSection />
+        
+        {/* 5. Personalized Recommendations - Based on user preferences */}
+        <PersonalizedRecommendationsSection />
       </main>
       <Footer />
     </>

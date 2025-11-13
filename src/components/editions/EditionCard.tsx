@@ -1,21 +1,4 @@
-import { ReactNode } from 'react'
-
-interface Edition {
-  id: string
-  category: string
-  title: {
-    gr: string
-    en: string
-  }
-  description: {
-    gr: string
-    en: string
-  }
-  features: string[]
-  price: string
-  icon: string | ReactNode
-  status: 'active' | 'coming-soon' | 'beta'
-}
+import { Edition } from '@/types/edition'
 
 interface EditionCardProps {
   edition: Edition

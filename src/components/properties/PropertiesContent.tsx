@@ -1,4 +1,4 @@
-import { searchProperties } from '@/lib/api/properties'
+import { searchPropertiesServer } from '@/lib/api/properties'
 import { PropertySearchParams } from '@/types/property'
 import { PropertyList } from '@/components/results/PropertyList'
 import { FiltersSidebar } from '@/components/results/FiltersSidebar'
@@ -60,7 +60,7 @@ const getIntentionDescription = (intention: string | undefined, lang: string): s
 }
 
 export async function PropertiesContent({ lang, searchParams }: PropertiesContentProps) {
-  const dict = await getDictionary(lang as 'en' | 'el')
+  const dict = await getDictionary(lang)
   const intention = typeof searchParams.intention === 'string' ? searchParams.intention : undefined
   
   const params: PropertySearchParams = {
@@ -81,7 +81,7 @@ export async function PropertiesContent({ lang, searchParams }: PropertiesConten
 
   let data
   try {
-    const response = await searchProperties(params)
+    const response = await searchPropertiesServer(params)
     data = response.data
   } catch (error) {
     console.error('Error fetching properties:', error)

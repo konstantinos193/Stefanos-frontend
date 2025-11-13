@@ -36,10 +36,12 @@ export const LanguageProvider = ({
   const setLanguage = (lang: Language) => {
     setLanguageState(lang)
     localStorage.setItem('language', lang)
-    // Update URL to reflect language change
-    const currentPath = window.location.pathname
-    const pathWithoutLang = currentPath.replace(/^\/(en|el)/, '') || '/'
-    window.location.href = `/${lang}${pathWithoutLang}`
+    // Update URL to reflect language change using Next.js router (no full page reload)
+    if (typeof window !== 'undefined') {
+      const currentPath = window.location.pathname
+      const pathWithoutLang = currentPath.replace(/^\/(en|el)/, '') || '/'
+      window.history.pushState({}, '', `/${lang}${pathWithoutLang}`)
+    }
   }
 
   return (

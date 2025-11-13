@@ -32,7 +32,7 @@ export const FooterContact = () => {
 
   return (
     <div>
-      <h3 className="text-lg font-semibold text-white mb-4">
+      <h3 className="text-lg font-semibold text-gray-900 mb-4">
         Contact Information
       </h3>
       <div className="space-y-4">
@@ -42,8 +42,8 @@ export const FooterContact = () => {
               {item.icon}
             </div>
             <div>
-              <p className="text-sm font-medium text-white">{item.label}</p>
-              <p className="text-sm text-gray-400">{item.value}</p>
+              <p className="text-sm font-medium text-gray-900">{item.label}</p>
+              <p className="text-sm text-gray-700">{item.value}</p>
             </div>
           </div>
         ))}

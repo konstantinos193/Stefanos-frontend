@@ -1,21 +1,12 @@
 'use client'
 
-import { useEffect, useState, useMemo } from 'react'
+import { useMemo } from 'react'
 import { useTranslation } from '@/lib/hooks/useTranslation'
-
-type StatsData = {
-  properties: number
-  happyGuests: number
-  cities: number
-}
+import { useStats } from '@/lib/contexts/StatsContext'
 
 const formatNumber = (num: number): string => {
   if (num >= 1000) {
     const thousands = Math.floor(num / 1000)
-    const remainder = num % 1000
-    if (remainder === 0) {
-      return `${thousands}K+`
-    }
     return `${thousands}K+`
   }
   return `${num}+`
@@ -23,32 +14,7 @@ const formatNumber = (num: number): string => {
 
 export const HeroStats = () => {
   const t = useTranslation()
-  const [stats, setStats] = useState<StatsData | null>(null)
-  const [loading, setLoading] = useState(true)
-
-  useEffect(() => {
-    const fetchStats = async () => {
-      try {
-        const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001/api'
-        const response = await fetch(`${apiUrl}/health/stats`, {
-          cache: 'no-store',
-        })
-        
-        if (response.ok) {
-          const result = await response.json()
-          if (result.success && result.data) {
-            setStats(result.data)
-          }
-        }
-      } catch (error) {
-        console.error('Failed to fetch stats:', error)
-      } finally {
-        setLoading(false)
-      }
-    }
-
-    fetchStats()
-  }, [])
+  const { stats, loading } = useStats()
 
   const displayStats = useMemo(() => {
     if (!stats) return []
@@ -74,7 +40,6 @@ export const HeroStats = () => {
       }
     ]
 
-    // Filter out zero values
     return statsList.filter(stat => stat.value > 0)
   }, [stats])
 
@@ -91,10 +56,10 @@ export const HeroStats = () => {
           <div className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-[#d4af37] mb-0.5 sm:mb-1">
             {stat.number}
           </div>
-          <div className="text-xs sm:text-sm md:text-base font-medium text-white/90 mb-0.5">
+          <div className="text-xs sm:text-sm md:text-base font-medium text-gray-900 mb-0.5">
             {t(stat.labelKey)}
           </div>
-          <div className="text-[10px] sm:text-xs text-gray-400">
+          <div className="text-[10px] sm:text-xs text-gray-600">
             {t(stat.descriptionKey)}
           </div>
         </div>
