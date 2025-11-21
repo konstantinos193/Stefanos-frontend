@@ -138,6 +138,155 @@
     "imageSizeError": "Το μέγεθος της εικόνας πρέπει να είναι μικρότερο από 5MB",
     "errorReadingFile": "Σφάλμα ανάγνωσης αρχείου",
     "removePictureConfirm": "Είστε σίγουροι ότι θέλετε να αφαιρέσετε τη φωτογραφία προφίλ σας;"
+  },
+  "services": {
+    "title": "Τι Προσφέρουμε",
+    "subtitle": "Αξιόπιστες εξυπηρετήσεις για όλες τις ανάγκες σας",
+    "propertyManagement": {
+      "title": "Διαχείριση Ακινήτων",
+      "description": "Αξιόπιστη διαχείριση των ακινήτων σας με σύγχρονα εργαλεία και υποστήριξη 24/7"
+    },
+    "bookingPlatform": {
+      "title": "Πλατφόρμα Κρατήσεων",
+      "description": "Σύγχρονη πλατφόρμα για απρόσκοπτη εμπειρία κρατήσεων"
+    },
+    "realEstate": {
+      "title": "Ακίνητα",
+      "description": "Εύρεση και πώληση ακινήτων με πλήρη διαφάνεια"
+    },
+    "maintenance": {
+      "title": "Συντήρηση",
+      "description": "Επαγγελματικές υπηρεσίες συντήρησης και επισκευών"
+    }
+  },
+  "booking": {
+    "search": {
+      "location": "Τοποθεσία",
+      "locationPlaceholder": "Πού θα πάτε;",
+      "propertyType": "Τύπος Ακινήτου",
+      "anyType": "Οποιοσδήποτε Τύπος",
+      "checkIn": "Άφιξη",
+      "checkOut": "Αναχώρηση",
+      "guests": "Επισκέπτες",
+      "guest": "Επισκέπτης",
+      "guestsPlural": "Επισκέπτες",
+      "budgetRange": "Εύρος Προϋπολογισμού",
+      "anyBudget": "Οποιοσδήποτε Προϋπολογισμός",
+      "specialRequirements": "Ειδικές Απαιτήσεις",
+      "specialRequirementsPlaceholder": "Οποιεσδήποτε ειδικές απαιτήσεις ή ανάγκες προσβασιμότητας...",
+      "findPerfectProperty": "Βρείτε Το Ιδανικό Ακίνητο",
+      "getRecommendations": "Λάβετε Προτάσεις",
+      "searchProperties": "Αναζήτηση Ακινήτων"
+    },
+    "form": {
+      "bookYourStay": "Κράτηση",
+      "bookYourStayDescription": "Κάντε την κράτησή σας στο L'incanto και απολαύστε μια αξέχαστη διαμονή",
+      "perNight": "ανά βράδυ",
+      "checkIn": "Άφιξη",
+      "checkOut": "Αναχώρηση",
+      "selectDate": "Επιλέξτε ημερομηνία",
+      "guests": "Επισκέπτες",
+      "fullName": "Όνομα",
+      "fullNamePlaceholder": "Το όνομά σας",
+      "email": "Email",
+      "phone": "Τηλέφωνο",
+      "phoneOptional": "Τηλέφωνο (προαιρετικό)",
+      "phonePlaceholder": "+30 123 456 7890",
+      "specialRequests": "Ειδικά Αιτήματα",
+      "specialRequestsOptional": "Ειδικά αιτήματα (προαιρετικό)",
+      "specialRequestsPlaceholder": "Πείτε μας αν χρειάζεστε κάτι ειδικό...",
+      "nights": "βράδια",
+      "cleaningFee": "Καθαρισμός",
+      "serviceFee": "Υπηρεσία",
+      "taxes": "Φόροι",
+      "total": "Σύνολο",
+      "processing": "Επεξεργασία...",
+      "bookNow": "Κράτηση",
+      "selectDatesError": "Παρακαλώ επιλέξτε ημερομηνίες",
+      "maxGuestsError": "Μέγιστος αριθμός επισκεπτών: {max}",
+      "fillNameEmailError": "Παρακαλώ συμπληρώστε όνομα και email"
+    }
+  },
+  "recentAdditions": {
+    "title": "Πρόσφατες Προσθήκες",
+    "subtitle": "Νέα ακίνητα που προστέθηκαν πρόσφατα στην πλατφόρμα μας",
+    "new": "Νέο",
+    "viewDetails": "Προβολή Λεπτομερειών",
+    "viewAllProperties": "Προβολή Όλων των Πρόσφατων Ακινήτων",
+    "more": "περισσότερα"
+  },
+  "footer": {
+    "newsletter": "Ενημερωτικό Δελτίο",
+    "newsletterDescription": "Εγγραφείτε για να λαμβάνετε ενημερώσεις για νέα ακίνητα και προσφορές",
+    "enterEmail": "Εισάγετε το email σας",
+    "subscribe": "Εγγραφή",
+    "sections": {
+      "company": "Εταιρεία",
+      "services": "Εξυπηρετήσεις",
+      "support": "Υποστήριξη"
+    },
+    "links": {
+      "aboutUs": "Σχετικά Με Εμάς",
+      "ourTeam": "Η Ομάδα Μας",
+      "careers": "Καριέρες",
+      "contact": "Επικοινωνία",
+      "propertyManagement": "Διαχείριση Ακινήτων",
+      "bookingPlatform": "Πλατφόρμα Κρατήσεων",
+      "realEstate": "Ακίνητα",
+      "maintenance": "Συντήρηση",
+      "helpCenter": "Κέντρο Βοήθειας",
+      "faq": "Συχνές Ερωτήσεις",
+      "termsOfService": "Όροι Χρήσης",
+      "privacyPolicy": "Πολιτική Απορρήτου"
+    }
+  },
+  "search": {
+    "location": "Τοποθεσία",
+    "locationPlaceholder": "Πρέβεζα, Ελλάδα",
+    "propertyType": "Τύπος Ακινήτου",
+    "allTypes": "Όλοι οι Τύποι",
+    "bedrooms": "Υπνοδωμάτια",
+    "bathrooms": "Μπάνια",
+    "any": "Οποιοδήποτε",
+    "minPrice": "Ελάχιστη Τιμή",
+    "minPricePlaceholder": "€0",
+    "maxPrice": "Μέγιστη Τιμή",
+    "maxPricePlaceholder": "Χωρίς όριο",
+    "searchProperties": "Αναζήτηση Ακινήτων",
+    "checkIn": "Άφιξη",
+    "checkOut": "Αναχώρηση",
+    "selectCheckInDate": "Επιλέξτε ημερομηνία άφιξης",
+    "selectCheckOutDate": "Επιλέξτε ημερομηνία αναχώρησης",
+    "guests": "Επισκέπτες",
+    "oneGuest": "1 Επισκέπτης"
+  },
+  "propertyTypes": {
+    "apartment": "Διαμέρισμα",
+    "house": "Σπίτι",
+    "villa": "Βίλα",
+    "studio": "Στούντιο",
+    "commercial": "Επαγγελματικός Χώρος",
+    "condo": "Οικοδομή"
+  },
+  "amenities": {
+    "wifi": "WiFi",
+    "kitchen": "Κουζίνα",
+    "parking": "Στάθμευση",
+    "beachAccess": "Πρόσβαση στην Παραλία",
+    "pool": "Πισίνα",
+    "cityCenter": "Κέντρο Πόλης",
+    "balcony": "Μπαλκόνι",
+    "garden": "Κήπος",
+    "fireplace": "Τζάκι",
+    "seaView": "Θέα στη Θάλασσα"
+  },
+  "servicesOverview": {
+    "title": "Τι Προσφέρουμε",
+    "subtitle": "Ολοκληρωμένες λύσεις ακινήτων και διαχείρισης κρατήσεων για κάθε ανάγκη",
+    "getStarted": "Ξεκινήστε Σήμερα",
+    "getStartedDescription": "Επικοινωνήστε μαζί μας για να μάθετε πώς μπορούμε να σας βοηθήσουμε",
+    "exploreProperties": "Εξερευνήστε Ακίνητα",
+    "makeBooking": "Κάντε Κράτηση"
   }
 }
 
