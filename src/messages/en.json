@@ -43,6 +43,7 @@
   "results": {
     "title": "Search Results",
     "found": "Found {count} {count, plural, =1 {property} other {properties}}",
+    "foundSimple": "Found {count} properties",
     "noResults": "No properties found",
     "noResultsDescription": "Try adjusting your search criteria or filters",
     "showing": "Showing {current} of {total} properties",
@@ -83,6 +84,61 @@
       "label": "Sell",
       "description": "Sell your property with ease"
     }
+  },
+  "auth": {
+    "login": "Login",
+    "register": "Register",
+    "logout": "Logout"
+  },
+  "userMenu": {
+    "profile": "Profile",
+    "dashboard": "Dashboard",
+    "myBookings": "My Bookings",
+    "ownerDashboard": "Owner Dashboard",
+    "adminPanel": "Admin Panel",
+    "settings": "Settings"
+  },
+  "profile": {
+    "title": "Profile",
+    "subtitle": "Manage your account information and preferences",
+    "profilePicture": "Profile Picture",
+    "uploadPicture": "Upload Picture",
+    "changePicture": "Change Picture",
+    "removePicture": "Remove Picture",
+    "accountInformation": "Account Information",
+    "fullName": "Full Name",
+    "emailAddress": "Email Address",
+    "emailDescription": "This is your primary email address",
+    "accountRole": "Account Role",
+    "twoFactorAuth": "Two-Factor Authentication",
+    "enabled": "Enabled",
+    "disabled": "Disabled"
+  },
+  "footer": {
+    "newsletter": "Newsletter",
+    "newsletterDescription": "Subscribe to get updates on new properties and offers",
+    "enterEmail": "Enter your email",
+    "subscribe": "Subscribe"
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success",
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "close": "Close",
+    "confirm": "Confirm",
+    "yes": "Yes",
+    "no": "No",
+    "learnMore": "Learn More"
+  },
+  "profileMessages": {
+    "selectImageFile": "Please select an image file",
+    "imageSizeError": "Image size must be less than 5MB",
+    "errorReadingFile": "Error reading file",
+    "removePictureConfirm": "Are you sure you want to remove your profile picture?"
   }
 }
 

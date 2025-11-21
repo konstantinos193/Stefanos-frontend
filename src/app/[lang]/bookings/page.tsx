@@ -10,7 +10,7 @@ import Link from 'next/link';
 
 export default function BookingsPage() {
   const router = useRouter();
-  const { isAuthenticated, user } = useAuthStore();
+  const { isAuthenticated, user, token } = useAuthStore();
   const [bookings, setBookings] = useState<Booking[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -25,14 +25,27 @@ export default function BookingsPage() {
   }, [isAuthenticated, router]);
 
   const loadBookings = async () => {
+    // Skip API call for mock users
+    if (token && token.startsWith('mock-token-')) {
+      setBookings([]);
+      setIsLoading(false);
+      return;
+    }
+
     try {
       setIsLoading(true);
+      setError(null);
       const response = await bookingsApi.getAll();
       if (response.success) {
         setBookings(response.data.bookings);
       }
     } catch (err: any) {
-      setError(err.message || 'Failed to load bookings');
+      // Only show error if it's not a token-related error for mock users
+      if (!token || !token.startsWith('mock-token-')) {
+        setError(err.message || 'Failed to load bookings');
+      } else {
+        setBookings([]);
+      }
     } finally {
       setIsLoading(false);
     }
@@ -62,7 +75,7 @@ export default function BookingsPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <h1 className="text-3xl font-bold text-gray-900 mb-8">My Bookings</h1>
 
-          {error && (
+          {error && !(token && token.startsWith('mock-token-')) && (
             <div className="mb-4 p-4 bg-red-50 border border-red-200 rounded-lg text-red-700">
               {error}
             </div>

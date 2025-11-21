@@ -49,8 +49,11 @@ export async function ResultsContent({ lang, searchParams }: ResultsContentProps
   }
 
   const hasResults = data.properties.length > 0
+  const count = data.pagination.total
   const resultText = hasResults
-    ? dict.results.found.replace('{count}', data.pagination.total.toString())
+    ? lang === 'el' 
+      ? `Βρέθηκαν ${count} ${count === 1 ? 'ακίνητο' : 'ακίνητα'}`
+      : `Found ${count} ${count === 1 ? 'property' : 'properties'}`
     : dict.results.noResults
 
   return (

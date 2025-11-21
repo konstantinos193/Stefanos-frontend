@@ -97,7 +97,7 @@ export const RealEstateSearchForm = ({ onSubmit }: RealEstateSearchFormProps) =>
   }
 
   return (
-    <form onSubmit={handleSubmit} className="bg-white backdrop-blur-sm rounded-lg shadow-xl border border-gray-200 p-3 sm:p-4 md:p-5 lg:p-6">
+    <form onSubmit={handleSubmit} className="bg-transparent backdrop-blur-sm rounded-lg shadow-xl border border-gray-200 p-3 sm:p-4 md:p-5 lg:p-6">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-4">
         <div className="lg:col-span-1">
           <LocationAutocomplete
@@ -165,10 +165,22 @@ export const RealEstateSearchForm = ({ onSubmit }: RealEstateSearchFormProps) =>
         </div>
       </div>
       
-      <div className="mt-4 sm:mt-5 md:mt-6">
+      <div className="mt-4 sm:mt-5 md:mt-6 flex justify-center">
         <button
           type="submit"
-          className="w-full bg-gradient-to-r from-[#d4af37] to-[#b8941f] hover:from-[#b8941f] hover:to-[#9a7d17] text-black font-medium text-sm sm:text-base py-2 sm:py-2.5 md:py-3 px-4 sm:px-5 md:px-6 rounded-lg transition-all duration-200 shadow-lg shadow-[#d4af37]/20"
+          id="search-properties-button-real-estate"
+          className="search-properties-button px-4 py-2 text-sm font-medium text-gray-900 hover:text-gray-700 transition-colors duration-200 focus:outline-none cursor-pointer"
+          style={{ 
+            background: 'transparent',
+            backgroundImage: 'none',
+            border: 'none',
+            borderRadius: '0',
+            boxShadow: 'none',
+            padding: '0.5rem 1rem',
+            fontSize: '0.875rem',
+            fontWeight: '500',
+            color: '#111827'
+          }}
         >
           Search Properties
         </button>

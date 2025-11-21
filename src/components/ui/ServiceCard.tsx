@@ -1,13 +1,11 @@
+'use client'
+
+import { useTranslation } from '@/lib/hooks/useTranslation'
+
 interface Service {
   id: string
-  title: {
-    gr: string
-    en: string
-  }
-  description: {
-    gr: string
-    en: string
-  }
+  title: string
+  description: string
   icon: string
   features: string[]
 }
@@ -17,21 +15,23 @@ interface ServiceCardProps {
 }
 
 export const ServiceCard = ({ service }: ServiceCardProps) => {
+  const t = useTranslation()
+  
   return (
     <div className="card hover:shadow-lg transition-shadow duration-300">
       <div className="text-center mb-4">
         <div className="mb-4">
           <img 
             src={service.icon} 
-            alt={service.title.en}
+            alt={service.title}
             className="w-16 h-16 mx-auto object-contain"
           />
         </div>
         <h3 className="text-xl font-semibold text-gray-900 mb-2">
-          {service.title.en}
+          {service.title}
         </h3>
         <p className="text-gray-600 mb-4">
-          {service.description.en}
+          {service.description}
         </p>
       </div>
       
@@ -47,7 +47,7 @@ export const ServiceCard = ({ service }: ServiceCardProps) => {
       </ul>
       
       <button className="w-full btn btn-primary">
-        Learn More
+        {t('common.learnMore') || 'Learn More'}
       </button>
     </div>
   )

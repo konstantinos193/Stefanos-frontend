@@ -26,7 +26,7 @@ export const FooterContact = () => {
         </svg>
       ),
       label: 'Email',
-      value: 'info@stefanosspyros.com'
+      value: 'info@stefanosmaleskos.com'
     }
   ]
 

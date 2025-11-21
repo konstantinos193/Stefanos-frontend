@@ -8,6 +8,7 @@ interface User {
   name: string;
   role: string;
   mfaEnabled?: boolean;
+  profilePicture?: string;
 }
 
 interface AuthState {
@@ -20,7 +21,8 @@ interface AuthState {
   register: (email: string, password: string, name: string, phone?: string) => Promise<void>;
   logout: () => void;
   checkAuth: () => Promise<void>;
-  clearError: () => void;
+      clearError: () => void;
+      updateProfilePicture: (pictureUrl: string | null) => void;
 }
 
 export const useAuthStore = create<AuthState>()(
@@ -35,6 +37,39 @@ export const useAuthStore = create<AuthState>()(
       login: async (email: string, password: string, mfaCode?: string) => {
         set({ isLoading: true, error: null });
         try {
+          // Mock credentials for testing
+          if (email === 'test@stefanos.com' && password === 'test') {
+            const mockUser = {
+              id: 'mock-user-1',
+              email: 'test@stefanos.com',
+              name: 'Test User',
+              role: 'USER',
+              mfaEnabled: false,
+            };
+            const mockToken = 'mock-token-test@stefanos.com';
+            
+            // Restore profile picture from localStorage if exists
+            if (typeof window !== 'undefined') {
+              const savedPicture = localStorage.getItem(`profile_picture_${mockUser.id}`);
+              if (savedPicture) {
+                mockUser.profilePicture = savedPicture;
+              }
+            }
+            
+            // Store token in apiClient for consistency
+            const { apiClient } = await import('../api/client');
+            apiClient.setToken(mockToken);
+            
+            set({
+              user: mockUser,
+              token: mockToken,
+              isAuthenticated: true,
+              isLoading: false,
+              error: null,
+            });
+            return;
+          }
+
           const response = await authApi.login({ email, password }, mfaCode);
           
           if (response.requiresMFA && !mfaCode) {
@@ -109,9 +144,59 @@ export const useAuthStore = create<AuthState>()(
       },
 
       checkAuth: async () => {
-        const { token } = get();
+        const { token, user } = get();
         if (!token) {
           set({ isAuthenticated: false, user: null });
+          return;
+        }
+
+        // Handle mock token - restore mock user if it's a mock token
+        if (token.startsWith('mock-token-')) {
+          if (user && user.email === 'test@stefanos.com') {
+            // Restore profile picture from localStorage if exists
+            if (typeof window !== 'undefined') {
+              const savedPicture = localStorage.getItem(`profile_picture_${user.id}`);
+              if (savedPicture && !user.profilePicture) {
+                set({
+                  user: {
+                    ...user,
+                    profilePicture: savedPicture,
+                  },
+                  isAuthenticated: true,
+                  isLoading: false,
+                });
+                return;
+              }
+            }
+            // User already exists, just ensure authenticated state
+            set({
+              isAuthenticated: true,
+              isLoading: false,
+            });
+            return;
+          }
+          // If we have a mock token but no user, restore the mock user
+          let mockUser = {
+            id: 'mock-user-1',
+            email: 'test@stefanos.com',
+            name: 'Test User',
+            role: 'USER',
+            mfaEnabled: false,
+          };
+          
+          // Restore profile picture from localStorage if exists
+          if (typeof window !== 'undefined') {
+            const savedPicture = localStorage.getItem(`profile_picture_${mockUser.id}`);
+            if (savedPicture) {
+              mockUser.profilePicture = savedPicture;
+            }
+          }
+          
+          set({
+            user: mockUser,
+            isAuthenticated: true,
+            isLoading: false,
+          });
           return;
         }
 
@@ -139,6 +224,26 @@ export const useAuthStore = create<AuthState>()(
       },
 
       clearError: () => set({ error: null }),
+
+      updateProfilePicture: (pictureUrl: string | null) => {
+        const { user } = get();
+        if (user) {
+          set({
+            user: {
+              ...user,
+              profilePicture: pictureUrl || undefined,
+            },
+          });
+          // Also store in localStorage for persistence
+          if (typeof window !== 'undefined') {
+            if (pictureUrl) {
+              localStorage.setItem(`profile_picture_${user.id}`, pictureUrl);
+            } else {
+              localStorage.removeItem(`profile_picture_${user.id}`);
+            }
+          }
+        }
+      },
     }),
     {
       name: 'auth-storage',

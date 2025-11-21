@@ -22,11 +22,12 @@ export const MobileHeader = ({ isMobileMenuOpen, setIsMobileMenuOpen }: MobileHe
           >
             <div className="relative h-10 flex-shrink-0" style={{ width: 'auto', minWidth: '40px' }}>
               <Image 
-                src="/logo.png" 
-                alt="Stefanos Spyros Real Estate | Στέφανος Σπύρος Real Estate" 
+                src="/logoetc.png" 
+                alt="STEFANOS MALESKOS Real Estate" 
                 width={200}
-                height={200}
+                height={80}
                 className="h-full w-auto object-contain drop-shadow-lg transition-transform duration-300 group-hover:scale-105"
+                style={{ width: 'auto', height: '100%' }}
                 priority
                 unoptimized
               />

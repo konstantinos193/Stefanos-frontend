@@ -3,6 +3,8 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { clsx } from 'clsx'
+import { useLanguage } from '@/lib/contexts/LanguageContext'
+import { useTranslation } from '@/lib/hooks/useTranslation'
 
 interface MobileMenuProps {
   isOpen: boolean
@@ -11,31 +13,38 @@ interface MobileMenuProps {
 
 export const MobileMenu = ({ isOpen, onClose }: MobileMenuProps) => {
   const pathname = usePathname()
+  const { language } = useLanguage()
+  const t = useTranslation()
 
   const navigationItems = [
     {
       id: 'editions',
-      label: { gr: '20 Εκδόσεις', en: '20 Editions' },
+      label: { el: '20 Εκδόσεις', en: '20 Editions' },
       href: '/editions'
     },
     {
       id: 'services',
-      label: { gr: 'Εξυπηρετήσεις', en: 'Services' },
+      label: { el: 'Εξυπηρετήσεις', en: 'Services' },
       href: '/services'
     },
     {
       id: 'properties',
-      label: { gr: 'Ακίνητα', en: 'Properties' },
+      label: { el: 'Ακίνητα', en: 'Properties' },
       href: '/properties'
     },
     {
       id: 'booking',
-      label: { gr: 'Κράτηση', en: 'Booking' },
+      label: { el: 'Κράτηση', en: 'Booking' },
       href: '/booking'
     },
     {
+      id: 'incanto',
+      label: { el: "L' INCANTO", en: "L' INCANTO" },
+      href: '/incanto'
+    },
+    {
       id: 'about',
-      label: { gr: 'Σχετικά', en: 'About' },
+      label: { el: 'Σχετικά', en: 'About' },
       href: '/about'
     }
   ]
@@ -70,13 +79,14 @@ export const MobileMenu = ({ isOpen, onClose }: MobileMenuProps) => {
 
         <div className="px-4 pt-2 pb-6 space-y-1 max-h-[calc(90vh-60px)] overflow-y-auto overscroll-contain">
           {navigationItems.map((item) => {
-            const isActive = pathname === item.href || 
-              (item.href !== '/' && pathname?.startsWith(item.href))
+            const href = `/${language}${item.href}`
+            const isActive = pathname === href || 
+              (item.href !== '/' && pathname?.startsWith(`/${language}${item.href}`))
             
             return (
               <Link
                 key={item.id}
-                href={item.href}
+                href={href}
                 onClick={onClose}
                 className={clsx(
                   'block px-4 py-3 rounded-lg text-base font-medium transition-all duration-200 active:scale-[0.98]',
@@ -85,7 +95,7 @@ export const MobileMenu = ({ isOpen, onClose }: MobileMenuProps) => {
                     : 'text-gray-300 active:bg-gray-900 active:text-white'
                 )}
               >
-                {item.label.en}
+                {item.label[language]}
               </Link>
             )
           })}
@@ -93,18 +103,18 @@ export const MobileMenu = ({ isOpen, onClose }: MobileMenuProps) => {
           <div className="pt-4 mt-2 border-t border-gray-800">
             <div className="sm:hidden space-y-2">
               <Link
-                href="/login"
+                href={`/${language}/auth/login`}
                 onClick={onClose}
                 className="block w-full px-4 py-3.5 rounded-lg text-base font-medium text-header-text active:text-white active:bg-gray-900 transition-all duration-200 text-center focus:outline-none focus:ring-2 focus:ring-accent-blue focus:ring-offset-2 focus:ring-offset-black min-h-[44px] flex items-center justify-center active:scale-[0.98]"
               >
-                Login
+                {t('auth.login')}
               </Link>
               <Link
-                href="/register"
+                href={`/${language}/auth/register`}
                 onClick={onClose}
                 className="block w-full px-4 py-3.5 rounded-lg text-base font-medium bg-accent-blue active:bg-blue-600 text-white transition-all duration-200 text-center focus:outline-none focus:ring-2 focus:ring-accent-blue focus:ring-offset-2 focus:ring-offset-black shadow-md active:shadow-lg min-h-[44px] flex items-center justify-center active:scale-[0.98]"
               >
-                Register
+                {t('auth.register')}
               </Link>
             </div>
           </div>

@@ -1,3 +1,5 @@
+import Image from 'next/image'
+
 export const FooterLinks = () => {
   const linkSections = [
     {
@@ -31,6 +33,18 @@ export const FooterLinks = () => {
 
   return (
     <div className="space-y-8">
+      {/* STEFANOS MALESKOS Real Estate Logo */}
+      <div className="mb-6">
+        <Image
+          src="/logoetc.png"
+          alt="STEFANOS MALESKOS Real Estate"
+          width={200}
+          height={80}
+          className="h-auto w-auto max-w-[180px] object-contain"
+          unoptimized
+        />
+      </div>
+      
       {linkSections.map((section, index) => (
         <div key={index}>
           <h3 className="text-lg font-semibold text-gray-900 mb-4">

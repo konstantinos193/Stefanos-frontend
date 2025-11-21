@@ -30,6 +30,11 @@ export const Navigation = ({ className = '' }: NavigationProps) => {
       path: '/bookings'
     },
     {
+      id: 'incanto',
+      label: { el: "L' INCANTO", en: "L' INCANTO" },
+      path: '/incanto'
+    },
+    {
       id: 'services',
       label: { el: 'Υπηρεσίες', en: 'Services' },
       path: '/services'

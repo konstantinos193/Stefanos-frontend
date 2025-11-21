@@ -83,6 +83,61 @@
       "label": "Πώληση",
       "description": "Πωλήστε το ακίνητό σας με ευκολία"
     }
+  },
+  "auth": {
+    "login": "Σύνδεση",
+    "register": "Εγγραφή",
+    "logout": "Αποσύνδεση"
+  },
+  "userMenu": {
+    "profile": "Προφίλ",
+    "dashboard": "Πίνακας Ελέγχου",
+    "myBookings": "Οι Κρατήσεις Μου",
+    "ownerDashboard": "Πίνακας Ελέγχου Ιδιοκτήτη",
+    "adminPanel": "Πίνακας Διαχείρισης",
+    "settings": "Ρυθμίσεις"
+  },
+  "profile": {
+    "title": "Προφίλ",
+    "subtitle": "Διαχειριστείτε τις πληροφορίες και τις προτιμήσεις του λογαριασμού σας",
+    "profilePicture": "Φωτογραφία Προφίλ",
+    "uploadPicture": "Ανέβασμα Φωτογραφίας",
+    "changePicture": "Αλλαγή Φωτογραφίας",
+    "removePicture": "Αφαίρεση Φωτογραφίας",
+    "accountInformation": "Πληροφορίες Λογαριασμού",
+    "fullName": "Πλήρες Όνομα",
+    "emailAddress": "Διεύθυνση Email",
+    "emailDescription": "Αυτή είναι η κύρια διεύθυνση email σας",
+    "accountRole": "Ρόλος Λογαριασμού",
+    "twoFactorAuth": "Έλεγχος Ταυτότητας Δύο Παραγόντων",
+    "enabled": "Ενεργό",
+    "disabled": "Ανενεργό"
+  },
+  "footer": {
+    "newsletter": "Ενημερωτικό Δελτίο",
+    "newsletterDescription": "Εγγραφείτε για να λαμβάνετε ενημερώσεις για νέα ακίνητα και προσφορές",
+    "enterEmail": "Εισάγετε το email σας",
+    "subscribe": "Εγγραφή"
+  },
+  "common": {
+    "loading": "Φόρτωση...",
+    "error": "Σφάλμα",
+    "success": "Επιτυχία",
+    "save": "Αποθήκευση",
+    "cancel": "Ακύρωση",
+    "delete": "Διαγραφή",
+    "edit": "Επεξεργασία",
+    "close": "Κλείσιμο",
+    "confirm": "Επιβεβαίωση",
+    "yes": "Ναι",
+    "no": "Όχι",
+    "learnMore": "Μάθετε Περισσότερα"
+  },
+  "profileMessages": {
+    "selectImageFile": "Παρακαλώ επιλέξτε αρχείο εικόνας",
+    "imageSizeError": "Το μέγεθος της εικόνας πρέπει να είναι μικρότερο από 5MB",
+    "errorReadingFile": "Σφάλμα ανάγνωσης αρχείου",
+    "removePictureConfirm": "Είστε σίγουροι ότι θέλετε να αφαιρέσετε τη φωτογραφία προφίλ σας;"
   }
 }
 

@@ -1,6 +1,4 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
 @layer base {
   * {
@@ -44,5 +42,16 @@
   /* Focus visible styles */
   *:focus-visible {
     @apply outline-none ring-2 ring-[#d4af37] ring-offset-2;
+  }
+
+  /* Force override for Search Properties button */
+  .search-properties-button,
+  #search-properties-button-real-estate,
+  #search-properties-button-booking {
+    background: transparent !important;
+    background-image: none !important;
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
   }
 }

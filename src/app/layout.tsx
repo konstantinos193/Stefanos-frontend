@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+﻿import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
 import { HtmlLangUpdater } from '@/components/layout/HtmlLangUpdater'
@@ -9,14 +9,14 @@ const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: {
-    default: 'Stefanos Spyros Real Estate',
-    template: '%s | Stefanos Spyros Real Estate'
+    default: 'STEFANOS MALESKOS Real Estate',
+    template: '%s | STEFANOS MALESKOS Real Estate'
   },
-  description: 'Στέφανος Σπύρος Real Estate - Αξιόπιστη πλατφόρμα ακινήτων με σύγχρονη διαχείριση κρατήσεων | Stefanos Spyros Real Estate - Trusted real estate platform with modern booking management',
-  keywords: ['real estate', 'ακίνητα', 'booking', 'κρατήσεις', 'property management', 'stefanos spyros', 'στέφανος σπύρος'],
-  authors: [{ name: 'Stefanos Spyros Real Estate' }],
-  creator: 'Stefanos Spyros Real Estate',
-  publisher: 'Stefanos Spyros Real Estate',
+  description: 'ΣΤΕΦΑΝΟΣ ΜΑΛΕΣΚΟΣ Real Estate - Αξιόπιστη πλατφόρμα ακινήτων με σύγχρονη διαχείριση κρατήσεων | STEFANOS MALESKOS Real Estate - Trusted real estate platform with modern booking management',
+  keywords: ['real estate', 'ακίνητα', 'booking', 'κρατήσεις', 'property management', 'STEFANOS MALESKOS', 'ΣΤΕΦΑΝΟΣ ΜΑΛΕΣΚΟΣ'],
+  authors: [{ name: 'STEFANOS MALESKOS Real Estate' }],
+  creator: 'STEFANOS MALESKOS Real Estate',
+  publisher: 'STEFANOS MALESKOS Real Estate',
   formatDetection: {
     email: false,
     address: false,
@@ -35,14 +35,14 @@ export const metadata: Metadata = {
     locale: 'en_US',
     alternateLocale: 'el_GR',
     url: 'https://real-estate-platform.com',
-    title: 'Stefanos Spyros Real Estate | Στέφανος Σπύρος Real Estate',
-    description: 'Στέφανος Σπύρος Real Estate - Αξιόπιστη πλατφόρμα ακινήτων με σύγχρονη διαχείριση κρατήσεων | Stefanos Spyros Real Estate - Trusted real estate platform with modern booking management',
-    siteName: 'Stefanos Spyros Real Estate',
+    title: 'STEFANOS MALESKOS Real Estate | ΣΤΕΦΑΝΟΣ ΜΑΛΕΣΚΟΣ Real Estate',
+    description: 'ΣΤΕΦΑΝΟΣ ΜΑΛΕΣΚΟΣ Real Estate - Αξιόπιστη πλατφόρμα ακινήτων με σύγχρονη διαχείριση κρατήσεων | STEFANOS MALESKOS Real Estate - Trusted real estate platform with modern booking management',
+    siteName: 'STEFANOS MALESKOS Real Estate',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Stefanos Spyros Real Estate | Στέφανος Σπύρος Real Estate',
-    description: 'Στέφανος Σπύρος Real Estate - Αξιόπιστη πλατφόρμα ακινήτων με σύγχρονη διαχείριση κρατήσεων | Stefanos Spyros Real Estate - Trusted real estate platform with modern booking management',
+    title: 'STEFANOS MALESKOS Real Estate | ΣΤΕΦΑΝΟΣ ΜΑΛΕΣΚΟΣ Real Estate',
+    description: 'ΣΤΕΦΑΝΟΣ ΜΑΛΕΣΚΟΣ Real Estate - Αξιόπιστη πλατφόρμα ακινήτων με σύγχρονη διαχείριση κρατήσεων | STEFANOS MALESKOS Real Estate - Trusted real estate platform with modern booking management',
   },
   robots: {
     index: true,
@@ -56,9 +56,9 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    icon: '/logo.png',
-    shortcut: '/logo.png',
-    apple: '/logo.png',
+    icon: '/logoetc.png',
+    shortcut: '/logoetc.png',
+    apple: '/logoetc.png',
   },
 }
 
