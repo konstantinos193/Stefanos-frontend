@@ -15,11 +15,9 @@ export const UserMenu = () => {
   const t = useTranslation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  useEffect(() => {
-    if (isAuthenticated) {
-      checkAuth();
-    }
-  }, [isAuthenticated, checkAuth]);
+  // Removed automatic checkAuth call to prevent logout loops
+  // checkAuth is now only called when explicitly needed (e.g., on page load)
+  // The API client will handle 401 errors automatically
 
   const handleLogout = () => {
     logout();

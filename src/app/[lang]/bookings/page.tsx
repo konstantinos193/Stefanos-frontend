@@ -7,6 +7,7 @@ import { Footer } from '@/components/layout/Footer';
 import { useAuthStore } from '@/lib/store/auth.store';
 import { bookingsApi, Booking } from '@/lib/api/bookings';
 import Link from 'next/link';
+import { formatDateEU } from '@/lib/utils/date';
 
 export default function BookingsPage() {
   const router = useRouter();
@@ -132,13 +133,13 @@ export default function BookingsPage() {
                         <div>
                           <p className="text-gray-600">Check-in</p>
                           <p className="font-medium text-gray-900">
-                            {new Date(booking.checkIn).toLocaleDateString()}
+                            {formatDateEU(booking.checkIn)}
                           </p>
                         </div>
                         <div>
                           <p className="text-gray-600">Check-out</p>
                           <p className="font-medium text-gray-900">
-                            {new Date(booking.checkOut).toLocaleDateString()}
+                            {formatDateEU(booking.checkOut)}
                           </p>
                         </div>
                         <div>

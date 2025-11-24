@@ -1,8 +1,10 @@
 'use client'
 
 import { useState } from 'react'
+import { useTranslation } from '@/lib/hooks/useTranslation'
 
 export const BookingSearchForm = () => {
+  const t = useTranslation()
   const [searchData, setSearchData] = useState({
     location: '',
     checkIn: '',
@@ -31,21 +33,21 @@ export const BookingSearchForm = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
         <div className="lg:col-span-2">
           <label htmlFor="location" className="block text-sm font-medium text-gray-700 mb-2">
-            Location
+            {t('booking.search.location')}
           </label>
           <input
             type="text"
             id="location"
             value={searchData.location}
             onChange={(e) => handleInputChange('location', e.target.value)}
-            placeholder="Where are you going?"
+            placeholder={t('booking.search.locationPlaceholder')}
             className="input"
           />
         </div>
         
         <div>
           <label htmlFor="propertyType" className="block text-sm font-medium text-gray-700 mb-2">
-            Property Type
+            {t('booking.search.propertyType')}
           </label>
           <select
             id="propertyType"
@@ -53,17 +55,17 @@ export const BookingSearchForm = () => {
             onChange={(e) => handleInputChange('propertyType', e.target.value)}
             className="input"
           >
-            <option value="">Any Type</option>
-            <option value="apartment">Apartment</option>
-            <option value="house">House</option>
-            <option value="villa">Villa</option>
-            <option value="commercial">Commercial</option>
+            <option value="">{t('booking.search.anyType')}</option>
+            <option value="apartment">{t('propertyTypes.apartment')}</option>
+            <option value="house">{t('propertyTypes.house')}</option>
+            <option value="villa">{t('propertyTypes.villa')}</option>
+            <option value="commercial">{t('propertyTypes.commercial')}</option>
           </select>
         </div>
         
         <div>
           <label htmlFor="checkIn" className="block text-sm font-medium text-gray-700 mb-2">
-            Check In
+            {t('booking.search.checkIn')}
           </label>
           <input
             type="date"
@@ -76,7 +78,7 @@ export const BookingSearchForm = () => {
         
         <div>
           <label htmlFor="checkOut" className="block text-sm font-medium text-gray-700 mb-2">
-            Check Out
+            {t('booking.search.checkOut')}
           </label>
           <input
             type="date"
@@ -89,7 +91,7 @@ export const BookingSearchForm = () => {
         
         <div>
           <label htmlFor="guests" className="block text-sm font-medium text-gray-700 mb-2">
-            Guests
+            {t('booking.search.guests')}
           </label>
           <select
             id="guests"
@@ -98,14 +100,14 @@ export const BookingSearchForm = () => {
             className="input"
           >
             {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(num => (
-              <option key={num} value={num}>{num} {num === 1 ? 'Guest' : 'Guests'}</option>
+              <option key={num} value={num}>{num} {num === 1 ? t('booking.search.guest') : t('booking.search.guestsPlural')}</option>
             ))}
           </select>
         </div>
         
         <div>
           <label htmlFor="budget" className="block text-sm font-medium text-gray-700 mb-2">
-            Budget Range
+            {t('booking.search.budgetRange')}
           </label>
           <select
             id="budget"
@@ -113,7 +115,7 @@ export const BookingSearchForm = () => {
             onChange={(e) => handleInputChange('budget', e.target.value)}
             className="input"
           >
-            <option value="">Any Budget</option>
+            <option value="">{t('booking.search.anyBudget')}</option>
             <option value="0-50">€0 - €50/night</option>
             <option value="50-100">€50 - €100/night</option>
             <option value="100-200">€100 - €200/night</option>
@@ -125,13 +127,13 @@ export const BookingSearchForm = () => {
       
       <div className="mb-6">
         <label htmlFor="specialNeeds" className="block text-sm font-medium text-gray-700 mb-2">
-          Special Requirements
+          {t('booking.search.specialRequirements')}
         </label>
         <textarea
           id="specialNeeds"
           value={searchData.specialNeeds}
           onChange={(e) => handleInputChange('specialNeeds', e.target.value)}
-          placeholder="Any special requirements or accessibility needs..."
+          placeholder={t('booking.search.specialRequirementsPlaceholder')}
           className="input"
           rows={3}
         />
@@ -142,13 +144,13 @@ export const BookingSearchForm = () => {
           type="submit"
           className="flex-1 bg-accent-blue hover:bg-blue-700 text-white font-medium py-3 px-6 rounded-lg transition-colors duration-200"
         >
-          Find Perfect Property
+          {t('booking.search.findPerfectProperty')}
         </button>
         <button
           type="button"
           className="flex-1 bg-accent-green hover:bg-green-700 text-white font-medium py-3 px-6 rounded-lg transition-colors duration-200"
         >
-          Get Recommendations
+          {t('booking.search.getRecommendations')}
         </button>
       </div>
     </form>

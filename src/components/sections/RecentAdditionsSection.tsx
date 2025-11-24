@@ -88,10 +88,10 @@ export const RecentAdditionsSection = ({ properties }: RecentAdditionsSectionPro
             id="recent-additions-heading"
             className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4"
           >
-            Recent Additions
+            {t('recentAdditions.title')}
           </h2>
           <p className="text-lg lg:text-xl text-gray-600 max-w-3xl mx-auto">
-            Νέα ακίνητα που προστέθηκαν πρόσφατα στην πλατφόρμα μας
+            {t('recentAdditions.subtitle')}
           </p>
         </div>
 
@@ -136,7 +136,7 @@ export const RecentAdditionsSection = ({ properties }: RecentAdditionsSectionPro
                     {property.isNew && (
                       <div className="absolute top-4 left-4 z-10">
                         <div className="bg-gradient-to-r from-[#d4af37] to-[#b8941f] text-white px-3 py-1.5 rounded-full text-xs font-bold shadow-lg backdrop-blur-sm animate-pulse">
-                          New
+                          {t('recentAdditions.new')}
                         </div>
                       </div>
                     )}
@@ -193,7 +193,7 @@ export const RecentAdditionsSection = ({ properties }: RecentAdditionsSectionPro
                         ))}
                         {property.amenities.length > 3 && (
                           <span className="px-2.5 py-1 bg-gray-100 text-gray-700 text-xs font-medium rounded-full border border-gray-200 group-hover:bg-blue-50 group-hover:border-[#d4af37]/40 group-hover:text-gray-900 transition-colors duration-300">
-                            +{property.amenities.length - 3} more
+                            +{property.amenities.length - 3} {t('recentAdditions.more')}
                           </span>
                         )}
                       </div>
@@ -201,7 +201,7 @@ export const RecentAdditionsSection = ({ properties }: RecentAdditionsSectionPro
 
                     {/* Button */}
                     <button className="w-full mt-4 bg-gradient-to-r from-[#d4af37] to-[#b8941f] text-white font-semibold py-3 px-4 rounded-xl hover:from-[#b8941f] hover:to-[#d4af37] transition-all duration-300 shadow-md hover:shadow-lg hover:shadow-[#d4af37]/30 group-hover:scale-[1.02] active:scale-[0.98]">
-                      View Details
+                      {t('recentAdditions.viewDetails')}
                     </button>
                   </div>
                   
@@ -213,7 +213,7 @@ export const RecentAdditionsSection = ({ properties }: RecentAdditionsSectionPro
 
         <div className="text-center mt-8 lg:mt-12">
           <button className="inline-flex items-center gap-2 bg-gradient-to-r from-[#d4af37] to-[#b8941f] text-white font-semibold py-3 px-8 rounded-xl hover:from-[#b8941f] hover:to-[#d4af37] transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-[#d4af37]/30 hover:scale-105 active:scale-95">
-            <span>View All Recent Properties</span>
+            <span>{t('recentAdditions.viewAllProperties')}</span>
             <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
             </svg>

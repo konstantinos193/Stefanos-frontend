@@ -1,6 +1,7 @@
 import { StarIcon } from '@/components/icons'
 import { reviewsApi } from '@/lib/api/reviews'
 import { Review } from '@/types/review'
+import { formatDateEU } from '@/lib/utils/date'
 
 type PropertyReviewsProps = {
   propertyId: string
@@ -105,10 +106,7 @@ export async function PropertyReviews({ propertyId, lang }: PropertyReviewsProps
                 <div>
                   <div className="font-semibold text-gray-900">{review.guest?.name || 'Guest'}</div>
                   <div className="text-sm text-gray-500">
-                    {new Date(review.createdAt).toLocaleDateString(
-                      lang === 'gr' ? 'el-GR' : 'en-US',
-                      { year: 'numeric', month: 'long', day: 'numeric' }
-                    )}
+                    {formatDateEU(review.createdAt)}
                   </div>
                 </div>
               </div>

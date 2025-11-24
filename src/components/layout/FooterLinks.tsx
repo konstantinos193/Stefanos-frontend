@@ -1,32 +1,34 @@
 import Image from 'next/image'
+import { useTranslation } from '@/lib/hooks/useTranslation'
 
 export const FooterLinks = () => {
+  const t = useTranslation()
   const linkSections = [
     {
-      title: 'Company',
+      titleKey: 'footer.sections.company',
       links: [
-        { label: 'About Us', href: '/about' },
-        { label: 'Our Team', href: '/team' },
-        { label: 'Careers', href: '/careers' },
-        { label: 'Contact', href: '/contact' }
+        { labelKey: 'footer.links.aboutUs', href: '/about' },
+        { labelKey: 'footer.links.ourTeam', href: '/team' },
+        { labelKey: 'footer.links.careers', href: '/careers' },
+        { labelKey: 'footer.links.contact', href: '/contact' }
       ]
     },
     {
-      title: 'Services',
+      titleKey: 'footer.sections.services',
       links: [
-        { label: 'Property Management', href: '/services/property-management' },
-        { label: 'Booking Platform', href: '/services/booking' },
-        { label: 'Real Estate', href: '/services/real-estate' },
-        { label: 'Maintenance', href: '/services/maintenance' }
+        { labelKey: 'footer.links.propertyManagement', href: '/services/property-management' },
+        { labelKey: 'footer.links.bookingPlatform', href: '/services/booking' },
+        { labelKey: 'footer.links.realEstate', href: '/services/real-estate' },
+        { labelKey: 'footer.links.maintenance', href: '/services/maintenance' }
       ]
     },
     {
-      title: 'Support',
+      titleKey: 'footer.sections.support',
       links: [
-        { label: 'Help Center', href: '/help' },
-        { label: 'FAQ', href: '/faq' },
-        { label: 'Terms of Service', href: '/terms' },
-        { label: 'Privacy Policy', href: '/privacy' }
+        { labelKey: 'footer.links.helpCenter', href: '/help' },
+        { labelKey: 'footer.links.faq', href: '/faq' },
+        { labelKey: 'footer.links.termsOfService', href: '/terms' },
+        { labelKey: 'footer.links.privacyPolicy', href: '/privacy' }
       ]
     }
   ]
@@ -48,7 +50,7 @@ export const FooterLinks = () => {
       {linkSections.map((section, index) => (
         <div key={index}>
           <h3 className="text-lg font-semibold text-gray-900 mb-4">
-            {section.title}
+            {t(section.titleKey)}
           </h3>
           <ul className="space-y-2">
             {section.links.map((link, linkIndex) => (
@@ -57,7 +59,7 @@ export const FooterLinks = () => {
                   href={link.href}
                   className="text-gray-700 hover:text-accent-blue transition-colors duration-200"
                 >
-                  {link.label}
+                  {t(link.labelKey)}
                 </a>
               </li>
             ))}

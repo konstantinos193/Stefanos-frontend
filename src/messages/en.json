@@ -288,6 +288,15 @@
     "getStartedDescription": "Contact us to learn how we can help you achieve your real estate goals",
     "exploreProperties": "Explore Properties",
     "makeBooking": "Make a Booking"
+  },
+  "features": {
+    "title": "Why Choose Us?",
+    "subtitle": "Reliable services with modern technology"
+  },
+  "personalizedRecommendations": {
+    "title": "Personalized Recommendations",
+    "subtitle": "Personalized suggestions - Properties that match your preferences",
+    "viewAll": "View All Recommendations"
   }
 }
 

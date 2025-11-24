@@ -12,14 +12,8 @@ export const ServicesSection = () => {
   const services = [
     {
       id: 'property-management',
-      title: {
-        el: 'Διαχείριση Ακινήτων',
-        en: 'Property Management'
-      },
-      description: {
-        el: 'Αξιόπιστη διαχείριση των ακινήτων σας με σύγχρονα εργαλεία και υποστήριξη 24/7',
-        en: 'Reliable property management with modern tools and 24/7 support'
-      },
+      titleKey: 'services.propertyManagement.title',
+      descriptionKey: 'services.propertyManagement.description',
       icon: 'https://placehold.co/80x80/3b82f6/FFFFFF?text=Property+Mgmt',
       features: {
         el: ['Υποστήριξη 24/7', 'Συντήρηση', 'Ελέγχος Ενοικιαστών', 'Οικονομικές Αναφορές'],
@@ -28,14 +22,8 @@ export const ServicesSection = () => {
     },
     {
       id: 'booking-platform',
-      title: {
-        el: 'Πλατφόρμα Κρατήσεων',
-        en: 'Booking Platform'
-      },
-      description: {
-        el: 'Σύγχρονη πλατφόρμα για απρόσκοπτη εμπειρία κρατήσεων',
-        en: 'Modern platform for seamless booking experience'
-      },
+      titleKey: 'services.bookingPlatform.title',
+      descriptionKey: 'services.bookingPlatform.description',
       icon: 'https://placehold.co/80x80/10b981/FFFFFF?text=Booking',
       features: {
         el: ['Online Κρατήσεις', 'Επεξεργασία Πληρωμών', 'Συγχρονισμός Ημερολογίου', 'Mobile Εφαρμογή'],
@@ -44,14 +32,8 @@ export const ServicesSection = () => {
     },
     {
       id: 'real-estate',
-      title: {
-        el: 'Ακίνητα',
-        en: 'Real Estate'
-      },
-      description: {
-        el: 'Εύρεση και πώληση ακινήτων με πλήρη διαφάνεια',
-        en: 'Find and sell properties with complete transparency'
-      },
+      titleKey: 'services.realEstate.title',
+      descriptionKey: 'services.realEstate.description',
       icon: 'https://placehold.co/80x80/f59e0b/FFFFFF?text=Real+Estate',
       features: {
         el: ['Αναζήτηση Ακινήτων', 'Εικονικές Περιηγήσεις', 'Ανάλυση Αγοράς', 'Νομική Υποστήριξη'],
@@ -60,14 +42,8 @@ export const ServicesSection = () => {
     },
     {
       id: 'maintenance',
-      title: {
-        el: 'Συντήρηση',
-        en: 'Maintenance'
-      },
-      description: {
-        el: 'Επαγγελματικές υπηρεσίες συντήρησης και επισκευών',
-        en: 'Professional maintenance and repair services'
-      },
+      titleKey: 'services.maintenance.title',
+      descriptionKey: 'services.maintenance.description',
       icon: 'https://placehold.co/80x80/ef4444/FFFFFF?text=Maintenance',
       features: {
         el: ['Επείγουσες Επισκευές', 'Προληπτική Συντήρηση', 'Έλεγχος Ποιότητας', 'Γρήγορη Απόκριση'],
@@ -81,12 +57,10 @@ export const ServicesSection = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
-            {currentLang === 'el' ? 'Τι Προσφέρουμε' : 'What We Offer'}
+            {t('services.title')}
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            {currentLang === 'el'
-              ? 'Αξιόπιστες εξυπηρετήσεις για όλες τις ανάγκες σας'
-              : 'Reliable services for all your needs'}
+            {t('services.subtitle')}
           </p>
         </div>
 
@@ -96,8 +70,8 @@ export const ServicesSection = () => {
               key={service.id} 
               service={{
                 ...service,
-                title: service.title[currentLang],
-                description: service.description[currentLang],
+                title: t(service.titleKey),
+                description: t(service.descriptionKey),
                 features: service.features[currentLang]
               }}
             />

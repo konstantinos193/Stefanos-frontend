@@ -7,6 +7,7 @@ import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
 import { bookingsApi } from '@/lib/api/bookings'
 import { CheckIcon } from '@/components/icons'
+import { formatDateEU } from '@/lib/utils/date'
 
 export default function BookingConfirmationPage() {
   const router = useRouter()
@@ -109,21 +110,13 @@ export default function BookingConfirmationPage() {
                 <div className="flex justify-between">
                   <span className="text-gray-600">{lang === 'gr' ? 'Άφιξη' : 'Check-in'}</span>
                   <span className="font-medium">
-                    {new Date(booking.checkIn).toLocaleDateString(lang === 'gr' ? 'el-GR' : 'en-US', {
-                      year: 'numeric',
-                      month: 'long',
-                      day: 'numeric',
-                    })}
+                    {formatDateEU(booking.checkIn)}
                   </span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-gray-600">{lang === 'gr' ? 'Αναχώρηση' : 'Check-out'}</span>
                   <span className="font-medium">
-                    {new Date(booking.checkOut).toLocaleDateString(lang === 'gr' ? 'el-GR' : 'en-US', {
-                      year: 'numeric',
-                      month: 'long',
-                      day: 'numeric',
-                    })}
+                    {formatDateEU(booking.checkOut)}
                   </span>
                 </div>
                 <div className="flex justify-between">

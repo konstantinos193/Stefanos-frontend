@@ -136,6 +136,7 @@ const services = [
 ]
 
 export function ServicesOverview({ lang }: ServicesOverviewProps) {
+  const t = useTranslation()
   const { language } = useLanguage()
   const currentLang = lang === 'el' ? 'el' : 'en'
 
@@ -156,12 +157,10 @@ export function ServicesOverview({ lang }: ServicesOverviewProps) {
               <div className="h-1 w-24 bg-gradient-to-r from-[#d4af37] to-[#b8941f] mx-auto rounded-full" />
             </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 tracking-tight">
-              {currentLang === 'el' ? 'Τι Προσφέρουμε' : 'What We Offer'}
+              {t('servicesOverview.title')}
             </h1>
             <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-              {currentLang === 'el'
-                ? 'Ολοκληρωμένες λύσεις ακινήτων και διαχείρισης κρατήσεων για κάθε ανάγκη'
-                : 'Comprehensive real estate and booking management solutions for every need'}
+              {t('servicesOverview.subtitle')}
             </p>
           </div>
         </div>
@@ -210,25 +209,23 @@ export function ServicesOverview({ lang }: ServicesOverviewProps) {
       <section className="py-20 bg-gradient-to-br from-[#d4af37] to-[#b8941f] text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
-            {currentLang === 'el' ? 'Ξεκινήστε Σήμερα' : 'Get Started Today'}
+            {t('servicesOverview.getStarted')}
           </h2>
           <p className="text-xl mb-8 text-white/90">
-            {currentLang === 'el'
-              ? 'Επικοινωνήστε μαζί μας για να μάθετε πώς μπορούμε να σας βοηθήσουμε'
-              : 'Contact us to learn how we can help you achieve your real estate goals'}
+            {t('servicesOverview.getStartedDescription')}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href={`/${language}/properties`}
               className="px-8 py-3 bg-white text-[#d4af37] rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-200 shadow-lg"
             >
-              {currentLang === 'el' ? 'Εξερευνήστε Ακίνητα' : 'Explore Properties'}
+              {t('servicesOverview.exploreProperties')}
             </Link>
             <Link
               href={`/${language}/bookings`}
               className="px-8 py-3 bg-transparent border-2 border-white text-white rounded-lg font-semibold hover:bg-white/10 transition-colors duration-200"
             >
-              {currentLang === 'el' ? 'Κάντε Κράτηση' : 'Make a Booking'}
+              {t('servicesOverview.makeBooking')}
             </Link>
           </div>
         </div>

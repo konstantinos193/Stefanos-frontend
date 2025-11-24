@@ -8,6 +8,7 @@ import { Footer } from '@/components/layout/Footer'
 import { useAuthStore } from '@/lib/store/auth.store'
 import { bookingsApi } from '@/lib/api/bookings'
 import { Booking } from '@/types/booking'
+import { formatDateEU } from '@/lib/utils/date'
 
 export default function DashboardPage() {
   const router = useRouter()
@@ -105,8 +106,7 @@ export default function DashboardPage() {
                           {booking.property?.titleEn || booking.property?.titleGr || 'Property'}
                         </h3>
                         <p className="text-sm text-gray-600 mt-1">
-                          {new Date(booking.checkIn).toLocaleDateString()} -{' '}
-                          {new Date(booking.checkOut).toLocaleDateString()}
+                          {formatDateEU(booking.checkIn)} - {formatDateEU(booking.checkOut)}
                         </p>
                         <p className="text-sm text-gray-500 mt-1">
                           {booking.guests} {booking.guests === 1 ? 'guest' : 'guests'}

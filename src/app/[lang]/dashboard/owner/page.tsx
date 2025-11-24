@@ -11,6 +11,7 @@ import { bookingsApi } from '@/lib/api/bookings'
 import { paymentsApi } from '@/lib/api/payments'
 import { Property } from '@/types/property'
 import { Booking } from '@/types/booking'
+import { formatDateEU } from '@/lib/utils/date'
 
 export default function OwnerDashboardPage() {
   const router = useRouter()
@@ -191,8 +192,7 @@ export default function OwnerDashboardPage() {
                             {booking.property?.titleEn || booking.property?.titleGr || 'Property'}
                           </h3>
                           <p className="text-sm text-gray-600 mt-1">
-                            {new Date(booking.checkIn).toLocaleDateString()} -{' '}
-                            {new Date(booking.checkOut).toLocaleDateString()}
+                            {formatDateEU(booking.checkIn)} - {formatDateEU(booking.checkOut)}
                           </p>
                           <p className="text-sm text-gray-500 mt-1">
                             Revenue: €{(booking.ownerRevenue || 0).toFixed(2)}
@@ -230,7 +230,7 @@ export default function OwnerDashboardPage() {
                       <div>
                         <p className="font-semibold text-gray-900">€{payout.amount?.toFixed(2)}</p>
                         <p className="text-sm text-gray-600">
-                          {new Date(payout.createdAt).toLocaleDateString()}
+                          {formatDateEU(payout.createdAt)}
                         </p>
                       </div>
                       <span

@@ -8,7 +8,7 @@ export const EditionsHero = () => {
             <span className="block text-accent-blue">of Excellence</span>
           </h1>
           <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto">
-            Αξιόπιστες εξυπηρετήσεις με διαύγεια γνώσης για κάθε ανάγκη
+            Αξιόπιστες υπηρεσίες με διαύγεια γνώσης για κάθε ανάγκη
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <button className="btn btn-primary">

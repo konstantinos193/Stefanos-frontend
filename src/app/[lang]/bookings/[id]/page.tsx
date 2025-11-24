@@ -7,6 +7,7 @@ import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
 import { bookingsApi } from '@/lib/api/bookings'
 import { Booking } from '@/types/booking'
+import { formatDateEU } from '@/lib/utils/date'
 
 export default function BookingDetailPage() {
   const router = useRouter()
@@ -151,11 +152,7 @@ export default function BookingDetailPage() {
                   {lang === 'gr' ? 'Άφιξη' : 'Check-in'}
                 </h3>
                 <p className="font-medium">
-                  {new Date(booking.checkIn).toLocaleDateString(lang === 'gr' ? 'el-GR' : 'en-US', {
-                    year: 'numeric',
-                    month: 'long',
-                    day: 'numeric',
-                  })}
+                  {formatDateEU(booking.checkIn)}
                 </p>
               </div>
               <div>
@@ -163,11 +160,7 @@ export default function BookingDetailPage() {
                   {lang === 'gr' ? 'Αναχώρηση' : 'Check-out'}
                 </h3>
                 <p className="font-medium">
-                  {new Date(booking.checkOut).toLocaleDateString(lang === 'gr' ? 'el-GR' : 'en-US', {
-                    year: 'numeric',
-                    month: 'long',
-                    day: 'numeric',
-                  })}
+                  {formatDateEU(booking.checkOut)}
                 </p>
               </div>
               <div>

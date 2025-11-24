@@ -1,6 +1,7 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 import { authApi, AuthResponse } from '../api/auth';
+import { setLogoutHandler, clearLogoutHandler } from '../api/errorHandler';
 
 interface User {
   id: string;
@@ -24,6 +25,9 @@ interface AuthState {
       clearError: () => void;
       updateProfilePicture: (pictureUrl: string | null) => void;
 }
+
+// Track if checkAuth is currently running to prevent multiple simultaneous calls
+let checkAuthPromise: Promise<void> | null = null;
 
 export const useAuthStore = create<AuthState>()(
   persist(
@@ -141,86 +145,115 @@ export const useAuthStore = create<AuthState>()(
           isAuthenticated: false,
           error: null,
         });
+        // Clear any pending checkAuth
+        checkAuthPromise = null;
       },
 
       checkAuth: async () => {
-        const { token, user } = get();
-        if (!token) {
-          set({ isAuthenticated: false, user: null });
-          return;
+        // If checkAuth is already running, return the existing promise
+        if (checkAuthPromise) {
+          return checkAuthPromise;
         }
 
-        // Handle mock token - restore mock user if it's a mock token
-        if (token.startsWith('mock-token-')) {
-          if (user && user.email === 'test@stefanos.com') {
-            // Restore profile picture from localStorage if exists
-            if (typeof window !== 'undefined') {
-              const savedPicture = localStorage.getItem(`profile_picture_${user.id}`);
-              if (savedPicture && !user.profilePicture) {
-                set({
-                  user: {
-                    ...user,
-                    profilePicture: savedPicture,
-                  },
-                  isAuthenticated: true,
-                  isLoading: false,
-                });
-                return;
-              }
-            }
-            // User already exists, just ensure authenticated state
-            set({
-              isAuthenticated: true,
-              isLoading: false,
-            });
+        // Create new checkAuth promise
+        checkAuthPromise = (async () => {
+          const { token, user } = get();
+          if (!token) {
+            set({ isAuthenticated: false, user: null });
+            checkAuthPromise = null;
             return;
           }
-          // If we have a mock token but no user, restore the mock user
-          let mockUser = {
-            id: 'mock-user-1',
-            email: 'test@stefanos.com',
-            name: 'Test User',
-            role: 'USER',
-            mfaEnabled: false,
-          };
-          
-          // Restore profile picture from localStorage if exists
-          if (typeof window !== 'undefined') {
-            const savedPicture = localStorage.getItem(`profile_picture_${mockUser.id}`);
-            if (savedPicture) {
-              mockUser.profilePicture = savedPicture;
-            }
-          }
-          
-          set({
-            user: mockUser,
-            isAuthenticated: true,
-            isLoading: false,
-          });
-          return;
-        }
 
-        set({ isLoading: true });
-        try {
-          const response = await authApi.getCurrentUser();
-          if (response.success && response.user) {
+          // Handle mock token - restore mock user if it's a mock token
+          if (token.startsWith('mock-token-')) {
+            if (user && user.email === 'test@stefanos.com') {
+              // Restore profile picture from localStorage if exists
+              if (typeof window !== 'undefined') {
+                const savedPicture = localStorage.getItem(`profile_picture_${user.id}`);
+                if (savedPicture && !user.profilePicture) {
+                  set({
+                    user: {
+                      ...user,
+                      profilePicture: savedPicture,
+                    },
+                    isAuthenticated: true,
+                    isLoading: false,
+                  });
+                  checkAuthPromise = null;
+                  return;
+                }
+              }
+              // User already exists, just ensure authenticated state
+              set({
+                isAuthenticated: true,
+                isLoading: false,
+              });
+              checkAuthPromise = null;
+              return;
+            }
+            // If we have a mock token but no user, restore the mock user
+            let mockUser = {
+              id: 'mock-user-1',
+              email: 'test@stefanos.com',
+              name: 'Test User',
+              role: 'USER',
+              mfaEnabled: false,
+            };
+            
+            // Restore profile picture from localStorage if exists
+            if (typeof window !== 'undefined') {
+              const savedPicture = localStorage.getItem(`profile_picture_${mockUser.id}`);
+              if (savedPicture) {
+                mockUser.profilePicture = savedPicture;
+              }
+            }
+            
             set({
-              user: response.user,
+              user: mockUser,
               isAuthenticated: true,
               isLoading: false,
             });
-          } else {
-            throw new Error('Authentication failed');
+            checkAuthPromise = null;
+            return;
           }
-        } catch (error) {
-          set({
-            isAuthenticated: false,
-            user: null,
-            token: null,
-            isLoading: false,
-          });
-          authApi.logout();
-        }
+
+          set({ isLoading: true });
+          try {
+            const response = await authApi.getCurrentUser();
+            if (response.success && response.user) {
+              set({
+                user: response.user,
+                isAuthenticated: true,
+                isLoading: false,
+              });
+            } else {
+              throw new Error('Authentication failed');
+            }
+          } catch (error) {
+            // Only logout if it's an auth error (401), not network errors
+            const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+            const isAuthError = errorMessage.includes('Invalid or expired token') || 
+                              errorMessage.includes('Unauthorized') ||
+                              errorMessage.includes('401');
+            
+            if (isAuthError) {
+              set({
+                isAuthenticated: false,
+                user: null,
+                token: null,
+                isLoading: false,
+              });
+              authApi.logout();
+            } else {
+              // For network errors, don't logout - just set loading to false
+              set({ isLoading: false });
+            }
+          } finally {
+            checkAuthPromise = null;
+          }
+        })();
+
+        return checkAuthPromise;
       },
 
       clearError: () => set({ error: null }),

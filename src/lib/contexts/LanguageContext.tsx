@@ -18,18 +18,24 @@ export const LanguageProvider = ({
   children: ReactNode
   initialLanguage?: Language
 }) => {
-  const [language, setLanguageState] = useState<Language>(initialLanguage || 'en')
+  // Prioritize initialLanguage from URL over localStorage
+  const getInitialLanguage = (): Language => {
+    if (initialLanguage) {
+      return initialLanguage
+    }
+    const savedLanguage = localStorage.getItem('language') as Language | null
+    if (savedLanguage && (savedLanguage === 'en' || savedLanguage === 'el')) {
+      return savedLanguage
+    }
+    return 'en'
+  }
+  
+  const [language, setLanguageState] = useState<Language>(getInitialLanguage())
 
   useEffect(() => {
     if (initialLanguage) {
       setLanguageState(initialLanguage)
       localStorage.setItem('language', initialLanguage)
-      return
-    }
-    
-    const savedLanguage = localStorage.getItem('language') as Language | null
-    if (savedLanguage && (savedLanguage === 'en' || savedLanguage === 'el')) {
-      setLanguageState(savedLanguage)
     }
   }, [initialLanguage])
 

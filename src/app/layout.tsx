@@ -4,6 +4,7 @@ import './globals.css'
 import { HtmlLangUpdater } from '@/components/layout/HtmlLangUpdater'
 import { LanguageProvider } from '@/lib/contexts/LanguageContext'
 import { StatsProvider } from '@/lib/contexts/StatsContext'
+import { AuthInitializer } from '@/components/auth/AuthInitializer'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -72,6 +73,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <LanguageProvider initialLanguage="en">
           <StatsProvider>
+            <AuthInitializer />
             <HtmlLangUpdater />
             {children}
           </StatsProvider>

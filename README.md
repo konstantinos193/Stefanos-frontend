@@ -1,4 +1,4 @@
-# Stefanos Spyros Real Estate Frontend
+# STEFANOS MALESKOS Real Estate Frontend
 
 A modern, multilingual real estate booking platform built with Next.js 15, TypeScript, Tailwind CSS, and optimized for Render deployment.
 

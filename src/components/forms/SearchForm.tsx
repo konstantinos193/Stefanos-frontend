@@ -2,6 +2,7 @@
 
 import { useState, useMemo } from 'react'
 import { useRouter, usePathname } from 'next/navigation'
+import { useTranslation } from '@/lib/hooks/useTranslation'
 import { CustomInput } from '@/components/ui/CustomInput'
 import { CustomSelect } from '@/components/ui/CustomSelect'
 import { CustomDatePicker } from '@/components/ui/CustomDatePicker'
@@ -18,18 +19,19 @@ type SearchFormProps = {
   onSubmit?: (data: BookingSearchData) => void
 }
 
-const guestOptions = [
-  { value: '1', label: '1 Guest' },
-  { value: '2', label: '2 Guests' },
-  { value: '3', label: '3 Guests' },
-  { value: '4', label: '4 Guests' },
-  { value: '5', label: '5 Guests' },
-  { value: '6', label: '6 Guests' },
-  { value: '7', label: '7 Guests' },
-  { value: '8', label: '8 Guests' }
+const getGuestOptions = (t: (key: string) => string) => [
+  { value: '1', label: t('search.oneGuest') },
+  { value: '2', label: `2 ${t('booking.search.guestsPlural')}` },
+  { value: '3', label: `3 ${t('booking.search.guestsPlural')}` },
+  { value: '4', label: `4 ${t('booking.search.guestsPlural')}` },
+  { value: '5', label: `5 ${t('booking.search.guestsPlural')}` },
+  { value: '6', label: `6 ${t('booking.search.guestsPlural')}` },
+  { value: '7', label: `7 ${t('booking.search.guestsPlural')}` },
+  { value: '8', label: `8 ${t('booking.search.guestsPlural')}` }
 ]
 
 export const SearchForm = ({ onSubmit }: SearchFormProps) => {
+  const t = useTranslation()
   const router = useRouter()
   const pathname = usePathname()
   const langMatch = pathname.match(/^\/(en|el)(\/|$)/)
@@ -103,8 +105,8 @@ export const SearchForm = ({ onSubmit }: SearchFormProps) => {
         <div className="lg:col-span-2">
           <LocationAutocomplete
             id="location"
-            label="Location"
-            placeholder="Preveza, Greece"
+            label={t('search.location')}
+            placeholder={t('search.locationPlaceholder')}
             value={searchData.location}
             onChange={(value) => handleInputChange('location', value)}
           />
@@ -113,10 +115,10 @@ export const SearchForm = ({ onSubmit }: SearchFormProps) => {
         <div>
           <CustomDatePicker
             id="checkIn"
-            label="Check In"
+            label={t('search.checkIn')}
             value={searchData.checkIn}
             onChange={(value) => handleInputChange('checkIn', value)}
-            placeholder="Select check-in date"
+            placeholder={t('search.selectCheckInDate')}
             minDate={minCheckInDate}
           />
         </div>
@@ -124,10 +126,10 @@ export const SearchForm = ({ onSubmit }: SearchFormProps) => {
         <div>
           <CustomDatePicker
             id="checkOut"
-            label="Check Out"
+            label={t('search.checkOut')}
             value={searchData.checkOut}
             onChange={(value) => handleInputChange('checkOut', value)}
-            placeholder="Select check-out date"
+            placeholder={t('search.selectCheckOutDate')}
             minDate={minCheckOutDate}
           />
         </div>
@@ -135,11 +137,11 @@ export const SearchForm = ({ onSubmit }: SearchFormProps) => {
         <div>
           <CustomSelect
             id="guests"
-            label="Guests"
+            label={t('search.guests')}
             value={searchData.guests}
             onChange={(value) => handleInputChange('guests', value)}
-            options={guestOptions}
-            placeholder="1 Guest"
+            options={getGuestOptions(t)}
+            placeholder={t('search.oneGuest')}
           />
         </div>
       </div>
@@ -161,7 +163,7 @@ export const SearchForm = ({ onSubmit }: SearchFormProps) => {
             color: '#ffffff'
           }}
         >
-          Search Properties
+          {t('search.searchProperties')}
         </button>
       </div>
     </form>

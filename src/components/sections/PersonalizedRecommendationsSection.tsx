@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import { PropertyCard } from '@/components/ui/PropertyCard'
+import { useTranslation } from '@/lib/hooks/useTranslation'
 
 type Property = {
   id: string
@@ -23,6 +24,7 @@ export const PersonalizedRecommendationsSection = ({
   properties,
   userId 
 }: PersonalizedRecommendationsSectionProps) => {
+  const t = useTranslation()
   const [isVisible, setIsVisible] = useState(false)
 
   useEffect(() => {
@@ -79,10 +81,10 @@ export const PersonalizedRecommendationsSection = ({
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
-            Personalized Recommendations
+            {t('personalizedRecommendations.title')}
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Προσωποποιημένες προτάσεις - Ακίνητα που ταιριάζουν στις προτιμήσεις σας
+            {t('personalizedRecommendations.subtitle')}
           </p>
         </div>
 
@@ -108,7 +110,7 @@ export const PersonalizedRecommendationsSection = ({
 
         <div className="text-center mt-12">
           <button className="btn btn-primary">
-            View All Recommendations
+            {t('personalizedRecommendations.viewAll')}
           </button>
         </div>
       </div>

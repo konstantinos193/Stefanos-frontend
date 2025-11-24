@@ -1,4 +1,5 @@
 import { API_BASE_URL } from './config';
+import { handleAuthError } from './errorHandler';
 
 export interface ApiError {
   message: string;
@@ -11,6 +12,10 @@ class ApiClient {
 
   constructor(baseUrl: string) {
     this.baseUrl = baseUrl;
+    this.syncTokenFromStorage();
+  }
+
+  private syncTokenFromStorage() {
     if (typeof window !== 'undefined') {
       this.token = localStorage.getItem('auth_token');
     }
@@ -29,6 +34,10 @@ class ApiClient {
     endpoint: string,
     options: RequestInit = {}
   ): Promise<T> {
+    // Always sync token from storage before making requests
+    // This ensures we have the latest token even if it was updated elsewhere
+    this.syncTokenFromStorage();
+
     const url = `${this.baseUrl}${endpoint}`;
     const headers: Record<string, string> = {
       'Content-Type': 'application/json',
@@ -46,6 +55,12 @@ class ApiClient {
       });
 
       if (!response.ok) {
+        // Handle 401 Unauthorized - token expired or invalid
+        if (response.status === 401) {
+          await handleAuthError(response);
+        }
+
+        // Handle other errors
         const error = await response.json().catch(() => ({
           message: response.statusText,
           statusCode: response.status,
@@ -55,6 +70,10 @@ class ApiClient {
 
       return await response.json();
     } catch (error) {
+      // Re-throw auth errors (they're already handled)
+      if (error instanceof Error && error.message.includes('Invalid or expired token')) {
+        throw error;
+      }
       if (error instanceof Error) {
         throw error;
       }

@@ -3,6 +3,7 @@
 import { useState, useEffect, useMemo, useCallback } from 'react'
 import { useRouter } from 'next/navigation'
 import Image from 'next/image'
+import { useTranslation } from '@/lib/hooks/useTranslation'
 import { bookingsApi } from '@/lib/api/bookings'
 import { useAuthStore } from '@/lib/store/auth.store'
 import { CustomDatePicker } from '@/components/ui/CustomDatePicker'
@@ -18,6 +19,7 @@ type IncantoBookingProps = {
 const INCANTO_PROPERTY_ID = 'incanto-property-id' // Update this with actual property ID
 
 export function IncantoBooking({ lang }: IncantoBookingProps) {
+  const t = useTranslation()
   const router = useRouter()
   const [checkIn, setCheckIn] = useState<string>('')
   const [checkOut, setCheckOut] = useState<string>('')
@@ -86,21 +88,17 @@ export function IncantoBooking({ lang }: IncantoBookingProps) {
     setError(null)
 
     if (!checkIn || !checkOut) {
-      setError(lang === 'el' ? 'Παρακαλώ επιλέξτε ημερομηνίες' : 'Please select dates')
+      setError(t('booking.form.selectDatesError'))
       return
     }
 
     if (guests > maxGuests) {
-      setError(
-        lang === 'el' 
-          ? `Μέγιστος αριθμός επισκεπτών: ${maxGuests}`
-          : `Maximum guests: ${maxGuests}`
-      )
+      setError(t('booking.form.maxGuestsError', { max: maxGuests }))
       return
     }
 
     if (!guestName || !guestEmail) {
-      setError(lang === 'el' ? 'Παρακαλώ συμπληρώστε όνομα και email' : 'Please fill in name and email')
+      setError(t('booking.form.fillNameEmailError'))
       return
     }
 
@@ -136,12 +134,10 @@ export function IncantoBooking({ lang }: IncantoBookingProps) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-            {lang === 'el' ? 'Κράτηση' : 'Book Your Stay'}
+            {t('booking.form.bookYourStay')}
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            {lang === 'el'
-              ? 'Κάντε την κράτησή σας στο L\'incanto και απολαύστε μια αξέχαστη διαμονή'
-              : 'Book your stay at L\'incanto and enjoy an unforgettable experience'}
+            {t('booking.form.bookYourStayDescription')}
           </p>
         </div>
 
@@ -165,7 +161,7 @@ export function IncantoBooking({ lang }: IncantoBookingProps) {
                   {basePrice.toFixed(2)} €
                 </span>
                 <span className="text-gray-600">
-                  {lang === 'el' ? 'ανά βράδυ' : 'per night'}
+                  {t('booking.form.perNight')}
                 </span>
               </div>
             </div>
@@ -174,23 +170,23 @@ export function IncantoBooking({ lang }: IncantoBookingProps) {
               <div className="grid grid-cols-2 gap-4">
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
-                    {lang === 'el' ? 'Άφιξη' : 'Check-in'}
+                    {t('booking.form.checkIn')}
                   </label>
                   <CustomDatePicker
                     value={checkIn || ''}
                     onChange={setCheckIn}
-                    placeholder={lang === 'el' ? 'Επιλέξτε ημερομηνία' : 'Select date'}
+                    placeholder={t('booking.form.selectDate')}
                     minDate={minCheckInDate}
                   />
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
-                    {lang === 'el' ? 'Αναχώρηση' : 'Check-out'}
+                    {t('booking.form.checkOut')}
                   </label>
                   <CustomDatePicker
                     value={checkOut || ''}
                     onChange={setCheckOut}
-                    placeholder={lang === 'el' ? 'Επιλέξτε ημερομηνία' : 'Select date'}
+                    placeholder={t('booking.form.selectDate')}
                     minDate={minCheckOutDate}
                   />
                 </div>
@@ -198,7 +194,7 @@ export function IncantoBooking({ lang }: IncantoBookingProps) {
 
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
-                  {lang === 'el' ? 'Επισκέπτες' : 'Guests'}
+                  {t('booking.form.guests')}
                 </label>
                 <CustomSelect
                   value={guests.toString()}
@@ -211,19 +207,19 @@ export function IncantoBooking({ lang }: IncantoBookingProps) {
                 <>
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
-                      {lang === 'el' ? 'Όνομα' : 'Full Name'} *
+                      {t('booking.form.fullName')} *
                     </label>
                     <CustomInput
                       type="text"
                       value={guestName}
                       onChange={setGuestName}
-                      placeholder={lang === 'el' ? 'Το όνομά σας' : 'Your name'}
+                      placeholder={t('booking.form.fullNamePlaceholder')}
                     />
                   </div>
 
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
-                      {lang === 'el' ? 'Email' : 'Email'} *
+                      {t('booking.form.email')} *
                     </label>
                     <CustomInput
                       type="email"
@@ -235,13 +231,13 @@ export function IncantoBooking({ lang }: IncantoBookingProps) {
 
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
-                      {lang === 'el' ? 'Τηλέφωνο' : 'Phone'} (optional)
+                      {t('booking.form.phoneOptional')}
                     </label>
                     <CustomInput
                       type="tel"
                       value={guestPhone}
                       onChange={setGuestPhone}
-                      placeholder={lang === 'el' ? '+30 123 456 7890' : '+1 234 567 8900'}
+                      placeholder={t('booking.form.phonePlaceholder')}
                     />
                   </div>
                 </>
@@ -249,14 +245,14 @@ export function IncantoBooking({ lang }: IncantoBookingProps) {
 
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
-                  {lang === 'el' ? 'Ειδικά αιτήματα' : 'Special Requests'} (optional)
+                  {t('booking.form.specialRequestsOptional')}
                 </label>
                 <textarea
                   value={specialRequests}
                   onChange={(e) => setSpecialRequests(e.target.value)}
                   rows={3}
                   className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                  placeholder={lang === 'el' ? 'Πείτε μας αν χρειάζεστε κάτι ειδικό...' : 'Tell us if you need anything special...'}
+                  placeholder={t('booking.form.specialRequestsPlaceholder')}
                 />
               </div>
 
@@ -265,30 +261,30 @@ export function IncantoBooking({ lang }: IncantoBookingProps) {
                   <div className="flex justify-between text-sm">
                     <span className="text-gray-600">
                       {basePrice.toFixed(2)} € × {nights}{' '}
-                      {lang === 'el' ? 'βράδια' : 'nights'}
+                      {t('booking.form.nights')}
                     </span>
                     <span className="text-gray-900">{price.subtotal.toFixed(2)} €</span>
                   </div>
                   {price.cleaning > 0 && (
                     <div className="flex justify-between text-sm">
-                      <span className="text-gray-600">{lang === 'el' ? 'Καθαρισμός' : 'Cleaning fee'}</span>
+                      <span className="text-gray-600">{t('booking.form.cleaningFee')}</span>
                       <span className="text-gray-900">{price.cleaning.toFixed(2)} €</span>
                     </div>
                   )}
                   {price.service > 0 && (
                     <div className="flex justify-between text-sm">
-                      <span className="text-gray-600">{lang === 'el' ? 'Υπηρεσία' : 'Service fee'}</span>
+                      <span className="text-gray-600">{t('booking.form.serviceFee')}</span>
                       <span className="text-gray-900">{price.service.toFixed(2)} €</span>
                     </div>
                   )}
                   {price.taxes > 0 && (
                     <div className="flex justify-between text-sm">
-                      <span className="text-gray-600">{lang === 'el' ? 'Φόροι' : 'Taxes'}</span>
+                      <span className="text-gray-600">{t('booking.form.taxes')}</span>
                       <span className="text-gray-900">{price.taxes.toFixed(2)} €</span>
                     </div>
                   )}
                   <div className="flex justify-between pt-2 border-t border-gray-200 font-semibold">
-                    <span className="text-gray-900">{lang === 'el' ? 'Σύνολο' : 'Total'}</span>
+                    <span className="text-gray-900">{t('booking.form.total')}</span>
                     <span className="text-gray-900">{price.total.toFixed(2)} €</span>
                   </div>
                 </div>
@@ -306,8 +302,8 @@ export function IncantoBooking({ lang }: IncantoBookingProps) {
                 className="w-full bg-primary-blue hover:bg-blue-700 text-white font-semibold py-3 px-4 rounded-lg transition-colors disabled:bg-gray-300 disabled:cursor-not-allowed"
               >
                 {loading
-                  ? (lang === 'el' ? 'Επεξεργασία...' : 'Processing...')
-                  : (lang === 'el' ? 'Κράτηση' : 'Book Now')}
+                  ? t('booking.form.processing')
+                  : t('booking.form.bookNow')}
               </button>
             </form>
           </div>

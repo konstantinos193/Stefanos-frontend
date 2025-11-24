@@ -1,6 +1,17 @@
+'use client'
+
 import { FeatureItem } from '@/components/ui/FeatureItem'
+import { useTranslation } from '@/lib/hooks/useTranslation'
+import { useLanguage } from '@/lib/contexts/LanguageContext'
 
 export const FeaturesSection = () => {
+  const t = useTranslation()
+  const { language } = useLanguage()
+  
+  // Direct translations with fallbacks
+  const title = t('features.title') || (language === 'el' ? 'Γιατί να μας επιλέξετε;' : 'Why Choose Us?')
+  const subtitle = t('features.subtitle') || (language === 'el' ? 'Αξιόπιστες υπηρεσίες με σύγχρονη τεχνολογία' : 'Reliable services with modern technology')
+  
   const features = [
     {
       id: 'transparency',
@@ -57,10 +68,10 @@ export const FeaturesSection = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
-            Why Choose Us?
+            {title}
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Αξιόπιστες υπηρεσίες με σύγχρονη τεχνολογία
+            {subtitle}
           </p>
         </div>
 

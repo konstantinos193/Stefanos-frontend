@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { useRouter, usePathname } from 'next/navigation'
+import { useTranslation } from '@/lib/hooks/useTranslation'
 import { CustomInput } from '@/components/ui/CustomInput'
 import { CustomSelect } from '@/components/ui/CustomSelect'
 import { LocationAutocomplete } from '@/components/ui/LocationAutocomplete'
@@ -19,17 +20,17 @@ type RealEstateSearchFormProps = {
   onSubmit?: (data: RealEstateSearchData) => void
 }
 
-const propertyTypeOptions = [
-  { value: '', label: 'All Types' },
-  { value: 'apartment', label: 'Apartment' },
-  { value: 'house', label: 'House' },
-  { value: 'villa', label: 'Villa' },
-  { value: 'studio', label: 'Studio' },
-  { value: 'commercial', label: 'Commercial' }
+const getPropertyTypeOptions = (t: (key: string) => string) => [
+  { value: '', label: t('search.allTypes') },
+  { value: 'apartment', label: t('propertyTypes.apartment') },
+  { value: 'house', label: t('propertyTypes.house') },
+  { value: 'villa', label: t('propertyTypes.villa') },
+  { value: 'studio', label: t('propertyTypes.studio') },
+  { value: 'commercial', label: t('propertyTypes.commercial') }
 ]
 
-const bedroomOptions = [
-  { value: '', label: 'Any' },
+const getBedroomOptions = (t: (key: string) => string) => [
+  { value: '', label: t('search.any') },
   { value: '1', label: '1+' },
   { value: '2', label: '2+' },
   { value: '3', label: '3+' },
@@ -37,8 +38,8 @@ const bedroomOptions = [
   { value: '5', label: '5+' }
 ]
 
-const bathroomOptions = [
-  { value: '', label: 'Any' },
+const getBathroomOptions = (t: (key: string) => string) => [
+  { value: '', label: t('search.any') },
   { value: '1', label: '1+' },
   { value: '2', label: '2+' },
   { value: '3', label: '3+' },
@@ -46,6 +47,7 @@ const bathroomOptions = [
 ]
 
 export const RealEstateSearchForm = ({ onSubmit }: RealEstateSearchFormProps) => {
+  const t = useTranslation()
   const router = useRouter()
   const pathname = usePathname()
   const langMatch = pathname.match(/^\/(en|el)(\/|$)/)
@@ -102,8 +104,8 @@ export const RealEstateSearchForm = ({ onSubmit }: RealEstateSearchFormProps) =>
         <div className="lg:col-span-1">
           <LocationAutocomplete
             id="location"
-            label="Location"
-            placeholder="Preveza, Greece"
+            label={t('search.location')}
+            placeholder={t('search.locationPlaceholder')}
             value={searchData.location}
             onChange={(value) => handleInputChange('location', value)}
           />
@@ -112,41 +114,41 @@ export const RealEstateSearchForm = ({ onSubmit }: RealEstateSearchFormProps) =>
         <div>
           <CustomSelect
             id="propertyType"
-            label="Property Type"
+            label={t('search.propertyType')}
             value={searchData.propertyType}
             onChange={(value) => handleInputChange('propertyType', value)}
-            options={propertyTypeOptions}
-            placeholder="All Types"
+            options={getPropertyTypeOptions(t)}
+            placeholder={t('search.allTypes')}
           />
         </div>
         
         <div>
           <CustomSelect
             id="bedrooms"
-            label="Bedrooms"
+            label={t('search.bedrooms')}
             value={searchData.bedrooms}
             onChange={(value) => handleInputChange('bedrooms', value)}
-            options={bedroomOptions}
-            placeholder="Any"
+            options={getBedroomOptions(t)}
+            placeholder={t('search.any')}
           />
         </div>
         
         <div>
           <CustomSelect
             id="bathrooms"
-            label="Bathrooms"
+            label={t('search.bathrooms')}
             value={searchData.bathrooms}
             onChange={(value) => handleInputChange('bathrooms', value)}
-            options={bathroomOptions}
-            placeholder="Any"
+            options={getBathroomOptions(t)}
+            placeholder={t('search.any')}
           />
         </div>
         
         <div>
           <CustomInput
             id="minPrice"
-            label="Min Price"
-            placeholder="€0"
+            label={t('search.minPrice')}
+            placeholder={t('search.minPricePlaceholder')}
             value={searchData.minPrice}
             onChange={(value) => handleInputChange('minPrice', value)}
             type="number"
@@ -156,8 +158,8 @@ export const RealEstateSearchForm = ({ onSubmit }: RealEstateSearchFormProps) =>
         <div>
           <CustomInput
             id="maxPrice"
-            label="Max Price"
-            placeholder="No limit"
+            label={t('search.maxPrice')}
+            placeholder={t('search.maxPricePlaceholder')}
             value={searchData.maxPrice}
             onChange={(value) => handleInputChange('maxPrice', value)}
             type="number"
@@ -182,7 +184,7 @@ export const RealEstateSearchForm = ({ onSubmit }: RealEstateSearchFormProps) =>
             color: '#111827'
           }}
         >
-          Search Properties
+          {t('search.searchProperties')}
         </button>
       </div>
     </form>
