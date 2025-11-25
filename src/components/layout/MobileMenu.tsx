@@ -18,11 +18,6 @@ export const MobileMenu = ({ isOpen, onClose }: MobileMenuProps) => {
 
   const navigationItems = [
     {
-      id: 'editions',
-      label: { el: '20 Εκδόσεις', en: '20 Editions' },
-      href: '/editions'
-    },
-    {
       id: 'services',
       label: { el: 'Εξυπηρετήσεις', en: 'Services' },
       href: '/services'

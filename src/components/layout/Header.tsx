@@ -15,19 +15,21 @@ export const Header = () => {
     <>
       {/* Desktop Header */}
       <header className="hidden md:block header border-b border-gray-900 shadow-lg bg-black/95 backdrop-blur-sm relative overflow-visible z-40">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full">
-          <div className="flex items-center justify-between h-full relative">
-            {/* Desktop Navigation */}
-            <div className="hidden lg:block flex-1">
-              <Navigation />
-            </div>
-
-            {/* Right side items */}
-            <div className="flex items-center space-x-4 md:space-x-6 ml-auto relative z-50">
-              <LanguageSwitcher />
-              <div className="hidden sm:block">
-                <UserMenu />
+        <div className="w-full h-full relative">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full">
+            <div className="flex items-center justify-between h-full relative">
+              {/* Desktop Navigation */}
+              <div className="hidden lg:block flex-1">
+                <Navigation />
               </div>
+            </div>
+          </div>
+          
+          {/* Right side items - positioned absolutely at the right edge */}
+          <div className="absolute right-4 sm:right-6 lg:right-8 top-0 h-full flex items-center space-x-2 z-50">
+            <LanguageSwitcher />
+            <div className="hidden sm:block">
+              <UserMenu />
             </div>
           </div>
         </div>

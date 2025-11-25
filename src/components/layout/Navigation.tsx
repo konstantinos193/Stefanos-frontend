@@ -38,16 +38,6 @@ export const Navigation = ({ className = '' }: NavigationProps) => {
       id: 'services',
       label: { el: 'Υπηρεσίες', en: 'Services' },
       path: '/services'
-    },
-    {
-      id: 'knowledge',
-      label: { el: 'Γνώσεις', en: 'Knowledge' },
-      path: '/knowledge'
-    },
-    {
-      id: 'editions',
-      label: { el: 'Εκδόσεις', en: 'Editions' },
-      path: '/editions'
     }
   ]
 

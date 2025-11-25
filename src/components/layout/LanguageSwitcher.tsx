@@ -25,21 +25,21 @@ export const LanguageSwitcher = () => {
       <button
         onClick={() => setIsOpen(!isOpen)}
         className={clsx(
-          'flex items-center space-x-2.5 px-4 py-2.5 rounded-lg text-sm font-semibold transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-accent-blue focus:ring-offset-2 focus:ring-offset-black',
+          'flex items-center justify-center space-x-1.5 px-2.5 py-1.5 rounded-md text-xs font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-accent-blue focus:ring-offset-2 focus:ring-offset-black h-8',
           isOpen
-            ? 'bg-accent-blue shadow-lg text-white'
-            : 'bg-gray-800 hover:bg-gray-700 shadow-md hover:shadow-lg border border-gray-700 text-white'
+            ? 'bg-accent-blue/90 text-white'
+            : 'bg-gray-800/80 hover:bg-gray-700/80 border border-gray-700/50 text-gray-200 hover:text-white'
         )}
         aria-label="Change language"
         aria-expanded={isOpen}
       >
-        <span className={`${currentLang.flagClass} text-xl`}></span>
-        <span className="hidden sm:inline">{currentLang.code.toUpperCase()}</span>
+        <span className={`${currentLang.flagClass} text-sm`}></span>
+        <span className="hidden sm:inline text-xs">{currentLang.code.toUpperCase()}</span>
         <svg
           className={clsx(
-            'w-5 h-5 transition-transform duration-200',
+            'w-3.5 h-3.5 transition-transform duration-200',
             isOpen && 'rotate-180',
-            isOpen ? 'text-white' : 'text-gray-300'
+            isOpen ? 'text-white' : 'text-gray-400'
           )}
           fill="none"
           viewBox="0 0 24 24"

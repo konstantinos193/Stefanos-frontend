@@ -50,13 +50,13 @@ export const HeroStats = () => {
   const gridCols = displayStats.length === 1 ? 'grid-cols-1' : displayStats.length === 2 ? 'grid-cols-2' : 'grid-cols-2 md:grid-cols-3'
 
   return (
-    <div className={`grid ${gridCols} gap-3 sm:gap-4 md:gap-6 lg:gap-8`}>
+    <div className={`grid ${gridCols} gap-4 sm:gap-5 md:gap-6`}>
       {displayStats.map((stat, index) => (
-        <div key={index} className="text-center px-1 sm:px-2">
-          <div className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-[#d4af37] mb-0.5 sm:mb-1">
+        <div key={index} className="text-center px-2">
+          <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#d4af37] mb-1">
             {stat.number}
           </div>
-          <div className="text-xs sm:text-sm md:text-base font-medium text-gray-900 mb-0.5">
+          <div className="text-xs sm:text-sm font-medium text-gray-900 mb-0.5">
             {t(stat.labelKey)}
           </div>
           <div className="text-[10px] sm:text-xs text-gray-600">

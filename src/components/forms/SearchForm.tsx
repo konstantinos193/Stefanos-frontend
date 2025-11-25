@@ -150,18 +150,7 @@ export const SearchForm = ({ onSubmit }: SearchFormProps) => {
         <button
           type="submit"
           id="search-properties-button-booking"
-          className="search-properties-button px-4 py-2 text-sm font-medium text-white hover:text-gray-300 transition-colors duration-200 focus:outline-none cursor-pointer"
-          style={{ 
-            background: 'transparent',
-            backgroundImage: 'none',
-            border: 'none',
-            borderRadius: '0',
-            boxShadow: 'none',
-            padding: '0.5rem 1rem',
-            fontSize: '0.875rem',
-            fontWeight: '500',
-            color: '#ffffff'
-          }}
+          className="w-full sm:w-auto px-8 py-3 bg-[#d4af37] hover:bg-[#b8941f] text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-[#d4af37] focus:ring-offset-2 transform hover:scale-105 active:scale-95"
         >
           {t('search.searchProperties')}
         </button>

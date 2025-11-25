@@ -2,7 +2,6 @@
 
 import { useState, useEffect, useMemo, useCallback } from 'react'
 import { useRouter } from 'next/navigation'
-import Image from 'next/image'
 import { useTranslation } from '@/lib/hooks/useTranslation'
 import { bookingsApi } from '@/lib/api/bookings'
 import { useAuthStore } from '@/lib/store/auth.store'
@@ -143,18 +142,6 @@ export function IncantoBooking({ lang }: IncantoBookingProps) {
 
         <div className="max-w-2xl mx-auto">
           <div className="bg-white border border-gray-200 rounded-lg shadow-lg p-6 md:p-8">
-            {/* STEFANOS MALESKOS Real Estate Logo */}
-            <div className="flex justify-center mb-6">
-              <Image
-                src="/logoetc.png"
-                alt="STEFANOS MALESKOS Real Estate"
-                width={180}
-                height={72}
-                className="h-auto w-auto max-w-[160px] object-contain opacity-90"
-                unoptimized
-              />
-            </div>
-            
             <div className="mb-6">
               <div className="flex items-baseline gap-2 mb-2">
                 <span className="text-3xl font-bold text-gray-900">

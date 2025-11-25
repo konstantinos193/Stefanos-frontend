@@ -13,6 +13,12 @@ export const metadata: Metadata = {
     default: 'STEFANOS MALESKOS Real Estate',
     template: '%s | STEFANOS MALESKOS Real Estate'
   },
+  viewport: {
+    width: 'device-width',
+    initialScale: 1,
+    maximumScale: 5,
+    userScalable: true,
+  },
   description: 'ΣΤΕΦΑΝΟΣ ΜΑΛΕΣΚΟΣ Real Estate - Αξιόπιστη πλατφόρμα ακινήτων με σύγχρονη διαχείριση κρατήσεων | STEFANOS MALESKOS Real Estate - Trusted real estate platform with modern booking management',
   keywords: ['real estate', 'ακίνητα', 'booking', 'κρατήσεις', 'property management', 'STEFANOS MALESKOS', 'ΣΤΕΦΑΝΟΣ ΜΑΛΕΣΚΟΣ'],
   authors: [{ name: 'STEFANOS MALESKOS Real Estate' }],

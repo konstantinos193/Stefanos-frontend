@@ -1,6 +1,6 @@
 'use client'
 
-import { memo, useMemo } from 'react'
+import { memo, useMemo, useState, useEffect } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { Property } from '@/types/property'
@@ -27,6 +27,7 @@ const formatPropertyType = (type: string): string => {
 
 const PropertyCardComponent = ({ property, lang = 'en' }: PropertyCardProps) => {
   const t = useTranslation()
+  const [imageError, setImageError] = useState(false)
   
   const { title, location, imageUrl, hasImage, rating, reviewCount, amenities, propertyType } = useMemo(() => {
     const title = lang === 'el' ? property.titleGr : property.titleEn
@@ -43,17 +44,24 @@ const PropertyCardComponent = ({ property, lang = 'en' }: PropertyCardProps) => 
     return { title, location, imageUrl, hasImage, rating, reviewCount, amenities, propertyType }
   }, [property, lang])
 
+  // Reset image error when imageUrl changes
+  useEffect(() => {
+    setImageError(false)
+  }, [imageUrl])
+
   return (
     <Link href={`/${lang}/properties/${property.id}`}>
       <div className="bg-white rounded-lg shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden group cursor-pointer">
         <div className="relative h-48 sm:h-56 md:h-64 overflow-hidden bg-gray-200">
-          {hasImage ? (
+          {hasImage && imageUrl && !imageError ? (
             <Image
               src={imageUrl}
               alt={title}
               fill
               className="object-cover group-hover:scale-105 transition-transform duration-300"
               sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"
+              unoptimized
+              onError={() => setImageError(true)}
             />
           ) : (
             <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-gray-200 to-gray-300">

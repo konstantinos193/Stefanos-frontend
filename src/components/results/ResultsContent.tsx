@@ -14,8 +14,14 @@ interface ResultsContentProps {
 export async function ResultsContent({ lang, searchParams }: ResultsContentProps) {
   const dict = await getDictionary(lang)
   
+  // Extract city name from location if it's in "City, Country" format
+  const locationParam = typeof searchParams.location === 'string' ? searchParams.location : undefined
+  const location = locationParam?.includes(',') 
+    ? locationParam.split(',')[0].trim() 
+    : locationParam
+
   const params: PropertySearchParams = {
-    location: typeof searchParams.location === 'string' ? searchParams.location : undefined,
+    location: location,
     checkIn: typeof searchParams.checkIn === 'string' ? searchParams.checkIn : undefined,
     checkOut: typeof searchParams.checkOut === 'string' ? searchParams.checkOut : undefined,
     guests: typeof searchParams.guests === 'string' ? searchParams.guests : undefined,
@@ -32,7 +38,24 @@ export async function ResultsContent({ lang, searchParams }: ResultsContentProps
   let data
   try {
     const response = await searchPropertiesServer(params)
-    data = response.data
+    // Handle both wrapped and direct response structures
+    if (response && 'data' in response) {
+      data = response.data
+    } else if (response && 'properties' in response) {
+      data = response as { properties: any[], pagination: any }
+    } else {
+      data = {
+        properties: [],
+        pagination: {
+          page: 1,
+          limit: 12,
+          total: 0,
+          totalPages: 0,
+          hasNext: false,
+          hasPrev: false
+        }
+      }
+    }
   } catch (error) {
     console.error('Error fetching properties:', error)
     data = {
@@ -57,9 +80,9 @@ export async function ResultsContent({ lang, searchParams }: ResultsContentProps
     : dict.results.noResults
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-8">
       <div className="mb-6">
-        <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">{dict.results.title}</h1>
+        <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-6">{dict.results.title}</h1>
         <p className="text-gray-600">{resultText}</p>
       </div>
 

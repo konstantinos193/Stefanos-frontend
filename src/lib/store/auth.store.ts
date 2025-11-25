@@ -43,7 +43,7 @@ export const useAuthStore = create<AuthState>()(
         try {
           // Mock credentials for testing
           if (email === 'test@stefanos.com' && password === 'test') {
-            const mockUser = {
+            const mockUser: User = {
               id: 'mock-user-1',
               email: 'test@stefanos.com',
               name: 'Test User',
@@ -192,7 +192,7 @@ export const useAuthStore = create<AuthState>()(
               return;
             }
             // If we have a mock token but no user, restore the mock user
-            let mockUser = {
+            let mockUser: User = {
               id: 'mock-user-1',
               email: 'test@stefanos.com',
               name: 'Test User',
