@@ -26,9 +26,7 @@ export const FooterLinks = () => {
       titleKey: 'footer.sections.support',
       links: [
         { labelKey: 'footer.links.helpCenter', href: '/help' },
-        { labelKey: 'footer.links.faq', href: '/faq' },
-        { labelKey: 'footer.links.termsOfService', href: '/terms' },
-        { labelKey: 'footer.links.privacyPolicy', href: '/privacy' }
+        { labelKey: 'footer.links.faq', href: '/faq' }
       ]
     }
   ]

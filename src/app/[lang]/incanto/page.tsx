@@ -1,5 +1,5 @@
-import { Header } from '@/components/layout/Header'
-import { Footer } from '@/components/layout/Footer'
+import { IncantoHeader } from '@/components/incanto/IncantoHeader'
+import { IncantoFooter } from '@/components/incanto/IncantoFooter'
 import { IncantoHero } from '@/components/incanto/IncantoHero'
 import { IncantoFacilities } from '@/components/incanto/IncantoFacilities'
 import { IncantoBooking } from '@/components/incanto/IncantoBooking'
@@ -16,13 +16,16 @@ export default async function IncantoPage({ params }: Props) {
 
   return (
     <>
-      <Header />
-      <main className="flex-1 min-h-screen bg-white">
-        <IncantoHero lang={normalizedLang} />
+      <IncantoHeader />
+      <main className="flex-1 min-h-screen bg-black">
+        <IncantoHero lang={normalizedLang}>
+          <div className="w-full px-4 sm:px-6 lg:px-8">
+            <IncantoBooking lang={normalizedLang} variant="overlay" />
+          </div>
+        </IncantoHero>
         <IncantoFacilities lang={normalizedLang} />
-        <IncantoBooking lang={normalizedLang} />
       </main>
-      <Footer />
+      <IncantoFooter />
     </>
   )
 }

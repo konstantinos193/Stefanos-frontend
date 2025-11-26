@@ -11,13 +11,14 @@ import { CustomSelect } from '@/components/ui/CustomSelect'
 
 type IncantoBookingProps = {
   lang: string
+  variant?: 'standalone' | 'overlay'
 }
 
 // L'incanto property ID - this should match an actual property in your database
 // For now, we'll use a placeholder that you can update
 const INCANTO_PROPERTY_ID = 'incanto-property-id' // Update this with actual property ID
 
-export function IncantoBooking({ lang }: IncantoBookingProps) {
+export function IncantoBooking({ lang, variant = 'standalone' }: IncantoBookingProps) {
   const t = useTranslation()
   const router = useRouter()
   const [checkIn, setCheckIn] = useState<string>('')
@@ -128,6 +129,256 @@ export function IncantoBooking({ lang }: IncantoBookingProps) {
     }
   }, [checkIn, checkOut, guests, guestName, guestEmail, guestPhone, specialRequests, lang, router])
 
+  const content = (
+    <div className="max-w-2xl mx-auto">
+      <div
+        className={
+          variant === 'overlay'
+            ? 'bg-transparent border border-white/70 rounded-xl shadow-[0_0_0_1px_rgba(255,255,255,0.25)] p-6 md:p-8'
+            : 'bg-white border border-gray-200 rounded-lg shadow-xl p-6 md:p-8'
+        }
+      >
+        <div className="mb-6">
+          <div className="flex items-baseline gap-2 mb-2">
+            <span
+              className={
+                variant === 'overlay'
+                  ? 'text-3xl font-bold text-white'
+                  : 'text-3xl font-bold text-gray-900'
+              }
+            >
+              {basePrice.toFixed(2)} €
+            </span>
+            <span className={variant === 'overlay' ? 'text-gray-200' : 'text-gray-600'}>
+              {t('booking.form.perNight')}
+            </span>
+          </div>
+        </div>
+
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <div className="grid grid-cols-2 gap-4">
+            <div>
+              <label
+                className={
+                  variant === 'overlay'
+                    ? 'block text-sm font-medium text-white mb-2'
+                    : 'block text-sm font-medium text-gray-700 mb-2'
+                }
+              >
+                {t('booking.form.checkIn')}
+              </label>
+              <CustomDatePicker
+                value={checkIn || ''}
+                onChange={setCheckIn}
+                placeholder={t('booking.form.selectDate')}
+                minDate={minCheckInDate}
+              />
+            </div>
+            <div>
+              <label
+                className={
+                  variant === 'overlay'
+                    ? 'block text-sm font-medium text-white mb-2'
+                    : 'block text-sm font-medium text-gray-700 mb-2'
+                }
+              >
+                {t('booking.form.checkOut')}
+              </label>
+              <CustomDatePicker
+                value={checkOut || ''}
+                onChange={setCheckOut}
+                placeholder={t('booking.form.selectDate')}
+                minDate={minCheckOutDate}
+              />
+            </div>
+          </div>
+
+          <div>
+            <label
+              className={
+                variant === 'overlay'
+                  ? 'block text-sm font-medium text-white mb-2'
+                  : 'block text-sm font-medium text-gray-700 mb-2'
+              }
+            >
+              {t('booking.form.guests')}
+            </label>
+            <CustomSelect
+              value={guests.toString()}
+              onChange={(value) => setGuests(parseInt(value))}
+              options={guestOptions}
+            />
+          </div>
+
+          {!isAuthenticated && (
+            <>
+              <div>
+                <label
+                  className={
+                    variant === 'overlay'
+                      ? 'block text-sm font-medium text-white mb-2'
+                      : 'block text-sm font-medium text-gray-700 mb-2'
+                  }
+                >
+                  {t('booking.form.fullName')} *
+                </label>
+                <CustomInput
+                  type="text"
+                  value={guestName}
+                  onChange={setGuestName}
+                  placeholder={t('booking.form.fullNamePlaceholder')}
+                />
+              </div>
+
+              <div>
+                <label
+                  className={
+                    variant === 'overlay'
+                      ? 'block text-sm font-medium text-white mb-2'
+                      : 'block text-sm font-medium text-gray-700 mb-2'
+                  }
+                >
+                  {t('booking.form.email')} *
+                </label>
+                <CustomInput
+                  type="email"
+                  value={guestEmail}
+                  onChange={setGuestEmail}
+                  placeholder="your@email.com"
+                />
+              </div>
+
+              <div>
+                <label
+                  className={
+                    variant === 'overlay'
+                      ? 'block text-sm font-medium text-white mb-2'
+                      : 'block text-sm font-medium text-gray-700 mb-2'
+                  }
+                >
+                  {t('booking.form.phoneOptional')}
+                </label>
+                <CustomInput
+                  type="tel"
+                  value={guestPhone}
+                  onChange={setGuestPhone}
+                  placeholder={t('booking.form.phonePlaceholder')}
+                />
+              </div>
+            </>
+          )}
+
+          <div>
+            <label
+              className={
+                variant === 'overlay'
+                  ? 'block text-sm font-medium text-white mb-2'
+                  : 'block text-sm font-medium text-gray-700 mb-2'
+              }
+            >
+              {t('booking.form.specialRequestsOptional')}
+            </label>
+            <textarea
+              value={specialRequests}
+              onChange={(e) => setSpecialRequests(e.target.value)}
+              rows={3}
+              className={
+                variant === 'overlay'
+                  ? 'w-full px-4 py-2 border border-white/60 bg-black/40 text-white placeholder-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-white/70 focus:border-transparent'
+                  : 'w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent'
+              }
+              placeholder={t('booking.form.specialRequestsPlaceholder')}
+            />
+          </div>
+
+          {nights > 0 && (
+            <div className="pt-4 border-t border-gray-200 space-y-2">
+              <div className="flex justify-between text-sm">
+                <span className={variant === 'overlay' ? 'text-gray-200' : 'text-gray-600'}>
+                  {basePrice.toFixed(2)} € × {nights}{' '}
+                  {t('booking.form.nights')}
+                </span>
+                <span className={variant === 'overlay' ? 'text-white' : 'text-gray-900'}>
+                  {price.subtotal.toFixed(2)} €
+                </span>
+              </div>
+              {price.cleaning > 0 && (
+                <div className="flex justify-between text-sm">
+                  <span className={variant === 'overlay' ? 'text-gray-200' : 'text-gray-600'}>
+                    {t('booking.form.cleaningFee')}
+                  </span>
+                  <span className={variant === 'overlay' ? 'text-white' : 'text-gray-900'}>
+                    {price.cleaning.toFixed(2)} €
+                  </span>
+                </div>
+              )}
+              {price.service > 0 && (
+                <div className="flex justify-between text-sm">
+                  <span className={variant === 'overlay' ? 'text-gray-200' : 'text-gray-600'}>
+                    {t('booking.form.serviceFee')}
+                  </span>
+                  <span className={variant === 'overlay' ? 'text-white' : 'text-gray-900'}>
+                    {price.service.toFixed(2)} €
+                  </span>
+                </div>
+              )}
+              {price.taxes > 0 && (
+                <div className="flex justify-between text-sm">
+                  <span className={variant === 'overlay' ? 'text-gray-200' : 'text-gray-600'}>
+                    {t('booking.form.taxes')}
+                  </span>
+                  <span className={variant === 'overlay' ? 'text-white' : 'text-gray-900'}>
+                    {price.taxes.toFixed(2)} €
+                  </span>
+                </div>
+              )}
+              <div className="flex justify-between pt-2 border-t border-gray-200 font-semibold">
+                <span className={variant === 'overlay' ? 'text-white' : 'text-gray-900'}>
+                  {t('booking.form.total')}
+                </span>
+                <span className={variant === 'overlay' ? 'text-white' : 'text-gray-900'}>
+                  {price.total.toFixed(2)} €
+                </span>
+              </div>
+            </div>
+          )}
+
+          {error && (
+            <div className="text-sm text-red-600 bg-red-50 p-3 rounded">
+              {error}
+            </div>
+          )}
+
+          <button
+            type="submit"
+            disabled={loading || !checkIn || !checkOut}
+            className="w-full bg-primary-blue hover:bg-blue-700 text-white font-semibold py-3 px-4 rounded-lg transition-colors disabled:bg-gray-300 disabled:cursor-not-allowed"
+          >
+            {loading
+              ? t('booking.form.processing')
+              : t('booking.form.bookNow')}
+          </button>
+        </form>
+      </div>
+    </div>
+  )
+
+  if (variant === 'overlay') {
+    return (
+      <div className="w-full max-w-3xl mx-auto">
+        <div className="text-center mb-8">
+          <h2 className="text-3xl md:text-4xl font-semibold text-white mb-3 drop-shadow-lg">
+            {t('booking.form.bookYourStay')}
+          </h2>
+          <p className="text-base md:text-lg text-gray-200 max-w-2xl mx-auto">
+            {t('booking.form.bookYourStayDescription')}
+          </p>
+        </div>
+        {content}
+      </div>
+    )
+  }
+
   return (
     <section className="py-16 md:py-24 bg-gradient-to-b from-gray-50 to-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -139,162 +390,7 @@ export function IncantoBooking({ lang }: IncantoBookingProps) {
             {t('booking.form.bookYourStayDescription')}
           </p>
         </div>
-
-        <div className="max-w-2xl mx-auto">
-          <div className="bg-white border border-gray-200 rounded-lg shadow-lg p-6 md:p-8">
-            <div className="mb-6">
-              <div className="flex items-baseline gap-2 mb-2">
-                <span className="text-3xl font-bold text-gray-900">
-                  {basePrice.toFixed(2)} €
-                </span>
-                <span className="text-gray-600">
-                  {t('booking.form.perNight')}
-                </span>
-              </div>
-            </div>
-
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <div className="grid grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    {t('booking.form.checkIn')}
-                  </label>
-                  <CustomDatePicker
-                    value={checkIn || ''}
-                    onChange={setCheckIn}
-                    placeholder={t('booking.form.selectDate')}
-                    minDate={minCheckInDate}
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    {t('booking.form.checkOut')}
-                  </label>
-                  <CustomDatePicker
-                    value={checkOut || ''}
-                    onChange={setCheckOut}
-                    placeholder={t('booking.form.selectDate')}
-                    minDate={minCheckOutDate}
-                  />
-                </div>
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  {t('booking.form.guests')}
-                </label>
-                <CustomSelect
-                  value={guests.toString()}
-                  onChange={(value) => setGuests(parseInt(value))}
-                  options={guestOptions}
-                />
-              </div>
-
-              {!isAuthenticated && (
-                <>
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      {t('booking.form.fullName')} *
-                    </label>
-                    <CustomInput
-                      type="text"
-                      value={guestName}
-                      onChange={setGuestName}
-                      placeholder={t('booking.form.fullNamePlaceholder')}
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      {t('booking.form.email')} *
-                    </label>
-                    <CustomInput
-                      type="email"
-                      value={guestEmail}
-                      onChange={setGuestEmail}
-                      placeholder="your@email.com"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      {t('booking.form.phoneOptional')}
-                    </label>
-                    <CustomInput
-                      type="tel"
-                      value={guestPhone}
-                      onChange={setGuestPhone}
-                      placeholder={t('booking.form.phonePlaceholder')}
-                    />
-                  </div>
-                </>
-              )}
-
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  {t('booking.form.specialRequestsOptional')}
-                </label>
-                <textarea
-                  value={specialRequests}
-                  onChange={(e) => setSpecialRequests(e.target.value)}
-                  rows={3}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                  placeholder={t('booking.form.specialRequestsPlaceholder')}
-                />
-              </div>
-
-              {nights > 0 && (
-                <div className="pt-4 border-t border-gray-200 space-y-2">
-                  <div className="flex justify-between text-sm">
-                    <span className="text-gray-600">
-                      {basePrice.toFixed(2)} € × {nights}{' '}
-                      {t('booking.form.nights')}
-                    </span>
-                    <span className="text-gray-900">{price.subtotal.toFixed(2)} €</span>
-                  </div>
-                  {price.cleaning > 0 && (
-                    <div className="flex justify-between text-sm">
-                      <span className="text-gray-600">{t('booking.form.cleaningFee')}</span>
-                      <span className="text-gray-900">{price.cleaning.toFixed(2)} €</span>
-                    </div>
-                  )}
-                  {price.service > 0 && (
-                    <div className="flex justify-between text-sm">
-                      <span className="text-gray-600">{t('booking.form.serviceFee')}</span>
-                      <span className="text-gray-900">{price.service.toFixed(2)} €</span>
-                    </div>
-                  )}
-                  {price.taxes > 0 && (
-                    <div className="flex justify-between text-sm">
-                      <span className="text-gray-600">{t('booking.form.taxes')}</span>
-                      <span className="text-gray-900">{price.taxes.toFixed(2)} €</span>
-                    </div>
-                  )}
-                  <div className="flex justify-between pt-2 border-t border-gray-200 font-semibold">
-                    <span className="text-gray-900">{t('booking.form.total')}</span>
-                    <span className="text-gray-900">{price.total.toFixed(2)} €</span>
-                  </div>
-                </div>
-              )}
-
-              {error && (
-                <div className="text-sm text-red-600 bg-red-50 p-3 rounded">
-                  {error}
-                </div>
-              )}
-
-              <button
-                type="submit"
-                disabled={loading || !checkIn || !checkOut}
-                className="w-full bg-primary-blue hover:bg-blue-700 text-white font-semibold py-3 px-4 rounded-lg transition-colors disabled:bg-gray-300 disabled:cursor-not-allowed"
-              >
-                {loading
-                  ? t('booking.form.processing')
-                  : t('booking.form.bookNow')}
-              </button>
-            </form>
-          </div>
-        </div>
+        {content}
       </div>
     </section>
   )
