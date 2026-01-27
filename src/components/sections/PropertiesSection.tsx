@@ -8,7 +8,7 @@ export const PropertiesSection = () => {
       location: 'Athens, Greece',
       price: 120,
       rating: 4.8,
-      image: 'https://placehold.co/400x300/3b82f6/FFFFFF?text=Modern+Apartment',
+      image: '',
       amenities: ['WiFi', 'Kitchen', 'Parking', 'Pool'],
       type: 'Apartment'
     },
@@ -18,7 +18,7 @@ export const PropertiesSection = () => {
       location: 'Mykonos, Greece',
       price: 350,
       rating: 4.9,
-      image: 'https://placehold.co/400x300/10b981/FFFFFF?text=Luxury+Villa',
+      image: '',
       amenities: ['WiFi', 'Kitchen', 'Beach Access', 'Pool'],
       type: 'Villa'
     },
@@ -28,7 +28,7 @@ export const PropertiesSection = () => {
       location: 'Thessaloniki, Greece',
       price: 80,
       rating: 4.7,
-      image: 'https://placehold.co/400x300/f59e0b/FFFFFF?text=Cozy+Studio',
+      image: '',
       amenities: ['WiFi', 'Kitchen', 'City Center'],
       type: 'Studio'
     }
@@ -39,10 +39,10 @@ export const PropertiesSection = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
-            Featured Properties
+            Properties for Sale
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Discover our handpicked selection of premium properties
+            Discover our handpicked selection of premium properties for sale
           </p>
         </div>
 

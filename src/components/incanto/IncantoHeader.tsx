@@ -7,62 +7,48 @@ import { Navigation } from '@/components/layout/Navigation'
 import { LanguageSwitcher } from '@/components/layout/LanguageSwitcher'
 import { UserMenu } from '@/components/layout/UserMenu'
 import { MobileHeader } from '@/components/layout/MobileHeader'
+import styles from './IncantoHeader.module.css'
 
 /**
- * Premium themed header used only on the Incanto page.
- * Keeps the same navigation logic but with a more minimal,
- * luxury style that blends with the dark hero.
+ * Modern, minimal header for the Incanto page
  */
 export const IncantoHeader = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
   return (
     <>
-      {/* Desktop Header - translucent, premium styling */}
-      <header className="hidden md:block fixed inset-x-0 top-0 z-40 bg-black/70 backdrop-blur-lg border-b border-white/10">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 h-20 flex items-center justify-between">
-          {/* Logo + brand */}
-          <Link
-            href="/"
-            className="flex items-center space-x-3 group hover:opacity-90 transition-opacity duration-200"
-          >
-            <div className="relative h-10 w-auto flex-shrink-0">
-              <Image
-                src="/logoetc.png"
-                alt="STEFANOS MALESKOS Real Estate"
-                width={160}
-                height={64}
-                className="h-full w-auto object-contain drop-shadow-lg"
-                priority
-                unoptimized
-              />
-            </div>
-            <div className="hidden sm:flex flex-col">
-              <span className="text-xs font-semibold tracking-[0.25em] text-gray-300 uppercase">
-                L'INCANTO
-              </span>
-              <span className="text-sm text-gray-400">
-                Luxury Apartments
-              </span>
-            </div>
+      {/* Desktop Header */}
+      <header className={`hidden md:flex ${styles.header}`}>
+        <div className={styles.container}>
+          {/* Logo */}
+          <Link href="/" className={styles.logo}>
+            <Image
+              src="/logoetc.png"
+              alt="SMH Real Estate"
+              width={140}
+              height={56}
+              className={styles.logoImage}
+              priority
+              unoptimized
+            />
           </Link>
 
           {/* Navigation */}
-          <div className="hidden lg:flex items-center space-x-10 text-sm font-medium">
+          <nav className={styles.nav}>
             <Navigation />
-          </div>
+          </nav>
 
-          {/* Right side actions */}
-          <div className="flex items-center space-x-3">
+          {/* Actions */}
+          <div className={styles.actions}>
             <LanguageSwitcher />
-            <div className="hidden sm:block">
+            <div className={styles.userMenu}>
               <UserMenu />
             </div>
           </div>
         </div>
       </header>
 
-      {/* Mobile Header – re-use existing behavior for consistency */}
+      {/* Mobile Header */}
       <MobileHeader
         isMobileMenuOpen={isMobileMenuOpen}
         setIsMobileMenuOpen={setIsMobileMenuOpen}
@@ -70,5 +56,3 @@ export const IncantoHeader = () => {
     </>
   )
 }
-
-

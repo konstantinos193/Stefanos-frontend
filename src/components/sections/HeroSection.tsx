@@ -1,46 +1,29 @@
 'use client'
 
-import { useState, useMemo } from 'react'
-import { SearchForm } from '@/components/forms/SearchForm'
+import Image from 'next/image'
 import { RealEstateSearchForm } from '@/components/forms/RealEstateSearchForm'
-import { SearchModeTabs, type SearchModeOption } from '@/components/ui/SearchModeTabs'
 import { HeroStats } from './HeroStats'
 import { useTranslation } from '@/lib/hooks/useTranslation'
 
 export const HeroSection = () => {
   const t = useTranslation()
-  const [searchMode, setSearchMode] = useState<string>('real-estate')
-
-  const searchModeOptions: SearchModeOption[] = useMemo(() => {
-    const realEstateLabel = t('searchModes.realEstate.label')
-    const realEstateDesc = t('searchModes.realEstate.description')
-    const bookingLabel = t('searchModes.booking.label')
-    const bookingDesc = t('searchModes.booking.description')
-    
-    return [
-      {
-        value: 'real-estate',
-        label: realEstateLabel,
-        description: realEstateDesc
-      },
-      {
-        value: 'booking',
-        label: bookingLabel,
-        description: bookingDesc
-      }
-    ]
-  }, [t])
 
   return (
     <section className="relative bg-white min-h-[85vh] md:min-h-[90vh] flex items-center justify-center overflow-hidden">
-      {/* Background image overlay */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-20 will-change-transform"
-        style={{
-          backgroundImage: 'url(/homepage/hero1.png)',
-          transform: 'translateZ(0)'
-        }}
-      />
+      {/* Logo background */}
+      <div className="absolute inset-0 flex items-center justify-center opacity-10">
+        <div className="relative w-full max-w-4xl h-full flex items-center justify-center">
+          <Image 
+            src="/logoetc.png" 
+            alt="SMH Real Estate" 
+            width={800}
+            height={320}
+            className="w-full h-full object-contain"
+            priority
+            unoptimized
+          />
+        </div>
+      </div>
       
       {/* Light overlay for text readability */}
       <div className="absolute inset-0 bg-gradient-to-b from-white/70 via-white/50 to-white/70" />
@@ -63,20 +46,8 @@ export const HeroSection = () => {
             </p>
           </div>
           
-          <div className="w-full max-w-4xl mx-auto mb-3 sm:mb-4 md:mb-5 px-2 sm:px-0 flex justify-center">
-            <SearchModeTabs
-              options={searchModeOptions}
-              activeValue={searchMode}
-              onChange={setSearchMode}
-            />
-          </div>
-          
           <div className="w-full max-w-4xl mx-auto mb-4 sm:mb-5 md:mb-6 px-2 sm:px-0">
-            {searchMode === 'real-estate' ? (
-              <RealEstateSearchForm />
-            ) : (
-              <SearchForm />
-            )}
+            <RealEstateSearchForm />
           </div>
           
           <div className="w-full max-w-4xl mx-auto px-2 sm:px-0">

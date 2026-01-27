@@ -12,7 +12,7 @@ type MobileHeaderProps = {
 
 export const MobileHeader = ({ isMobileMenuOpen, setIsMobileMenuOpen }: MobileHeaderProps) => {
   return (
-    <header className="md:hidden header border-b border-gray-900 shadow-lg bg-black/95 backdrop-blur-sm">
+    <header className="md:hidden header border-b border-gray-900 shadow-lg bg-black/95 backdrop-blur-sm h-20">
       <div className="max-w-7xl mx-auto px-4 h-full">
         <div className="flex items-center justify-between h-full">
           {/* Logo - Left side */}
@@ -20,10 +20,10 @@ export const MobileHeader = ({ isMobileMenuOpen, setIsMobileMenuOpen }: MobileHe
             href="/" 
             className="flex items-center space-x-2 group transition-all duration-300 ease-in-out hover:opacity-90 flex-shrink-0 z-10"
           >
-            <div className="relative h-10 flex-shrink-0" style={{ width: 'auto', minWidth: '40px' }}>
+            <div className="relative h-14 flex-shrink-0" style={{ width: 'auto', minWidth: '56px' }}>
               <Image 
                 src="/logoetc.png" 
-                alt="STEFANOS MALESKOS Real Estate" 
+                alt="SMH Real Estate" 
                 width={200}
                 height={80}
                 className="h-full w-auto object-contain drop-shadow-lg transition-transform duration-300 group-hover:scale-105"

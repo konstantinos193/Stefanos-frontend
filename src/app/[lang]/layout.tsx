@@ -13,12 +13,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   
   return {
     title: {
-      default: 'STEFANOS MALESKOS Real Estate',
-      template: '%s | STEFANOS MALESKOS Real Estate'
+      default: 'SMH Real Estate',
+      template: '%s | SMH Real Estate'
     },
     description: lang === 'el' 
-      ? 'ΣΤΕΦΑΝΟΣ ΜΑΛΕΣΚΟΣ Real Estate - Αξιόπιστη πλατφόρμα ακινήτων με σύγχρονη διαχείριση κρατήσεων'
-      : 'STEFANOS MALESKOS Real Estate - Trusted real estate platform with modern booking management',
+      ? 'SMH Real Estate - Αξιόπιστη πλατφόρμα ακινήτων με σύγχρονη διαχείριση κρατήσεων'
+      : 'SMH Real Estate - Trusted real estate platform with modern booking management',
     alternates: {
       canonical: `/${lang}`,
       languages: {

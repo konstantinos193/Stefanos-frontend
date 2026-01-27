@@ -4,7 +4,8 @@ export type PropertyType =
   | 'ROOM'
   | 'COMMERCIAL'
   | 'STORAGE'
-  | 'VACATION_RENTAL'
+  | 'PLOT'
+  | 'GARAGE'
   | 'LUXURY'
   | 'INVESTMENT'
 
@@ -56,6 +57,8 @@ export interface Property {
   serviceFeePercentage?: number
   taxRate?: number
   taxes: number | null
+  minStay?: number
+  maxStay?: number
   cancellationPolicy?: 'FLEXIBLE' | 'MODERATE' | 'STRICT' | 'SUPER_STRICT'
   hasDynamicRooms?: boolean
   averageCleanlinessRating?: number

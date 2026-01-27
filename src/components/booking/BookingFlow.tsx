@@ -33,7 +33,6 @@ export const BookingFlow = () => {
       icon: <CheckIcon size={32} className="text-current" />,
       details: [
         'Detailed property information',
-        'Virtual tours',
         'Guest reviews',
         'Instant booking confirmation'
       ]

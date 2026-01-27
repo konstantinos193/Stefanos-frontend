@@ -17,7 +17,7 @@ export default async function IncantoPage({ params }: Props) {
   return (
     <>
       <IncantoHeader />
-      <main className="flex-1 min-h-screen bg-black">
+      <main className="flex-1 min-h-screen">
         <IncantoHero lang={normalizedLang}>
           <div className="w-full px-4 sm:px-6 lg:px-8">
             <IncantoBooking lang={normalizedLang} variant="overlay" />

@@ -1,15 +1,28 @@
 'use client'
 
+import styles from './IncantoFooter.module.css'
+
 /**
  * Premium, minimal footer used only on the Incanto page.
  * Keeps only the copyrights with a darker, more luxurious feel.
  */
 export const IncantoFooter = () => {
+  const currentYear = new Date().getFullYear()
+  
   return (
-    <footer className="bg-black text-gray-300 border-t border-gray-800 mt-16">
-      <div className="max-w-7xl mx-auto px-6 py-6 flex items-center justify-start">
-        <p className="text-xs sm:text-sm tracking-wide">
-          © 2025 adinfinity. All rights reserved.
+    <footer className={styles.footer}>
+      <div className={styles.container}>
+        <p className={styles.copyright}>
+          © {currentYear}{' '}
+          <a
+            href="https://adinfinity.gr/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.link}
+          >
+            adinfinity
+          </a>
+          . All rights reserved.
         </p>
       </div>
     </footer>

@@ -3,7 +3,6 @@ const nextConfig = {
   experimental: {
     optimizePackageImports: ['@prisma/client', 'zod', 'react-icons'],
   },
-  swcMinify: true,
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production' ? {
       exclude: ['error', 'warn'],
@@ -26,6 +25,14 @@ const nextConfig = {
       {
         protocol: 'https',
         hostname: 'ui-avatars.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'picsum.photos',
+      },
+      {
+        protocol: 'https',
+        hostname: 'i.pravatar.cc',
       },
     ],
     formats: ['image/webp', 'image/avif'],

@@ -38,7 +38,7 @@ export const SearchForm = ({ onSubmit }: SearchFormProps) => {
   const lang = langMatch ? langMatch[1] : 'en'
 
   const [searchData, setSearchData] = useState<BookingSearchData>({
-    location: 'Preveza, Greece', // Default to Preveza as per requirements
+    location: 'Arta, Greece', // Default to Arta as per requirements
     checkIn: '',
     checkOut: '',
     guests: '1'
@@ -100,7 +100,7 @@ export const SearchForm = ({ onSubmit }: SearchFormProps) => {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="bg-gradient-to-br from-gray-800/90 via-gray-900/90 to-black/90 backdrop-blur-sm rounded-lg shadow-xl border border-[#d4af37]/30 p-3 sm:p-4 md:p-5 lg:p-6">
+    <form onSubmit={handleSubmit} className="bg-transparent backdrop-blur-sm rounded-lg shadow-xl border border-gray-200 p-3 sm:p-4 md:p-5 lg:p-6">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-3 sm:gap-4 md:gap-4">
         <div className="lg:col-span-2">
           <LocationAutocomplete
@@ -120,6 +120,8 @@ export const SearchForm = ({ onSubmit }: SearchFormProps) => {
             onChange={(value) => handleInputChange('checkIn', value)}
             placeholder={t('search.selectCheckInDate')}
             minDate={minCheckInDate}
+            labelClassName="text-gray-700"
+            className="bg-white border border-gray-300 text-gray-900"
           />
         </div>
         
@@ -131,6 +133,8 @@ export const SearchForm = ({ onSubmit }: SearchFormProps) => {
             onChange={(value) => handleInputChange('checkOut', value)}
             placeholder={t('search.selectCheckOutDate')}
             minDate={minCheckOutDate}
+            labelClassName="text-gray-700"
+            className="bg-white border border-gray-300 text-gray-900"
           />
         </div>
         

@@ -130,9 +130,17 @@ export function PropertyBookingForm({ property, lang }: PropertyBookingFormProps
           <span className="text-2xl font-bold text-gray-900">
             {property.basePrice.toFixed(2)} {property.currency}
           </span>
-          <span className="text-gray-600">
-            {lang === 'gr' ? 'ανά βράδυ' : 'per night'}
-          </span>
+          {/* Hide daily rate for long-term rentals (minStay >= 30 days) */}
+          {(!property.minStay || property.minStay < 30) && (
+            <span className="text-gray-600">
+              {lang === 'gr' ? 'ανά βράδυ' : 'per night'}
+            </span>
+          )}
+          {property.minStay && property.minStay >= 30 && (
+            <span className="text-gray-600">
+              {lang === 'gr' ? 'ανά μήνα' : 'per month'}
+            </span>
+          )}
         </div>
       </div>
 

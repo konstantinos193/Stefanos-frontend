@@ -18,7 +18,8 @@ export function PropertyInfo({ property, lang }: PropertyInfoProps) {
       ROOM: { gr: 'Δωμάτιο', en: 'Room' },
       COMMERCIAL: { gr: 'Επαγγελματικός Χώρος', en: 'Commercial Space' },
       STORAGE: { gr: 'Αποθήκη', en: 'Storage' },
-      VACATION_RENTAL: { gr: 'Διακοπές', en: 'Vacation Rental' },
+      PLOT: { gr: 'Οικόπεδο', en: 'Plot' },
+      GARAGE: { gr: 'Γκαράζ', en: 'Garage' },
       LUXURY: { gr: 'Πολυτελές', en: 'Luxury' },
       INVESTMENT: { gr: 'Επένδυση', en: 'Investment' },
     }
@@ -50,11 +51,7 @@ export function PropertyInfo({ property, lang }: PropertyInfoProps) {
         </div>
       </div>
 
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 py-6 border-y border-gray-200">
-        <div>
-          <div className="text-2xl font-bold text-gray-900">{property.maxGuests}</div>
-          <div className="text-sm text-gray-600">{lang === 'gr' ? 'Επισκέπτες' : 'Guests'}</div>
-        </div>
+      <div className="grid grid-cols-2 md:grid-cols-3 gap-4 py-6 border-y border-gray-200">
         <div>
           <div className="text-2xl font-bold text-gray-900">{property.bedrooms}</div>
           <div className="text-sm text-gray-600">{lang === 'gr' ? 'Υπνοδωμάτια' : 'Bedrooms'}</div>

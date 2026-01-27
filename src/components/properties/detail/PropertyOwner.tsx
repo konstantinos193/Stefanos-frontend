@@ -9,7 +9,7 @@ export function PropertyOwner({ owner, lang }: PropertyOwnerProps) {
   return (
     <div className="bg-white border border-gray-200 rounded-lg shadow-lg p-6">
       <h3 className="text-lg font-semibold text-gray-900 mb-4">
-        {lang === 'gr' ? 'Ιδιοκτήτης' : 'Property Owner'}
+        {lang === 'gr' ? 'Στοιχεία Επικοινωνίας' : 'Contact Information'}
       </h3>
       
       <div className="flex items-center gap-4">
@@ -30,14 +30,18 @@ export function PropertyOwner({ owner, lang }: PropertyOwnerProps) {
         <div>
           <div className="font-semibold text-gray-900">{owner.name}</div>
           <div className="text-sm text-gray-600">
-            {lang === 'gr' ? 'Ιδιοκτήτης' : 'Property Owner'}
+            {lang === 'gr' ? 'Διαχειριστής Ακινήτου' : 'Property Manager'}
           </div>
         </div>
       </div>
       
-      <button className="mt-4 w-full bg-gray-100 hover:bg-gray-200 text-gray-900 font-medium py-2 px-4 rounded-lg transition-colors">
-        {lang === 'gr' ? 'Επικοινωνία' : 'Contact Owner'}
-      </button>
+      <div className="mt-4 pt-4 border-t border-gray-200">
+        <p className="text-sm text-gray-600 mb-3">
+          {lang === 'gr' 
+            ? 'Για περισσότερες πληροφορίες σχετικά με αυτό το ακίνητο, χρησιμοποιήστε τη φόρμα επικοινωνίας.'
+            : 'For more information about this property, please use the contact form above.'}
+        </p>
+      </div>
     </div>
   )
 }

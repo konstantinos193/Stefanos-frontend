@@ -16,7 +16,8 @@ const propertyTypes = [
   { value: 'ROOM', labelKey: 'room' },
   { value: 'COMMERCIAL', labelKey: 'commercial' },
   { value: 'STORAGE', labelKey: 'storage' },
-  { value: 'VACATION_RENTAL', labelKey: 'vacationRental' },
+  { value: 'PLOT', labelKey: 'plot' },
+  { value: 'GARAGE', labelKey: 'garage' },
   { value: 'LUXURY', labelKey: 'luxury' },
   { value: 'INVESTMENT', labelKey: 'investment' }
 ]
@@ -128,7 +129,9 @@ export const FiltersSidebar = ({ lang = 'en', intention }: FiltersSidebarProps) 
           >
             {propertyTypes.map((type) => (
               <option key={type.value} value={type.value}>
-                {type.labelKey === 'allTypes' ? (lang === 'el' ? 'Όλοι οι Τύποι' : 'All Types') : type.value}
+                {type.labelKey === 'allTypes' 
+                  ? (lang === 'el' ? 'Όλοι οι Τύποι' : 'All Types') 
+                  : t(`propertyTypes.${type.labelKey}`) || type.value}
               </option>
             ))}
           </select>
@@ -158,13 +161,17 @@ export const FiltersSidebar = ({ lang = 'en', intention }: FiltersSidebarProps) 
 
         <div>
           <label htmlFor="guests" className="block text-sm font-medium text-gray-700 mb-2">
-            {t('results.filters.guests')}
+            {currentType === 'APARTMENT' 
+              ? t('results.filters.apartmentCapacity') 
+              : t('results.filters.guests')}
           </label>
           <input
             id="guests"
             type="number"
             min="1"
-            placeholder={t('results.filters.guests')}
+            placeholder={currentType === 'APARTMENT' 
+              ? (lang === 'el' ? 'Πόσα άτομα' : 'How many people') 
+              : t('results.filters.guests')}
             value={currentGuests}
             onChange={(e) => handleGuestsChange(e.target.value)}
             className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#d4af37]"

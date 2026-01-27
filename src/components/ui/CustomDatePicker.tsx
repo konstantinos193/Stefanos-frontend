@@ -142,6 +142,12 @@ export const CustomDatePicker = ({
     )
   }
 
+  const isLightBackground = useMemo(() => {
+    if (!className) return false
+    const classStr = className.toString()
+    return classStr.includes('bg-white') || classStr.includes('bg-gray-50') || classStr.includes('bg-transparent')
+  }, [className])
+
   const handleDateSelect = useCallback((day: number) => {
     const newDate = new Date(currentMonth.getFullYear(), currentMonth.getMonth(), day)
     if (!isDateDisabled(newDate)) {
@@ -225,8 +231,8 @@ export const CustomDatePicker = ({
         <label
           htmlFor={id}
           className={cn(
-            'block text-xs sm:text-sm md:text-sm font-medium text-gray-200 mb-1 sm:mb-2',
-            labelClassName
+            'block text-xs sm:text-sm md:text-sm font-medium mb-1 sm:mb-2',
+            labelClassName || 'text-gray-200'
           )}
         >
           {label}
@@ -240,16 +246,19 @@ export const CustomDatePicker = ({
           disabled={disabled}
           className={cn(
             'w-full px-2 sm:px-3 md:px-3 py-1.5 sm:py-2 md:py-2',
-            'text-sm sm:text-base text-left',
-            'bg-gray-800/60 border border-[#d4af37]/40 rounded-lg',
-            'text-white',
+            'text-sm sm:text-base text-left rounded-lg border',
             'focus:outline-none focus:ring-2 focus:ring-[#d4af37] focus:border-[#d4af37]',
             'transition-all duration-200',
             'disabled:opacity-50 disabled:cursor-not-allowed',
             'flex items-center justify-between',
             isOpen && 'ring-2 ring-[#d4af37] border-[#d4af37] shadow-lg shadow-[#d4af37]/20',
             error && 'border-red-500 focus:ring-red-500 focus:border-red-500',
-            !selectedDate && 'text-gray-400',
+            // Apply styling based on background type
+            isLightBackground 
+              ? 'bg-white border-gray-300 text-gray-900' 
+              : (!className && 'bg-gray-800/60 border-[#d4af37]/40 text-white'),
+            !isLightBackground && !selectedDate && !className && 'text-gray-400',
+            // Apply custom className (should override above)
             className
           )}
         >
@@ -259,12 +268,14 @@ export const CustomDatePicker = ({
                 <span className="text-[#d4af37] font-semibold">
                   {selectedDate.getDate()}
                 </span>
-                <span className="text-gray-300">
+                <span className={isLightBackground ? 'text-gray-700' : 'text-gray-300'}>
                   {MONTHS_SHORT[selectedDate.getMonth()]} {selectedDate.getFullYear()}
                 </span>
               </>
             ) : (
-              <span className="text-gray-400">{placeholder}</span>
+              <span className={isLightBackground ? 'text-gray-400' : 'text-gray-400'}>
+                {placeholder}
+              </span>
             )}
           </span>
           <svg

@@ -10,7 +10,7 @@
   "hero": {
     "title": "Find Your",
     "titleHighlight": "Property",
-    "description": "Property marketplace for buying, renting, and managing short-term rentals across Greece"
+    "description": "Your trusted real estate partner in Greece. Buy, sell, or rent properties with confidence."
   },
   "searchModes": {
     "realEstate": {
@@ -53,6 +53,7 @@
       "propertyType": "Property Type",
       "priceRange": "Price Range",
       "guests": "Guests",
+      "apartmentCapacity": "Apartment Capacity (People)",
       "minPrice": "Min",
       "maxPrice": "Max"
     },
@@ -145,11 +146,11 @@
     "subtitle": "Reliable services for all your needs",
     "propertyManagement": {
       "title": "Property Management",
-      "description": "Reliable property management with modern tools and 24/7 support"
+      "description": "Reliable property management with modern tools"
     },
-    "bookingPlatform": {
-      "title": "Booking Platform",
-      "description": "Modern platform for seamless booking experience"
+    "investmentConsulting": {
+      "title": "Investment Consulting",
+      "description": "Expert guidance for property investments and market analysis"
     },
     "realEstate": {
       "title": "Real Estate",
@@ -192,7 +193,7 @@
       "email": "Email",
       "phone": "Phone",
       "phoneOptional": "Phone (optional)",
-      "phonePlaceholder": "+1 234 567 8900",
+      "phonePlaceholder": "+1 XXX XXX XXXX",
       "specialRequests": "Special Requests",
       "specialRequestsOptional": "Special Requests (optional)",
       "specialRequestsPlaceholder": "Tell us if you need anything special...",
@@ -221,6 +222,14 @@
     "newsletterDescription": "Subscribe to get updates on new properties and offers",
     "enterEmail": "Enter your email",
     "subscribe": "Subscribe",
+    "contactInfo": "Contact Information",
+    "followUs": "Follow Us",
+    "address": "Address",
+    "phone": "Phone",
+    "email": "Email",
+    "addressValue": "Arta, Greece",
+    "phoneValue": "+30 XXX XXX XXXX",
+    "emailValue": "email@example.com",
     "sections": {
       "company": "Company",
       "services": "Services",
@@ -232,7 +241,7 @@
       "careers": "Careers",
       "contact": "Contact",
       "propertyManagement": "Property Management",
-      "bookingPlatform": "Booking Platform",
+      "investmentConsulting": "Investment Consulting",
       "realEstate": "Real Estate",
       "maintenance": "Maintenance",
       "helpCenter": "Help Center",
@@ -243,7 +252,7 @@
   },
   "search": {
     "location": "Location",
-    "locationPlaceholder": "Preveza, Greece",
+    "locationPlaceholder": "Arta, Greece",
     "propertyType": "Property Type",
     "allTypes": "All Types",
     "bedrooms": "Bedrooms",
@@ -267,7 +276,13 @@
     "villa": "Villa",
     "studio": "Studio",
     "commercial": "Commercial",
-    "condo": "Condo"
+    "condo": "Condo",
+    "room": "Room",
+    "storage": "Storage",
+    "plot": "Plot",
+    "garage": "Garage",
+    "luxury": "Luxury",
+    "investment": "Investment"
   },
   "amenities": {
     "wifi": "WiFi",
@@ -283,11 +298,11 @@
   },
   "servicesOverview": {
     "title": "What We Offer",
-    "subtitle": "Comprehensive real estate and booking management solutions for every need",
+    "subtitle": "Comprehensive real estate solutions for buying, selling, and property management",
     "getStarted": "Get Started Today",
     "getStartedDescription": "Contact us to learn how we can help you achieve your real estate goals",
     "exploreProperties": "Explore Properties",
-    "makeBooking": "Make a Booking"
+    "listProperty": "List Your Property"
   },
   "features": {
     "title": "Why Choose Us?",
@@ -297,6 +312,337 @@
     "title": "Personalized Recommendations",
     "subtitle": "Personalized suggestions - Properties that match your preferences",
     "viewAll": "View All Recommendations"
+  },
+  "about": {
+    "title": "About Our Company",
+    "subtitle": "Your trusted partner in real estate, providing exceptional service and expertise since our founding.",
+    "history": {
+      "title": "Our Story",
+      "paragraph1": "Our company was founded with a vision to transform the real estate experience. We combine deep local knowledge with modern technology to provide our clients with exceptional service.",
+      "paragraph2": "Over the years, we have built a reputation for integrity, professionalism, and results. Our team of experienced professionals understands the unique needs of each client and works tirelessly to exceed expectations.",
+      "paragraph3": "From luxury properties to investment opportunities, we offer comprehensive real estate services that help our clients achieve their goals, whether they are buying, selling, or managing properties."
+    },
+    "mission": {
+      "title": "Our Mission & Values",
+      "subtitle": "The principles that guide everything we do"
+    },
+    "values": {
+      "integrity": {
+        "title": "Integrity",
+        "description": "We conduct business with honesty, transparency, and ethical practices in every transaction."
+      },
+      "excellence": {
+        "title": "Excellence",
+        "description": "We strive for excellence in every aspect of our service, from property selection to client support."
+      },
+      "clientFocus": {
+        "title": "Client Focus",
+        "description": "Your success is our success. We prioritize your needs and work to deliver personalized solutions."
+      }
+    },
+    "whyChooseUs": {
+      "title": "Why Choose Us?",
+      "subtitle": "What sets us apart in the real estate market"
+    },
+    "advantages": {
+      "localExpertise": {
+        "title": "Local Expertise",
+        "description": "Deep knowledge of the real estate market, local regulations, and property values across different regions."
+      },
+      "technology": {
+        "title": "Modern Technology",
+        "description": "Advanced tools and platforms for property management, virtual tours, and seamless transactions."
+      },
+      "comprehensive": {
+        "title": "Comprehensive Services",
+        "description": "From property search to management, investment consulting, and maintenance - we cover all your real estate needs."
+      },
+      "support": {
+        "title": "24/7 Support",
+        "description": "Round-the-clock assistance for property owners and guests, ensuring peace of mind at all times."
+      }
+    },
+    "stats": {
+      "title": "Our Impact",
+      "subtitle": "Numbers that reflect our commitment to excellence",
+      "propertiesCount": "500+",
+      "propertiesLabel": "Properties",
+      "clientsCount": "1000+",
+      "clientsLabel": "Satisfied Clients",
+      "locationsCount": "50+",
+      "locationsLabel": "Locations",
+      "yearsCount": "10+",
+      "yearsLabel": "Years Experience"
+    }
+  },
+  "team": {
+    "title": "Our Team",
+    "subtitle": "Meet the experienced professionals dedicated to helping you achieve your real estate goals.",
+    "members": {
+      "member1": {
+        "name": "John Smith",
+        "role": "Founder & CEO",
+        "bio": "With over 15 years of experience in real estate, John leads our team with vision and dedication."
+      },
+      "member2": {
+        "name": "Jane Doe",
+        "role": "Property Management Director",
+        "bio": "Jane specializes in property management and ensures our properties are maintained to the highest standards."
+      },
+      "member3": {
+        "name": "Mike Johnson",
+        "role": "Sales & Marketing Manager",
+        "bio": "Mike brings extensive market knowledge and helps clients find their perfect property match."
+      },
+      "member4": {
+        "name": "Sarah Williams",
+        "role": "Customer Relations Specialist",
+        "bio": "Sarah ensures exceptional customer service and maintains strong relationships with our clients."
+      }
+    },
+    "expertise": {
+      "realEstate": "Real Estate",
+      "investment": "Investment Consulting",
+      "propertyManagement": "Property Management",
+      "maintenance": "Maintenance",
+      "sales": "Sales",
+      "marketing": "Marketing",
+      "customerService": "Customer Service",
+      "relations": "Client Relations"
+    },
+    "cta": {
+      "title": "Join Our Team",
+      "description": "We are always looking for talented individuals to join our growing team. Explore career opportunities with us.",
+      "button": "View Careers"
+    }
+  },
+  "careers": {
+    "title": "Careers",
+    "subtitle": "Join our team and help shape the future of real estate services. We are always looking for talented individuals who share our passion for excellence.",
+    "culture": {
+      "title": "Our Culture",
+      "paragraph1": "We believe in creating a positive and inclusive work environment where every team member can thrive. Our culture is built on collaboration, innovation, and mutual respect.",
+      "paragraph2": "We value diversity and encourage our employees to bring their unique perspectives to the table. We invest in our team's growth through continuous learning opportunities and professional development programs.",
+      "paragraph3": "Work-life balance is important to us, and we offer flexible working arrangements to help our team members achieve their personal and professional goals."
+    },
+    "benefits": {
+      "title": "Benefits & Perks",
+      "subtitle": "We offer comprehensive benefits to support our team members",
+      "benefit1": "Competitive salary package",
+      "benefit2": "Health insurance coverage",
+      "benefit3": "Flexible working hours",
+      "benefit4": "Professional development opportunities",
+      "benefit5": "Team building activities",
+      "benefit6": "Modern office environment"
+    },
+    "openings": {
+      "title": "Open Positions",
+      "subtitle": "Explore our current job openings"
+    },
+    "jobs": {
+      "job1": {
+        "title": "Real Estate Agent",
+        "department": "Sales",
+        "location": "Remote / Office",
+        "type": "Full-time",
+        "description": "We are looking for an experienced real estate agent to join our sales team. The ideal candidate will have a strong track record in property sales and excellent communication skills."
+      },
+      "job2": {
+        "title": "Property Manager",
+        "department": "Operations",
+        "location": "Office",
+        "type": "Full-time",
+        "description": "Join our operations team as a property manager. You will be responsible for overseeing property maintenance, tenant relations, and ensuring properties meet our quality standards."
+      },
+      "job3": {
+        "title": "Marketing Specialist",
+        "department": "Marketing",
+        "location": "Remote / Office",
+        "type": "Full-time",
+        "description": "We are seeking a creative marketing specialist to help promote our properties and services. Experience with digital marketing and real estate is preferred."
+      }
+    },
+    "noOpenings": "No open positions at the moment. Please check back later.",
+    "apply": "Apply Now",
+    "applicationForm": {
+      "title": "General Application",
+      "subtitle": "Don't see a position that matches your skills? Send us a general application and we'll keep you in mind for future opportunities."
+    },
+    "form": {
+      "firstName": "First Name",
+      "firstNamePlaceholder": "John",
+      "lastName": "Last Name",
+      "lastNamePlaceholder": "Doe",
+      "email": "Email",
+      "emailPlaceholder": "john.doe@example.com",
+      "phone": "Phone (Optional)",
+      "phonePlaceholder": "+1 XXX XXX XXXX",
+      "position": "Position of Interest",
+      "positionPlaceholder": "e.g., Real Estate Agent",
+      "message": "Cover Letter / Message",
+      "messagePlaceholder": "Tell us about yourself and why you're interested in joining our team...",
+      "resume": "Resume / CV",
+      "resumeHint": "PDF, DOC, or DOCX format (max 5MB)",
+      "submit": "Submit Application"
+    }
+  },
+  "contact": {
+    "title": "Contact Us",
+    "subtitle": "We'd love to hear from you. Get in touch with our team and we'll respond as soon as possible.",
+    "info": {
+      "title": "Get in Touch",
+      "addressLabel": "Address",
+      "address": "123 Main Street, Suite 100, City, State 12345",
+      "phoneLabel": "Phone",
+      "phone": "+1 (234) 567-8900",
+      "emailLabel": "Email",
+      "email": "info@example.com",
+      "hoursLabel": "Business Hours",
+      "hours": "Monday - Friday: 9:00 AM - 6:00 PM\nSaturday: 10:00 AM - 4:00 PM\nSunday: Closed"
+    },
+    "form": {
+      "title": "Send us a Message",
+      "firstName": "First Name",
+      "firstNamePlaceholder": "John",
+      "lastName": "Last Name",
+      "lastNamePlaceholder": "Doe",
+      "email": "Email",
+      "emailPlaceholder": "john.doe@example.com",
+      "phone": "Phone (Optional)",
+      "phonePlaceholder": "+1 XXX XXX XXXX",
+      "subject": "Subject",
+      "subjectPlaceholder": "How can we help you?",
+      "message": "Message",
+      "messagePlaceholder": "Tell us about your inquiry...",
+      "submit": "Send Message"
+    }
+  },
+  "terms": {
+    "title": "Terms of Service",
+    "subtitle": "Please read these terms carefully before using our services.",
+    "lastUpdated": "Last updated: January 1, 2024",
+    "section1": {
+      "title": "1. Acceptance of Terms",
+      "content": "By accessing and using this website and our services, you accept and agree to be bound by the terms and provision of this agreement. If you do not agree to abide by the above, please do not use this service."
+    },
+    "section2": {
+      "title": "2. Use License",
+      "paragraph1": "Permission is granted to temporarily access the materials on our website for personal, non-commercial transitory viewing only. This is the grant of a license, not a transfer of title, and under this license you may not:",
+      "item1": "Modify or copy the materials",
+      "item2": "Use the materials for any commercial purpose or for any public display",
+      "item3": "Attempt to reverse engineer any software contained on the website",
+      "item4": "Remove any copyright or other proprietary notations from the materials"
+    },
+    "section3": {
+      "title": "3. User Accounts",
+      "paragraph1": "When you create an account with us, you must provide information that is accurate, complete, and current at all times. You are responsible for safeguarding the password and for all activities that occur under your account.",
+      "paragraph2": "You agree not to disclose your password to any third party and to take sole responsibility for any activities or actions under your account, whether or not you have authorized such activities or actions."
+    },
+    "section4": {
+      "title": "4. Property Listings and Bookings",
+      "paragraph1": "All property listings are provided for informational purposes only. We do not guarantee the accuracy, completeness, or availability of any property listing. Property availability, pricing, and conditions are subject to change without notice.",
+      "paragraph2": "By making a booking through our platform, you agree to comply with all terms and conditions set forth by the property owner and our cancellation and refund policies."
+    },
+    "section5": {
+      "title": "5. Payment Terms",
+      "paragraph1": "All payments must be made through our secure payment gateway. By providing payment information, you represent and warrant that you are authorized to use the payment method provided.",
+      "paragraph2": "Refunds are subject to our cancellation policy and will be processed according to the terms agreed upon at the time of booking."
+    },
+    "section6": {
+      "title": "6. Prohibited Uses",
+      "paragraph1": "You may not use our service:",
+      "item1": "In any way that violates any applicable law or regulation",
+      "item2": "To transmit any malicious code, viruses, or harmful data",
+      "item3": "To impersonate or attempt to impersonate the company or any employee",
+      "item4": "To engage in any automated use of the system"
+    },
+    "section7": {
+      "title": "7. Limitation of Liability",
+      "content": "In no event shall our company, nor its directors, employees, partners, agents, suppliers, or affiliates, be liable for any indirect, incidental, special, consequential, or punitive damages, including without limitation, loss of profits, data, use, goodwill, or other intangible losses, resulting from your use of the service."
+    },
+    "section8": {
+      "title": "8. Changes to Terms",
+      "content": "We reserve the right, at our sole discretion, to modify or replace these Terms at any time. If a revision is material, we will provide at least 30 days notice prior to any new terms taking effect."
+    },
+    "section9": {
+      "title": "9. Contact Information",
+      "content": "If you have any questions about these Terms of Service, please contact us at legal@example.com or through our contact page."
+    }
+  },
+  "privacy": {
+    "title": "Privacy Policy",
+    "subtitle": "We are committed to protecting your privacy and ensuring the security of your personal information.",
+    "lastUpdated": "Last updated: January 1, 2024",
+    "section1": {
+      "title": "1. Introduction",
+      "content": "This Privacy Policy describes how we collect, use, and protect your personal information when you use our website and services. By using our services, you agree to the collection and use of information in accordance with this policy."
+    },
+    "section2": {
+      "title": "2. Information We Collect",
+      "paragraph1": "We collect several types of information for various purposes to provide and improve our service:",
+      "personalData": {
+        "title": "Personal Data",
+        "content": "While using our service, we may ask you to provide us with certain personally identifiable information that can be used to contact or identify you, including but not limited to: name, email address, phone number, postal address, and payment information."
+      },
+      "usageData": {
+        "title": "Usage Data",
+        "content": "We may also collect information about how you access and use our service, including your IP address, browser type, pages visited, time and date of visit, and other diagnostic data."
+      },
+      "cookies": {
+        "title": "Cookies and Tracking Data",
+        "content": "We use cookies and similar tracking technologies to track activity on our service and hold certain information. You can instruct your browser to refuse all cookies or to indicate when a cookie is being sent."
+      }
+    },
+    "section3": {
+      "title": "3. How We Use Your Information",
+      "paragraph1": "We use the collected information for various purposes:",
+      "item1": "To provide and maintain our service",
+      "item2": "To notify you about changes to our service",
+      "item3": "To allow you to participate in interactive features of our service",
+      "item4": "To provide customer support",
+      "item5": "To gather analysis or valuable information to improve our service",
+      "item6": "To monitor the usage of our service",
+      "item7": "To detect, prevent and address technical issues"
+    },
+    "section4": {
+      "title": "4. Data Storage and Security",
+      "paragraph1": "The security of your data is important to us. We implement appropriate technical and organizational measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction.",
+      "paragraph2": "However, no method of transmission over the Internet or electronic storage is 100% secure. While we strive to use commercially acceptable means to protect your personal data, we cannot guarantee its absolute security."
+    },
+    "section5": {
+      "title": "5. Data Sharing and Disclosure",
+      "paragraph1": "We do not sell, trade, or rent your personal information to third parties. We may share your information only in the following circumstances:",
+      "item1": "With service providers who assist us in operating our website and conducting our business",
+      "item2": "To comply with legal obligations or respond to lawful requests",
+      "item3": "To protect and defend our rights or property",
+      "item4": "With your consent or at your direction"
+    },
+    "section6": {
+      "title": "6. Your Rights (GDPR)",
+      "paragraph1": "If you are a resident of the European Economic Area (EEA), you have certain data protection rights:",
+      "item1": "The right to access, update, or delete your personal information",
+      "item2": "The right of rectification - to have your information corrected",
+      "item3": "The right to object to processing of your personal data",
+      "item4": "The right of restriction - to request restriction of processing",
+      "item5": "The right to data portability - to receive your data in a structured format",
+      "item6": "The right to withdraw consent at any time"
+    },
+    "section7": {
+      "title": "7. Third-Party Services",
+      "content": "Our service may contain links to third-party websites or services that are not owned or controlled by us. We have no control over, and assume no responsibility for, the privacy policies or practices of any third-party sites or services."
+    },
+    "section8": {
+      "title": "8. Children's Privacy",
+      "content": "Our service does not address anyone under the age of 18. We do not knowingly collect personally identifiable information from children. If you are a parent or guardian and believe your child has provided us with personal information, please contact us."
+    },
+    "section9": {
+      "title": "9. Changes to This Privacy Policy",
+      "content": "We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the \"Last updated\" date. You are advised to review this Privacy Policy periodically for any changes."
+    },
+    "section10": {
+      "title": "10. Contact Us",
+      "content": "If you have any questions about this Privacy Policy, please contact us at privacy@example.com or through our contact page."
+    }
   }
 }
 

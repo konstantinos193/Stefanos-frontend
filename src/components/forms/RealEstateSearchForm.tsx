@@ -22,11 +22,15 @@ type RealEstateSearchFormProps = {
 
 const getPropertyTypeOptions = (t: (key: string) => string) => [
   { value: '', label: t('search.allTypes') },
-  { value: 'apartment', label: t('propertyTypes.apartment') },
-  { value: 'house', label: t('propertyTypes.house') },
-  { value: 'villa', label: t('propertyTypes.villa') },
-  { value: 'studio', label: t('propertyTypes.studio') },
-  { value: 'commercial', label: t('propertyTypes.commercial') }
+  { value: 'APARTMENT', label: t('propertyTypes.apartment') },
+  { value: 'HOUSE', label: t('propertyTypes.house') },
+  { value: 'ROOM', label: t('propertyTypes.room') },
+  { value: 'COMMERCIAL', label: t('propertyTypes.commercial') },
+  { value: 'STORAGE', label: t('propertyTypes.storage') },
+  { value: 'PLOT', label: t('propertyTypes.plot') },
+  { value: 'GARAGE', label: t('propertyTypes.garage') },
+  { value: 'LUXURY', label: t('propertyTypes.luxury') },
+  { value: 'INVESTMENT', label: t('propertyTypes.investment') }
 ]
 
 const getBedroomOptions = (t: (key: string) => string) => [
@@ -54,7 +58,7 @@ export const RealEstateSearchForm = ({ onSubmit }: RealEstateSearchFormProps) =>
   const lang = langMatch ? langMatch[1] : 'en'
 
   const [searchData, setSearchData] = useState<RealEstateSearchData>({
-    location: 'Preveza, Greece', // Default to Preveza as per requirements
+    location: 'Arta, Greece', // Default to Arta as per requirements
     propertyType: '',
     minPrice: '',
     maxPrice: '',
@@ -73,14 +77,8 @@ export const RealEstateSearchForm = ({ onSubmit }: RealEstateSearchFormProps) =>
     const params = new URLSearchParams()
     if (searchData.location) params.set('location', searchData.location)
     if (searchData.propertyType) {
-      const typeMap: Record<string, string> = {
-        'apartment': 'APARTMENT',
-        'house': 'HOUSE',
-        'villa': 'VILLA',
-        'studio': 'ROOM',
-        'commercial': 'COMMERCIAL'
-      }
-      params.set('type', typeMap[searchData.propertyType] || searchData.propertyType.toUpperCase())
+      // Property type is already in uppercase format matching backend enum
+      params.set('type', searchData.propertyType)
     }
     if (searchData.minPrice) params.set('minPrice', searchData.minPrice)
     if (searchData.maxPrice) params.set('maxPrice', searchData.maxPrice)

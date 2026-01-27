@@ -33,11 +33,6 @@ export const MobileMenu = ({ isOpen, onClose }: MobileMenuProps) => {
       href: '/booking'
     },
     {
-      id: 'incanto',
-      label: { el: "L' INCANTO", en: "L' INCANTO" },
-      href: '/incanto'
-    },
-    {
       id: 'about',
       label: { el: 'Σχετικά', en: 'About' },
       href: '/about'

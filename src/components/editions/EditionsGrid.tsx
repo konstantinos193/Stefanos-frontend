@@ -11,7 +11,10 @@ import {
   MoneyIcon,
   ChartIcon,
   WrenchIcon,
-  ScalesIcon
+  ScalesIcon,
+  BuildingIcon,
+  BeachIcon,
+  CrownIcon
 } from '@/components/icons'
 import { Edition } from '@/types/edition'
 
@@ -31,7 +34,7 @@ export const EditionsGrid = () => {
       },
       features: ['WiFi', 'Kitchen', 'Parking', 'Garden'],
       price: 'From €80/night',
-      icon: 'https://placehold.co/60x60/3b82f6/FFFFFF?text=Residential',
+      icon: <HouseIcon size={48} className="text-accent-blue" />,
       status: 'active'
     },
     {
@@ -47,7 +50,7 @@ export const EditionsGrid = () => {
       },
       features: ['WiFi', 'Meeting Rooms', 'Parking', 'Reception'],
       price: 'From €150/night',
-      icon: 'https://placehold.co/60x60/3b82f6/FFFFFF?text=Residential',
+      icon: <BuildingIcon size={48} className="text-accent-blue" />,
       status: 'active'
     },
     {
@@ -63,7 +66,7 @@ export const EditionsGrid = () => {
       },
       features: ['Beach Access', 'Pool', 'WiFi', 'Kitchen'],
       price: 'From €120/night',
-      icon: 'https://placehold.co/60x60/10b981/FFFFFF?text=Vacation',
+      icon: <BeachIcon size={48} className="text-accent-blue" />,
       status: 'active'
     },
     {
@@ -79,7 +82,7 @@ export const EditionsGrid = () => {
       },
       features: ['Concierge', 'Pool', 'Spa', 'Private Garden'],
       price: 'From €300/night',
-      icon: 'https://placehold.co/60x60/f59e0b/FFFFFF?text=Luxury',
+      icon: <CrownIcon size={48} className="text-accent-blue" />,
       status: 'active'
     },
     {

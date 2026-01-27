@@ -2,7 +2,7 @@ import { notFound } from 'next/navigation'
 import { PropertyImageGallery } from './PropertyImageGallery'
 import { PropertyInfo } from './PropertyInfo'
 import { PropertyAmenities } from './PropertyAmenities'
-import { PropertyBookingForm } from './PropertyBookingForm'
+import { PropertyInquiryForm } from './PropertyInquiryForm'
 import { PropertyMap } from './PropertyMap'
 import { PropertyReviews } from './PropertyReviews'
 import { PropertyOwner } from './PropertyOwner'
@@ -16,7 +16,9 @@ type PropertyDetailContentProps = {
 
 async function fetchProperty(id: string): Promise<Property> {
   try {
-    const response = await serverFetch<{ success: boolean; data: Property }>(`/properties/${id}`)
+    // Try to use the API function which now handles mock data
+    const { propertiesApi } = await import('@/lib/api/properties')
+    const response = await propertiesApi.getById(id)
     
     if (!response.success || !response.data) {
       notFound()
@@ -52,7 +54,7 @@ export async function PropertyDetailContent({ lang, propertyId }: PropertyDetail
           
           <div className="lg:col-span-1">
             <div className="sticky top-24 space-y-6">
-              <PropertyBookingForm property={property} lang={lang} />
+              <PropertyInquiryForm property={property} lang={lang} />
               <PropertyOwner owner={property.owner} lang={lang} />
             </div>
           </div>

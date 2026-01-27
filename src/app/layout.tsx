@@ -1,4 +1,4 @@
-﻿import type { Metadata } from 'next'
+import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
 import { HtmlLangUpdater } from '@/components/layout/HtmlLangUpdater'
@@ -10,8 +10,8 @@ const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: {
-    default: 'STEFANOS MALESKOS Real Estate',
-    template: '%s | STEFANOS MALESKOS Real Estate'
+    default: 'SMH Real Estate',
+    template: '%s | SMH Real Estate'
   },
   viewport: {
     width: 'device-width',
@@ -19,17 +19,17 @@ export const metadata: Metadata = {
     maximumScale: 5,
     userScalable: true,
   },
-  description: 'ΣΤΕΦΑΝΟΣ ΜΑΛΕΣΚΟΣ Real Estate - Αξιόπιστη πλατφόρμα ακινήτων με σύγχρονη διαχείριση κρατήσεων | STEFANOS MALESKOS Real Estate - Trusted real estate platform with modern booking management',
-  keywords: ['real estate', 'ακίνητα', 'booking', 'κρατήσεις', 'property management', 'STEFANOS MALESKOS', 'ΣΤΕΦΑΝΟΣ ΜΑΛΕΣΚΟΣ'],
-  authors: [{ name: 'STEFANOS MALESKOS Real Estate' }],
-  creator: 'STEFANOS MALESKOS Real Estate',
-  publisher: 'STEFANOS MALESKOS Real Estate',
+  description: 'SMH Real Estate - Αξιόπιστη πλατφόρμα ακινήτων με σύγχρονη διαχείριση κρατήσεων | SMH Real Estate - Trusted real estate platform with modern booking management',
+  keywords: ['real estate', 'ακίνητα', 'booking', 'κρατήσεις', 'property management', 'SMH'],
+  authors: [{ name: 'SMH Real Estate' }],
+  creator: 'SMH Real Estate',
+  publisher: 'SMH Real Estate',
   formatDetection: {
     email: false,
     address: false,
     telephone: false,
   },
-  metadataBase: new URL('https://real-estate-platform.com'),
+  metadataBase: new URL('https://smholdings.gr'),
   alternates: {
     canonical: '/',
     languages: {
@@ -41,15 +41,15 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'en_US',
     alternateLocale: 'el_GR',
-    url: 'https://real-estate-platform.com',
-    title: 'STEFANOS MALESKOS Real Estate | ΣΤΕΦΑΝΟΣ ΜΑΛΕΣΚΟΣ Real Estate',
-    description: 'ΣΤΕΦΑΝΟΣ ΜΑΛΕΣΚΟΣ Real Estate - Αξιόπιστη πλατφόρμα ακινήτων με σύγχρονη διαχείριση κρατήσεων | STEFANOS MALESKOS Real Estate - Trusted real estate platform with modern booking management',
-    siteName: 'STEFANOS MALESKOS Real Estate',
+    url: 'https://smholdings.gr',
+    title: 'SMH Real Estate',
+    description: 'SMH Real Estate - Αξιόπιστη πλατφόρμα ακινήτων με σύγχρονη διαχείριση κρατήσεων | SMH Real Estate - Trusted real estate platform with modern booking management',
+    siteName: 'SMH Real Estate',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'STEFANOS MALESKOS Real Estate | ΣΤΕΦΑΝΟΣ ΜΑΛΕΣΚΟΣ Real Estate',
-    description: 'ΣΤΕΦΑΝΟΣ ΜΑΛΕΣΚΟΣ Real Estate - Αξιόπιστη πλατφόρμα ακινήτων με σύγχρονη διαχείριση κρατήσεων | STEFANOS MALESKOS Real Estate - Trusted real estate platform with modern booking management',
+    title: 'SMH Real Estate',
+    description: 'SMH Real Estate - Αξιόπιστη πλατφόρμα ακινήτων με σύγχρονη διαχείριση κρατήσεων | SMH Real Estate - Trusted real estate platform with modern booking management',
   },
   robots: {
     index: true,

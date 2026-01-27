@@ -3,14 +3,15 @@
 import { useState } from 'react'
 import { clsx } from 'clsx'
 import { useLanguage } from '@/lib/contexts/LanguageContext'
+import ReactCountryFlag from 'react-country-flag'
 
 export const LanguageSwitcher = () => {
   const { language: currentLanguage, setLanguage } = useLanguage()
   const [isOpen, setIsOpen] = useState(false)
 
-  const languages: Array<{ code: 'en' | 'el'; name: string; flagClass: string }> = [
-    { code: 'en', name: 'English', flagClass: 'fi fi-us' },
-    { code: 'el', name: 'Ελληνικά', flagClass: 'fi fi-gr' }
+  const languages: Array<{ code: 'en' | 'el'; name: string; flagCode: string }> = [
+    { code: 'en', name: 'English', flagCode: 'us' },
+    { code: 'el', name: 'Ελληνικά', flagCode: 'gr' }
   ]
 
   const currentLang = languages.find(lang => lang.code === currentLanguage) || languages[0]
@@ -33,7 +34,15 @@ export const LanguageSwitcher = () => {
         aria-label="Change language"
         aria-expanded={isOpen}
       >
-        <span className={`${currentLang.flagClass} text-sm`}></span>
+        <ReactCountryFlag
+          countryCode={currentLang.flagCode.toUpperCase()}
+          svg
+          style={{
+            width: '16px',
+            height: '12px',
+          }}
+          title={currentLang.name}
+        />
         <span className="hidden sm:inline text-xs">{currentLang.code.toUpperCase()}</span>
         <svg
           className={clsx(
@@ -72,7 +81,15 @@ export const LanguageSwitcher = () => {
                     : 'text-gray-300 hover:bg-gray-800 hover:text-white'
                 )}
               >
-                <span className={`${lang.flagClass} text-xl`}></span>
+                <ReactCountryFlag
+                  countryCode={lang.flagCode.toUpperCase()}
+                  svg
+                  style={{
+                    width: '24px',
+                    height: '18px',
+                  }}
+                  title={lang.name}
+                />
                 <span className="font-medium">{lang.name}</span>
               </button>
             ))}

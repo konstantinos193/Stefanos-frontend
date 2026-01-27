@@ -14,7 +14,7 @@ export const Header = () => {
   return (
     <>
       {/* Desktop Header */}
-      <header className="hidden md:block header border-b border-gray-900 shadow-lg bg-black/95 backdrop-blur-sm relative overflow-visible z-40">
+      <header className="hidden md:block header border-b border-gray-900 shadow-lg bg-black/95 backdrop-blur-sm relative overflow-visible z-40 h-24">
         <div className="w-full h-full relative">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full">
             <div className="flex items-center justify-between h-full relative">
@@ -37,27 +37,19 @@ export const Header = () => {
         {/* Logo - Fixed position, stays in front and gets left behind when scrolling */}
         <Link 
           href="/" 
-          className="fixed top-0 left-0 flex items-center space-x-3 group transition-all duration-300 ease-in-out hover:opacity-90 p-4 sm:p-6 z-[100]"
+          className="fixed top-0 left-0 flex items-center group transition-all duration-300 ease-in-out hover:opacity-90 p-4 sm:p-6 z-[100] h-24"
         >
-          <div className="relative h-12 sm:h-16 md:h-20 flex-shrink-0" style={{ width: 'auto', minWidth: '48px' }}>
+          <div className="relative h-16 sm:h-20 md:h-24 flex-shrink-0" style={{ width: 'auto', minWidth: '64px' }}>
             <Image 
               src="/logoetc.png" 
-              alt="STEFANOS MALESKOS Real Estate" 
+              alt="SMH Real Estate" 
               width={200}
-              height={80}
+              height={96}
               className="h-full w-auto object-contain drop-shadow-lg transition-transform duration-300 group-hover:scale-105"
               style={{ width: 'auto', height: '100%' }}
               priority
               unoptimized
             />
-          </div>
-          <div className="hidden sm:flex flex-col">
-            <span className="text-sm md:text-base font-bold text-header-text leading-tight transition-colors duration-300 group-hover:text-white">
-              STEFANOS MALESKOS Real Estate
-            </span>
-            <span className="text-xs md:text-sm text-gray-400 leading-tight transition-colors duration-300 group-hover:text-gray-300">
-              STEFANOS MALESKOS
-            </span>
           </div>
         </Link>
       </header>

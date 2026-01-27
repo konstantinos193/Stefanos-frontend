@@ -18,7 +18,8 @@ const formatPropertyType = (type: string): string => {
     ROOM: 'Room',
     COMMERCIAL: 'Commercial',
     STORAGE: 'Storage',
-    VACATION_RENTAL: 'Vacation Rental',
+    PLOT: 'Plot',
+    GARAGE: 'Garage',
     LUXURY: 'Luxury',
     INVESTMENT: 'Investment'
   }
@@ -103,7 +104,13 @@ const PropertyCardComponent = ({ property, lang = 'en' }: PropertyCardProps) => 
               <span className="text-2xl font-bold text-[#d4af37]">
                 €{property.basePrice.toFixed(0)}
               </span>
-              <span className="text-sm text-gray-600">/night</span>
+              {/* Hide daily rate for long-term rentals (minStay >= 30 days) */}
+              {(!property.minStay || property.minStay < 30) && (
+                <span className="text-sm text-gray-600">/night</span>
+              )}
+              {property.minStay && property.minStay >= 30 && (
+                <span className="text-sm text-gray-600">/month</span>
+              )}
             </div>
             <div className="flex items-center gap-3 text-sm text-gray-600">
               {property.bedrooms > 0 && (

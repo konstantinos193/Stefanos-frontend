@@ -1,0 +1,685 @@
+/* IncantoFacilities Component Styles - Premium Luxury Design */
+
+.section {
+  position: relative;
+  padding-top: 8rem;
+  padding-bottom: 10rem;
+  background: linear-gradient(
+    180deg,
+    #ffffff 0%,
+    #fafafa 25%,
+    #f5f5f5 50%,
+    #fafafa 75%,
+    #ffffff 100%
+  );
+  overflow: hidden;
+}
+
+/* Animated background elements */
+.backgroundElements {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.backgroundOrb1 {
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  top: -200px;
+  right: -200px;
+  background: radial-gradient(
+    circle,
+    rgba(212, 175, 55, 0.08) 0%,
+    rgba(212, 175, 55, 0.03) 50%,
+    transparent 100%
+  );
+  border-radius: 50%;
+  animation: float 20s ease-in-out infinite;
+  filter: blur(60px);
+}
+
+.backgroundOrb2 {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  bottom: -150px;
+  left: -150px;
+  background: radial-gradient(
+    circle,
+    rgba(184, 148, 31, 0.06) 0%,
+    rgba(184, 148, 31, 0.02) 50%,
+    transparent 100%
+  );
+  border-radius: 50%;
+  animation: float 25s ease-in-out infinite reverse;
+  filter: blur(50px);
+}
+
+.backgroundOrb3 {
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(
+    circle,
+    rgba(212, 175, 55, 0.05) 0%,
+    transparent 70%
+  );
+  border-radius: 50%;
+  animation: pulse 15s ease-in-out infinite;
+  filter: blur(40px);
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(30px, -30px) scale(1.1);
+  }
+  66% {
+    transform: translate(-20px, 20px) scale(0.9);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 0.3;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: translate(-50%, -50%) scale(1.2);
+  }
+}
+
+.container {
+  position: relative;
+  z-index: 1;
+  max-width: 90rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+/* Header Section */
+.header {
+  text-align: center;
+  margin-bottom: 6rem;
+  position: relative;
+}
+
+.headerBadge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 1.5rem;
+  margin-bottom: 2rem;
+  background: linear-gradient(
+    135deg,
+    rgba(212, 175, 55, 0.1) 0%,
+    rgba(184, 148, 31, 0.05) 100%
+  );
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  border-radius: 50px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  animation: fadeInUp 0.8s ease-out;
+}
+
+.badgeText {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgb(212, 175, 55);
+  background: linear-gradient(135deg, rgb(212, 175, 55), rgb(184, 148, 31));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.decorativeLine {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+  animation: fadeInUp 0.8s ease-out 0.2s both;
+}
+
+.line {
+  height: 0.375rem;
+  width: 6rem;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgb(212, 175, 55),
+    rgb(184, 148, 31),
+    rgb(212, 175, 55),
+    transparent
+  );
+  border-radius: 9999px;
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+  animation: shimmer 3s ease-in-out infinite;
+}
+
+.lineAccent {
+  height: 0.125rem;
+  width: 4rem;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(212, 175, 55, 0.5),
+    transparent
+  );
+  border-radius: 9999px;
+}
+
+@keyframes shimmer {
+  0%, 100% {
+    opacity: 0.8;
+    transform: scaleX(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scaleX(1.1);
+  }
+}
+
+.title {
+  margin-bottom: 1.5rem;
+  animation: fadeInUp 0.8s ease-out 0.4s both;
+}
+
+.titleMain {
+  display: inline-block;
+  font-size: 2.5rem;
+  font-weight: 700;
+  background: linear-gradient(
+    135deg,
+    rgb(17, 24, 39) 0%,
+    rgb(31, 41, 55) 50%,
+    rgb(17, 24, 39) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  position: relative;
+}
+
+.description {
+  font-size: 1.125rem;
+  color: rgb(75, 85, 99);
+  max-width: 42rem;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.8;
+  font-weight: 400;
+  animation: fadeInUp 0.8s ease-out 0.6s both;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.categoriesContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 6rem;
+}
+
+.category {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  animation: fadeInUp 0.8s ease-out both;
+}
+
+.categoryHeader {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 1rem;
+}
+
+.categoryBadge {
+  flex-shrink: 0;
+  width: 4rem;
+  height: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(
+    135deg,
+    rgba(212, 175, 55, 0.15) 0%,
+    rgba(184, 148, 31, 0.1) 100%
+  );
+  border: 2px solid rgba(212, 175, 55, 0.3);
+  border-radius: 1rem;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 8px 32px rgba(212, 175, 55, 0.1);
+}
+
+.categoryNumber {
+  font-size: 1.25rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, rgb(212, 175, 55), rgb(184, 148, 31));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: 0.05em;
+}
+
+.categoryTitleWrapper {
+  flex: 1;
+}
+
+.categoryTitle {
+  font-size: 2rem;
+  font-weight: 700;
+  color: rgb(17, 24, 39);
+  margin-bottom: 0.75rem;
+  letter-spacing: -0.01em;
+}
+
+.categoryLine {
+  height: 0.25rem;
+  width: 8rem;
+  background: linear-gradient(
+    to right,
+    rgb(212, 175, 55),
+    rgba(212, 175, 55, 0.3),
+    transparent
+  );
+  border-radius: 9999px;
+  box-shadow: 0 2px 8px rgba(212, 175, 55, 0.3);
+}
+
+.itemsGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+/* Premium Facility Card */
+.facilityCard {
+  position: relative;
+  padding: 2rem;
+  border-radius: 1.5rem;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  animation: fadeInUp 0.6s ease-out both;
+  isolation: isolate;
+}
+
+.facilityCard::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 1.5rem;
+  padding: 2px;
+  background: linear-gradient(
+    135deg,
+    rgba(212, 175, 55, 0.3),
+    rgba(184, 148,31, 0.1),
+    rgba(212, 175, 55, 0.3)
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.facilityCard:hover::before {
+  opacity: 1;
+}
+
+.cardBorder {
+  position: absolute;
+  inset: 0;
+  border-radius: 1.5rem;
+  padding: 2px;
+  background: linear-gradient(
+    135deg,
+    rgba(212, 175, 55, 0.4),
+    rgba(184, 148, 31, 0.2),
+    rgba(212, 175, 55, 0.4)
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  z-index: 1;
+}
+
+.facilityCard:hover .cardBorder {
+  opacity: 1;
+}
+
+.cardBackground {
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 1.5rem;
+  transition: all 0.5s ease;
+  z-index: 0;
+}
+
+.facilityCard:hover .cardBackground {
+  background: rgba(255, 255, 255, 0.85);
+  border-color: rgba(212, 175, 55, 0.3);
+  box-shadow: 
+    0 20px 60px rgba(0, 0, 0, 0.08),
+    0 0 0 1px rgba(212, 175, 55, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+.hoverOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(212, 175, 55, 0.08) 0%,
+    rgba(184, 148, 31, 0.04) 50%,
+    transparent 100%
+  );
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  border-radius: 1.5rem;
+  z-index: 1;
+}
+
+.facilityCard:hover .hoverOverlay {
+  opacity: 1;
+}
+
+.hoverGlow {
+  position: absolute;
+  inset: -2px;
+  border-radius: 1.5rem;
+  background: linear-gradient(
+    135deg,
+    rgba(212, 175, 55, 0.3),
+    rgba(184, 148, 31, 0.2),
+    rgba(212, 175, 55, 0.3)
+  );
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  filter: blur(20px);
+  pointer-events: none;
+  z-index: -1;
+}
+
+.facilityCard:hover .hoverGlow {
+  opacity: 0.6;
+}
+
+.shineEffect {
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.3) 50%,
+    transparent 70%
+  );
+  transform: translateX(-100%) translateY(-100%) rotate(45deg);
+  transition: transform 0.8s ease;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.facilityCard:hover .shineEffect {
+  transform: translateX(100%) translateY(100%) rotate(45deg);
+  transition: transform 0.8s ease;
+}
+
+.cardContent {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.iconContainer {
+  position: relative;
+  flex-shrink: 0;
+  width: 4.5rem;
+  height: 4.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.iconBackground {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(212, 175, 55, 0.15) 0%,
+    rgba(184, 148, 31, 0.08) 100%
+  );
+  border-radius: 1.25rem;
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  transition: all 0.5s ease;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.iconGlow {
+  position: absolute;
+  inset: -4px;
+  background: radial-gradient(
+    circle,
+    rgba(212, 175, 55, 0.3) 0%,
+    transparent 70%
+  );
+  border-radius: 1.5rem;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  filter: blur(8px);
+  pointer-events: none;
+}
+
+.facilityCard:hover .iconGlow {
+  opacity: 1;
+}
+
+.facilityCard:hover .iconBackground {
+  background: linear-gradient(
+    135deg,
+    rgba(212, 175, 55, 0.25) 0%,
+    rgba(184, 148, 31, 0.15) 100%
+  );
+  border-color: rgba(212, 175, 55, 0.4);
+  transform: scale(1.05);
+  box-shadow: 
+    0 8px 24px rgba(212, 175, 55, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.icon {
+  position: relative;
+  z-index: 1;
+  width: 2rem;
+  height: 2rem;
+  color: rgb(212, 175, 55);
+  transition: all 0.5s ease;
+  filter: drop-shadow(0 2px 4px rgba(212, 175, 55, 0.2));
+}
+
+.facilityCard:hover .icon {
+  color: rgb(184, 148, 31);
+  transform: scale(1.1) rotate(5deg);
+  filter: drop-shadow(0 4px 8px rgba(212, 175, 55, 0.4));
+}
+
+.textContainer {
+  flex: 1;
+  min-width: 0;
+  position: relative;
+}
+
+.facilityName {
+  color: rgb(17, 24, 39);
+  font-weight: 600;
+  font-size: 1.125rem;
+  line-height: 1.5;
+  transition: all 0.5s ease;
+  letter-spacing: -0.01em;
+  position: relative;
+  z-index: 1;
+}
+
+.facilityCard:hover .facilityName {
+  color: rgb(31, 41, 55);
+  transform: translateX(4px);
+}
+
+.facilityUnderline {
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(
+    to right,
+    rgb(212, 175, 55),
+    rgba(212, 175, 55, 0.3)
+  );
+  border-radius: 2px;
+  transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 4px rgba(212, 175, 55, 0.3);
+}
+
+.facilityCard:hover .facilityUnderline {
+  width: 100%;
+}
+
+/* Responsive Styles */
+@media (min-width: 640px) {
+  .container {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+  
+  .titleMain {
+    font-size: 3.5rem;
+  }
+  
+  .description {
+    font-size: 1.25rem;
+  }
+
+  .categoryBadge {
+    width: 5rem;
+    height: 5rem;
+  }
+
+  .categoryNumber {
+    font-size: 1.5rem;
+  }
+
+  .categoryTitle {
+    font-size: 2.5rem;
+  }
+
+  .facilityName {
+    font-size: 1.25rem;
+  }
+
+  .iconContainer {
+    width: 5rem;
+    height: 5rem;
+  }
+
+  .icon {
+    width: 2.25rem;
+    height: 2.25rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .section {
+    padding-top: 10rem;
+    padding-bottom: 12rem;
+  }
+  
+  .itemsGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+  
+  .categoriesContainer {
+    gap: 8rem;
+  }
+
+  .facilityCard {
+    padding: 2.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+  
+  .titleMain {
+    font-size: 4.5rem;
+  }
+
+  .description {
+    font-size: 1.375rem;
+  }
+  
+  .itemsGrid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+
+  .facilityCard {
+    padding: 2.5rem;
+  }
+
+  .facilityCard:hover {
+    transform: translateY(-8px) scale(1.02);
+  }
+}
+
+@media (min-width: 1280px) {
+  .itemsGrid {
+    gap: 2.5rem;
+  }
+
+  .facilityCard {
+    padding: 3rem;
+  }
+}

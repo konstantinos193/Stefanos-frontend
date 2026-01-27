@@ -31,50 +31,7 @@ export const PersonalizedRecommendationsSection = ({
     setIsVisible(true)
   }, [])
 
-  const defaultRecommendations: Property[] = [
-    {
-      id: 'rec-1',
-      title: 'Seaside Villa in Preveza',
-      location: 'Preveza, Greece',
-      price: 420,
-      rating: 4.9,
-      image: 'https://placehold.co/400x300/3b82f6/FFFFFF?text=Preveza+Villa',
-      amenities: ['WiFi', 'Kitchen', 'Beach Access', 'Pool', 'Garden'],
-      type: 'Villa'
-    },
-    {
-      id: 'rec-2',
-      title: 'Coastal Retreat in Preveza',
-      location: 'Preveza, Greece',
-      price: 180,
-      rating: 4.8,
-      image: 'https://placehold.co/400x300/10b981/FFFFFF?text=Preveza+Retreat',
-      amenities: ['WiFi', 'Fireplace', 'Sea View', 'Beach Access'],
-      type: 'Cottage'
-    },
-    {
-      id: 'rec-3',
-      title: 'Modern Apartment in Preveza Center',
-      location: 'Preveza, Greece',
-      price: 150,
-      rating: 4.7,
-      image: 'https://placehold.co/400x300/f59e0b/FFFFFF?text=Preveza+Apartment',
-      amenities: ['WiFi', 'Kitchen', 'City Center', 'Parking'],
-      type: 'Apartment'
-    },
-    {
-      id: 'rec-4',
-      title: 'Luxury Beachfront in Preveza',
-      location: 'Preveza, Greece',
-      price: 550,
-      rating: 5.0,
-      image: 'https://placehold.co/400x300/ef4444/FFFFFF?text=Preveza+Beachfront',
-      amenities: ['WiFi', 'Kitchen', 'Sea View', 'Pool', 'Beach Access'],
-      type: 'Penthouse'
-    }
-  ]
-
-  const displayProperties = properties || defaultRecommendations
+  const displayProperties = properties || []
 
   return (
     <section className="py-16 lg:py-24 bg-white">

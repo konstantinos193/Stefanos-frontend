@@ -14,6 +14,7 @@ type CustomInputProps = {
   labelClassName?: string
   error?: string
   disabled?: boolean
+  required?: boolean
 }
 
 export const CustomInput = forwardRef<HTMLInputElement, CustomInputProps>(
@@ -28,7 +29,8 @@ export const CustomInput = forwardRef<HTMLInputElement, CustomInputProps>(
       className,
       labelClassName,
       error,
-      disabled = false
+      disabled = false,
+      required = false
     },
     ref
   ) => {
@@ -110,6 +112,7 @@ export const CustomInput = forwardRef<HTMLInputElement, CustomInputProps>(
             onPaste={handlePaste}
             placeholder={placeholder}
             disabled={disabled}
+            required={required}
             inputMode={type === 'number' ? 'numeric' : undefined}
             className={cn(
               'w-full px-2 sm:px-3 md:px-3 py-1.5 sm:py-2 md:py-2',

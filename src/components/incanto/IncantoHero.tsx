@@ -1,6 +1,8 @@
 'use client'
 
 import { ReactNode } from 'react'
+import Image from 'next/image'
+import styles from './IncantoHero.module.css'
 
 type IncantoHeroProps = {
   lang: string
@@ -9,33 +11,61 @@ type IncantoHeroProps = {
 
 export function IncantoHero({ lang, children }: IncantoHeroProps) {
   return (
-    <section className="relative min-h-screen flex items-start justify-center overflow-hidden bg-black pt-28 pb-16">
-      {/* Background with exact L'incanto logo image */}
-      <div
-        className="absolute inset-0 bg-black"
-        style={{
-          backgroundImage: 'url(/incanto-logo.png)',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center center',
-          backgroundRepeat: 'no-repeat',
-          backgroundColor: '#000000',
-        }}
-      />
+    <section className={styles.hero}>
+      {/* Background with parallax effect */}
+      <div className={styles.backgroundWrapper}>
+        <div
+          className={styles.backgroundImage}
+          style={{
+            backgroundImage: 'url(/incanto-logo.png)',
+          }}
+        />
+        <div className={styles.overlay} />
+        <div className={styles.gradientMesh} />
+      </div>
 
-      {/* Overlay content (e.g. booking card) with soft, fading blur behind */}
-      <div className="relative z-10 w-full flex justify-center px-4 sm:px-6 lg:px-8">
-        <div className="relative w-full max-w-5xl flex justify-center">
-          {/* Soft blurred halo fully covering the booking card */}
-          <div
-            className="pointer-events-none absolute -inset-x-6 -inset-y-6 md:-inset-x-10 md:-inset-y-8
-                       bg-gradient-to-b from-black/65 via-black/40 to-black/10
-                       backdrop-blur-md rounded-[999px]"
-          />
-          <div className="relative w-full max-w-3xl">{children}</div>
+      {/* Content Container */}
+      <div className={styles.content}>
+        <div className={styles.heroContent}>
+          {/* Brand Section */}
+          <div className={styles.brandSection}>
+            <div className={styles.logoWrapper}>
+              <Image
+                src="/incanto-logo.png"
+                alt="L'Incanto"
+                width={280}
+                height={112}
+                className={styles.logoImage}
+                priority
+                unoptimized
+              />
+            </div>
+            <div className={styles.tagline}>
+              <span className={styles.taglineText}>
+                {lang === 'el' 
+                  ? 'Ανακαλύψτε την Πολυτέλεια' 
+                  : 'Discover Luxury'}
+              </span>
+            </div>
+          </div>
+
+          {/* Booking Form Section */}
+          {children && (
+            <div className={styles.bookingSection}>
+              {children}
+            </div>
+          )}
+        </div>
+      </div>
+
+      {/* Scroll Indicator */}
+      <div className={styles.scrollIndicator}>
+        <div className={styles.scrollArrow}>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <path d="M6 9l6 6 6-6" />
+          </svg>
         </div>
       </div>
     </section>
   )
 }
-
-

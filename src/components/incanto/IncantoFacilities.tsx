@@ -2,6 +2,7 @@
 
 import { clsx } from 'clsx'
 import { BriefcaseIcon, ClockIcon } from '@/components/icons'
+import styles from './IncantoFacilities.module.css'
 
 type IncantoFacilitiesProps = {
   lang: string
@@ -127,12 +128,25 @@ const LaundryIcon = ({ className = '', size = 24 }: { className?: string; size?:
   </svg>
 )
 
+const KitchenIcon = ({ className = '', size = 24 }: { className?: string; size?: number }) => (
+  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+    <rect x="2" y="4" width="20" height="16" rx="2" />
+    <path d="M2 12h20" />
+    <path d="M8 4v4M16 4v4" />
+    <circle cx="7" cy="16" r="1" />
+    <circle cx="12" cy="16" r="1" />
+    <circle cx="17" cy="16" r="1" />
+    <path d="M6 8h2M10 8h2M14 8h2" />
+  </svg>
+)
+
 const facilities = [
   {
     category: 'accommodation',
     items: [
       { Icon: BedIcon, name: { el: 'Ανετα Δωμάτια', en: 'Comfortable Rooms' } },
       { Icon: BathIcon, name: { el: 'Πλήρως Εξοπλισμένα Μπάνια', en: 'Fully Equipped Bathrooms' } },
+      { Icon: KitchenIcon, name: { el: 'Πλήρως Εξοπλισμένα Δωμάτια με Κουζίνα', en: 'Fully Furnished Rooms with Kitchen' } },
       { Icon: WindowIcon, name: { el: 'Θέα στη Θάλασσα', en: 'Sea View' } },
       { Icon: BalconyIcon, name: { el: 'Μπαλκόνια', en: 'Balconies' } }
     ]
@@ -143,7 +157,6 @@ const facilities = [
       { Icon: PoolIcon, name: { el: 'Πισίνα', en: 'Swimming Pool' } },
       { Icon: RestaurantIcon, name: { el: 'Εστιατόριο', en: 'Restaurant' } },
       { Icon: BarIcon, name: { el: 'Μπαρ', en: 'Bar' } },
-      { Icon: ParkingIcon, name: { el: 'Χώρος Στάθμευσης', en: 'Parking' } },
       { Icon: BriefcaseIcon, name: { el: 'Business Center', en: 'Business Center' } },
       { Icon: FitnessIcon, name: { el: 'Γυμναστήριο', en: 'Fitness Center' } }
     ]
@@ -170,17 +183,32 @@ export function IncantoFacilities({ lang }: IncantoFacilitiesProps) {
   }
 
   return (
-    <section className="py-20 md:py-28 bg-gradient-to-b from-white via-gray-50/30 to-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className={styles.section}>
+      {/* Animated background elements */}
+      <div className={styles.backgroundElements}>
+        <div className={styles.backgroundOrb1} />
+        <div className={styles.backgroundOrb2} />
+        <div className={styles.backgroundOrb3} />
+      </div>
+
+      <div className={styles.container}>
         {/* Header Section */}
-        <div className="text-center mb-16">
-          <div className="inline-block mb-4">
-            <div className="h-1 w-20 bg-gradient-to-r from-[#d4af37] to-[#b8941f] mx-auto rounded-full" />
+        <div className={styles.header}>
+          <div className={styles.headerBadge}>
+            <span className={styles.badgeText}>
+              {lang === 'el' ? 'Πολυτέλεια' : 'Luxury'}
+            </span>
           </div>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 tracking-tight">
-            {lang === 'el' ? 'Παροχές & Εγκαταστάσεις' : 'Facilities & Amenities'}
+          <div className={styles.decorativeLine}>
+            <div className={styles.line} />
+            <div className={styles.lineAccent} />
+          </div>
+          <h2 className={styles.title}>
+            <span className={styles.titleMain}>
+              {lang === 'el' ? 'Παροχές & Εγκαταστάσεις' : 'Facilities & Amenities'}
+            </span>
           </h2>
-          <p className="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+          <p className={styles.description}>
             {lang === 'el'
               ? 'Απολαύστε μια πλήρη εμπειρία πολυτέλειας με τις παροχές μας'
               : 'Enjoy a complete luxury experience with our facilities'}
@@ -188,50 +216,62 @@ export function IncantoFacilities({ lang }: IncantoFacilitiesProps) {
         </div>
 
         {/* Facilities Grid */}
-        <div className="space-y-16 md:space-y-20">
+        <div className={styles.categoriesContainer}>
           {facilities.map((category, categoryIndex) => (
-            <div key={categoryIndex} className="group">
+            <div key={categoryIndex} className={styles.category}>
               {/* Category Header */}
-              <div className="mb-8 md:mb-10">
-                <h3 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">
-                  {getCategoryTitle(category.category)}
-                </h3>
-                <div className="h-0.5 w-24 bg-gradient-to-r from-[#d4af37] to-transparent rounded-full" />
+              <div className={styles.categoryHeader}>
+                <div className={styles.categoryBadge}>
+                  <span className={styles.categoryNumber}>
+                    {String(categoryIndex + 1).padStart(2, '0')}
+                  </span>
+                </div>
+                <div className={styles.categoryTitleWrapper}>
+                  <h3 className={styles.categoryTitle}>
+                    {getCategoryTitle(category.category)}
+                  </h3>
+                  <div className={styles.categoryLine} />
+                </div>
               </div>
 
               {/* Items Grid */}
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
+              <div className={styles.itemsGrid}>
                 {category.items.map((item, itemIndex) => (
                   <div
                     key={itemIndex}
-                    className={clsx(
-                      'group/item relative p-6 bg-white rounded-2xl',
-                      'border-2 border-gray-100',
-                      'shadow-sm hover:shadow-xl',
-                      'transition-all duration-300',
-                      'hover:scale-[1.02] hover:-translate-y-1',
-                      'hover:border-[#d4af37]/40',
-                      'overflow-hidden'
-                    )}
+                    className={styles.facilityCard}
+                    style={{ animationDelay: `${itemIndex * 0.05}s` }}
                   >
+                    {/* Animated border gradient */}
+                    <div className={styles.cardBorder} />
+                    
+                    {/* Glassmorphism background */}
+                    <div className={styles.cardBackground} />
+                    
                     {/* Hover gradient overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-[#d4af37]/5 via-transparent to-transparent opacity-0 group-hover/item:opacity-100 transition-opacity duration-300" />
+                    <div className={styles.hoverOverlay} />
                     
                     {/* Hover glow effect */}
-                    <div className="absolute -inset-[1px] rounded-2xl bg-gradient-to-r from-[#d4af37]/20 via-transparent to-[#d4af37]/20 opacity-0 group-hover/item:opacity-100 transition-opacity duration-300 blur-sm pointer-events-none" />
+                    <div className={styles.hoverGlow} />
+
+                    {/* Shine effect */}
+                    <div className={styles.shineEffect} />
 
                     {/* Content */}
-                    <div className="relative z-10 flex items-center gap-5">
+                    <div className={styles.cardContent}>
                       {/* Icon Container */}
-                      <div className="flex-shrink-0 w-14 h-14 rounded-xl bg-gradient-to-br from-[#d4af37]/10 to-[#b8941f]/5 flex items-center justify-center text-[#d4af37] group-hover/item:scale-110 group-hover/item:bg-gradient-to-br group-hover/item:from-[#d4af37]/20 group-hover/item:to-[#b8941f]/10 transition-all duration-300">
-                        <item.Icon className="w-7 h-7" size={28} />
+                      <div className={styles.iconContainer}>
+                        <div className={styles.iconBackground} />
+                        <div className={styles.iconGlow} />
+                        <item.Icon className={styles.icon} size={32} />
                       </div>
                       
                       {/* Text */}
-                      <div className="flex-1 min-w-0">
-                        <p className="text-gray-800 font-semibold text-base md:text-lg leading-tight group-hover/item:text-[#d4af37] transition-colors duration-300">
+                      <div className={styles.textContainer}>
+                        <p className={styles.facilityName}>
                           {lang === 'el' ? item.name.el : item.name.en}
                         </p>
+                        <div className={styles.facilityUnderline} />
                       </div>
                     </div>
                   </div>

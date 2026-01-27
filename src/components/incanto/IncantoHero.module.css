@@ -1,0 +1,228 @@
+/* Modern IncantoHero Component Styles */
+
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: #0a0a0a;
+}
+
+.backgroundWrapper {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.backgroundImage {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.4;
+  transform: scale(1.1);
+  transition: transform 20s ease-out;
+}
+
+.hero:hover .backgroundImage {
+  transform: scale(1.15);
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.7) 0%,
+    rgba(0, 0, 0, 0.5) 50%,
+    rgba(0, 0, 0, 0.8) 100%
+  );
+  z-index: 1;
+}
+
+.gradientMesh {
+  position: absolute;
+  inset: 0;
+  background: 
+    radial-gradient(circle at 20% 30%, rgba(212, 175, 55, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(184, 148, 31, 0.1) 0%, transparent 50%);
+  z-index: 2;
+  animation: meshMove 15s ease-in-out infinite;
+}
+
+@keyframes meshMove {
+  0%, 100% {
+    opacity: 0.8;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+}
+
+.content {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 120px 24px 80px;
+}
+
+.heroContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 60px;
+  width: 100%;
+}
+
+.brandSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  text-align: center;
+  animation: fadeInUp 1s ease-out;
+}
+
+.logoWrapper {
+  position: relative;
+  height: 100px;
+  width: auto;
+  filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.3));
+  transition: transform 0.3s ease;
+}
+
+.logoWrapper:hover {
+  transform: scale(1.05);
+}
+
+.logoImage {
+  height: 100%;
+  width: auto;
+  object-fit: contain;
+}
+
+.tagline {
+  padding: 12px 32px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50px;
+  transition: all 0.3s ease;
+}
+
+.tagline:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(212, 175, 55, 0.4);
+  transform: translateY(-2px);
+}
+
+.taglineText {
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.bookingSection {
+  width: 100%;
+  max-width: 600px;
+  animation: fadeInUp 1s ease-out 0.3s both;
+}
+
+.scrollIndicator {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  animation: bounce 2s ease-in-out infinite;
+}
+
+.scrollArrow {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  color: rgba(255, 255, 255, 0.8);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.scrollArrow:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(212, 175, 55, 0.5);
+  transform: translateY(4px);
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateX(-50%) translateY(0);
+  }
+  50% {
+    transform: translateX(-50%) translateY(-10px);
+  }
+}
+
+/* Responsive Styles */
+@media (min-width: 640px) {
+  .content {
+    padding: 140px 32px 100px;
+  }
+
+  .logoWrapper {
+    height: 120px;
+  }
+
+  .taglineText {
+    font-size: 15px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .content {
+    padding: 160px 48px 120px;
+  }
+
+  .heroContent {
+    gap: 80px;
+  }
+
+  .logoWrapper {
+    height: 140px;
+  }
+
+  .bookingSection {
+    max-width: 700px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .content {
+    padding: 180px 64px 140px;
+  }
+}

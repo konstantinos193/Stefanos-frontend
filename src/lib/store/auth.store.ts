@@ -29,6 +29,94 @@ interface AuthState {
 // Track if checkAuth is currently running to prevent multiple simultaneous calls
 let checkAuthPromise: Promise<void> | null = null;
 
+// Mock users for development/testing
+const MOCK_USERS: Record<string, { user: User; password: string; requiresMFA?: boolean; mfaCode?: string }> = {
+  'test@example.com': {
+    user: {
+      id: 'mock-user-1',
+      email: 'test@example.com',
+      name: 'Test User',
+      role: 'USER',
+      mfaEnabled: false,
+    },
+    password: 'test',
+  },
+  'admin@example.com': {
+    user: {
+      id: 'mock-admin-1',
+      email: 'admin@example.com',
+      name: 'Admin User',
+      role: 'ADMIN',
+      mfaEnabled: false,
+    },
+    password: 'admin',
+  },
+  'mfa@example.com': {
+    user: {
+      id: 'mock-mfa-1',
+      email: 'mfa@example.com',
+      name: 'MFA User',
+      role: 'USER',
+      mfaEnabled: true,
+    },
+    password: 'mfa',
+    requiresMFA: true,
+    mfaCode: '123456', // Mock MFA code
+  },
+};
+
+// Helper function to simulate API delay
+const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
+
+// Mock login function
+const mockLogin = async (email: string, password: string, mfaCode?: string): Promise<{ user: User; token: string } | { requiresMFA: boolean }> => {
+  // Simulate network delay
+  await delay(800);
+  
+  const mockUser = MOCK_USERS[email.toLowerCase()];
+  
+  // If user exists in mock users
+  if (mockUser) {
+    // Check password
+    if (mockUser.password !== password) {
+      throw new Error('Invalid email or password');
+    }
+    
+    // Check MFA requirement
+    if (mockUser.requiresMFA && !mfaCode) {
+      return { requiresMFA: true };
+    }
+    
+    // Check MFA code if provided
+    if (mockUser.requiresMFA && mfaCode && mfaCode !== mockUser.mfaCode) {
+      throw new Error('Invalid MFA code');
+    }
+    
+    // Success - return user and token
+    const token = `mock-token-${email.toLowerCase()}`;
+    return { user: mockUser.user, token };
+  }
+  
+  // For any other email/password combination, accept it as valid (for easy testing)
+  // This allows developers to use any credentials during development
+  await delay(600);
+  
+  // Extract name from email for a more realistic experience
+  const emailName = email.split('@')[0];
+  const displayName = emailName.charAt(0).toUpperCase() + emailName.slice(1).replace(/[._-]/g, ' ');
+  
+  const user: User = {
+    id: `mock-user-${email.toLowerCase().replace(/[^a-z0-9]/g, '-')}`,
+    email: email.toLowerCase(),
+    name: displayName,
+    role: 'USER',
+    mfaEnabled: false,
+  };
+  
+  const token = `mock-token-${email.toLowerCase()}`;
+  return { user, token };
+};
+
 export const useAuthStore = create<AuthState>()(
   persist(
     (set, get) => ({
@@ -41,16 +129,19 @@ export const useAuthStore = create<AuthState>()(
       login: async (email: string, password: string, mfaCode?: string) => {
         set({ isLoading: true, error: null });
         try {
-          // Mock credentials for testing
-          if (email === 'test@stefanos.com' && password === 'test') {
-            const mockUser: User = {
-              id: 'mock-user-1',
-              email: 'test@stefanos.com',
-              name: 'Test User',
-              role: 'USER',
-              mfaEnabled: false,
-            };
-            const mockToken = 'mock-token-test@stefanos.com';
+          // Try mock login first (for development)
+          try {
+            const mockResult = await mockLogin(email, password, mfaCode);
+            
+            if ('requiresMFA' in mockResult) {
+              set({ 
+                isLoading: false,
+                error: 'MFA code required',
+              });
+              throw new Error('MFA_REQUIRED');
+            }
+            
+            const { user: mockUser, token: mockToken } = mockResult;
             
             // Restore profile picture from localStorage if exists
             if (typeof window !== 'undefined') {
@@ -72,8 +163,16 @@ export const useAuthStore = create<AuthState>()(
               error: null,
             });
             return;
+          } catch (mockError: any) {
+            // If it's an MFA error, re-throw it
+            if (mockError.message === 'MFA_REQUIRED') {
+              throw mockError;
+            }
+            // If mock login fails with other error, try real API
+            // (This allows fallback to real API if needed)
           }
 
+          // Try real API login (if mock fails or for production)
           const response = await authApi.login({ email, password }, mfaCode);
           
           if (response.requiresMFA && !mfaCode) {
@@ -166,7 +265,11 @@ export const useAuthStore = create<AuthState>()(
 
           // Handle mock token - restore mock user if it's a mock token
           if (token.startsWith('mock-token-')) {
-            if (user && user.email === 'test@stefanos.com') {
+            // Extract email from token
+            const emailFromToken = token.replace('mock-token-', '');
+            
+            // If we already have a user with matching email, just ensure authenticated state
+            if (user && user.email.toLowerCase() === emailFromToken.toLowerCase()) {
               // Restore profile picture from localStorage if exists
               if (typeof window !== 'undefined') {
                 const savedPicture = localStorage.getItem(`profile_picture_${user.id}`);
@@ -191,14 +294,25 @@ export const useAuthStore = create<AuthState>()(
               checkAuthPromise = null;
               return;
             }
-            // If we have a mock token but no user, restore the mock user
-            let mockUser: User = {
-              id: 'mock-user-1',
-              email: 'test@stefanos.com',
-              name: 'Test User',
-              role: 'USER',
-              mfaEnabled: false,
-            };
+            
+            // If we have a mock token but no user, try to restore from MOCK_USERS or create one
+            const mockUserData = MOCK_USERS[emailFromToken.toLowerCase()];
+            let mockUser: User;
+            
+            if (mockUserData) {
+              mockUser = { ...mockUserData.user };
+            } else {
+              // Create a mock user from the email in the token
+              const emailName = emailFromToken.split('@')[0];
+              const displayName = emailName.charAt(0).toUpperCase() + emailName.slice(1).replace(/[._-]/g, ' ');
+              mockUser = {
+                id: `mock-user-${emailFromToken.toLowerCase().replace(/[^a-z0-9]/g, '-')}`,
+                email: emailFromToken.toLowerCase(),
+                name: displayName,
+                role: 'USER',
+                mfaEnabled: false,
+              };
+            }
             
             // Restore profile picture from localStorage if exists
             if (typeof window !== 'undefined') {

@@ -14,37 +14,54 @@ export const ServicesSection = () => {
       id: 'property-management',
       titleKey: 'services.propertyManagement.title',
       descriptionKey: 'services.propertyManagement.description',
-      icon: 'https://placehold.co/80x80/3b82f6/FFFFFF?text=Property+Mgmt',
+      icon: (
+        <svg className="w-16 h-16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+        </svg>
+      ),
       features: {
-        el: ['Υποστήριξη 24/7', 'Συντήρηση', 'Ελέγχος Ενοικιαστών', 'Οικονομικές Αναφορές'],
-        en: ['24/7 Support', 'Maintenance', 'Tenant Screening', 'Financial Reporting']
+        el: ['Συντήρηση', 'Ελέγχος Ενοικιαστών', 'Οικονομικές Αναφορές'],
+        en: ['Maintenance', 'Tenant Screening', 'Financial Reporting']
       }
     },
     {
-      id: 'booking-platform',
-      titleKey: 'services.bookingPlatform.title',
-      descriptionKey: 'services.bookingPlatform.description',
-      icon: 'https://placehold.co/80x80/10b981/FFFFFF?text=Booking',
+      id: 'investment-consulting',
+      titleKey: 'services.investmentConsulting.title',
+      descriptionKey: 'services.investmentConsulting.description',
+      icon: (
+        <svg className="w-16 h-16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+        </svg>
+      ),
       features: {
-        el: ['Online Κρατήσεις', 'Επεξεργασία Πληρωμών', 'Συγχρονισμός Ημερολογίου', 'Mobile Εφαρμογή'],
-        en: ['Online Booking', 'Payment Processing', 'Calendar Sync', 'Mobile App']
+        el: ['Ανάλυση Αγοράς', 'Συμβουλευτική Επένδυσης', 'Αξιολόγηση Ακινήτων', 'Στρατηγική Ανάπτυξης'],
+        en: ['Market Analysis', 'Investment Consulting', 'Property Valuation', 'Growth Strategy']
       }
     },
     {
       id: 'real-estate',
       titleKey: 'services.realEstate.title',
       descriptionKey: 'services.realEstate.description',
-      icon: 'https://placehold.co/80x80/f59e0b/FFFFFF?text=Real+Estate',
+      icon: (
+        <svg className="w-16 h-16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+        </svg>
+      ),
       features: {
-        el: ['Αναζήτηση Ακινήτων', 'Εικονικές Περιηγήσεις', 'Ανάλυση Αγοράς', 'Νομική Υποστήριξη'],
-        en: ['Property Search', 'Virtual Tours', 'Market Analysis', 'Legal Support']
+        el: ['Αναζήτηση Ακινήτων', 'Ανάλυση Αγοράς', 'Νομική Υποστήριξη'],
+        en: ['Property Search', 'Market Analysis', 'Legal Support']
       }
     },
     {
       id: 'maintenance',
       titleKey: 'services.maintenance.title',
       descriptionKey: 'services.maintenance.description',
-      icon: 'https://placehold.co/80x80/ef4444/FFFFFF?text=Maintenance',
+      icon: (
+        <svg className="w-16 h-16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+        </svg>
+      ),
       features: {
         el: ['Επείγουσες Επισκευές', 'Προληπτική Συντήρηση', 'Έλεγχος Ποιότητας', 'Γρήγορη Απόκριση'],
         en: ['Emergency Repairs', 'Preventive Maintenance', 'Quality Control', 'Fast Response']

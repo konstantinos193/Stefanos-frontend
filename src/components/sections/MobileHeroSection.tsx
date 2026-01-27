@@ -1,46 +1,29 @@
 'use client'
 
-import { useState, useMemo } from 'react'
-import { SearchForm } from '@/components/forms/SearchForm'
+import Image from 'next/image'
 import { RealEstateSearchForm } from '@/components/forms/RealEstateSearchForm'
-import { SearchModeTabs, type SearchModeOption } from '@/components/ui/SearchModeTabs'
 import { HeroStats } from './HeroStats'
 import { useTranslation } from '@/lib/hooks/useTranslation'
 
 export const MobileHeroSection = () => {
   const t = useTranslation()
-  const [searchMode, setSearchMode] = useState<string>('real-estate')
-
-  const searchModeOptions: SearchModeOption[] = useMemo(() => {
-    const realEstateLabel = t('searchModes.realEstate.label')
-    const realEstateDesc = t('searchModes.realEstate.description')
-    const bookingLabel = t('searchModes.booking.label')
-    const bookingDesc = t('searchModes.booking.description')
-    
-    return [
-      {
-        value: 'real-estate',
-        label: realEstateLabel,
-        description: realEstateDesc
-      },
-      {
-        value: 'booking',
-        label: bookingLabel,
-        description: bookingDesc
-      }
-    ]
-  }, [t])
 
   return (
     <section className="relative bg-white min-h-[100vh] min-h-[100dvh] flex items-start justify-center overflow-hidden pt-16">
-      {/* Background image overlay - more subtle on mobile */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-20 will-change-transform"
-        style={{
-          backgroundImage: 'url(/homepage/hero1.png)',
-          transform: 'translateZ(0)'
-        }}
-      />
+      {/* Logo background */}
+      <div className="absolute inset-0 flex items-center justify-center opacity-10">
+        <div className="relative w-full max-w-3xl h-full flex items-center justify-center">
+          <Image 
+            src="/logoetc.png" 
+            alt="SMH Real Estate" 
+            width={600}
+            height={240}
+            className="w-full h-full object-contain"
+            priority
+            unoptimized
+          />
+        </div>
+      </div>
       
       {/* Light overlay for text readability - stronger on mobile */}
       <div className="absolute inset-0 bg-gradient-to-b from-white/75 via-white/60 to-white/75" />
@@ -62,22 +45,9 @@ export const MobileHeroSection = () => {
             </p>
           </div>
           
-          {/* Search Mode Tabs - compact for mobile */}
-          <div className="w-full max-w-sm mx-auto mb-2 px-2">
-            <SearchModeTabs
-              options={searchModeOptions}
-              activeValue={searchMode}
-              onChange={setSearchMode}
-            />
-          </div>
-          
           {/* Search Form - full width on mobile */}
           <div className="w-full max-w-sm mx-auto mb-3 px-2">
-            {searchMode === 'real-estate' ? (
-              <RealEstateSearchForm />
-            ) : (
-              <SearchForm />
-            )}
+            <RealEstateSearchForm />
           </div>
           
           {/* Stats - compact horizontal layout for mobile */}

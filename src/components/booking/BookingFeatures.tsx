@@ -70,7 +70,6 @@ export const BookingFeatures = () => {
       benefits: [
         'Detailed room descriptions',
         'High-quality photos',
-        'Virtual tours',
         'Amenity listings'
       ]
     },
