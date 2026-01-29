@@ -1,5 +1,11 @@
+const path = require('path');
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  turbopack: {
+    // Force this app's directory as the root so module resolution (e.g. tailwindcss) uses ./node_modules
+    root: path.resolve(__dirname),
+  },
   experimental: {
     optimizePackageImports: ['@prisma/client', 'zod', 'react-icons'],
   },

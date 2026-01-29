@@ -10,7 +10,23 @@
   "hero": {
     "title": "Find Your",
     "titleHighlight": "Property",
-    "description": "Your trusted real estate partner in Greece. Buy, sell, or rent properties with confidence."
+    "description": "Your trusted real estate partner in Greece. Buy, sell, or rent properties with confidence.",
+    "parts": {
+      "buy": {
+        "tabLabel": "Buy properties",
+        "title": "Buy",
+        "titleHighlight": "Properties",
+        "description": "Find your perfect home. Browse properties for sale across Greece."
+      },
+      "rent": {
+        "tabLabel": "Rent properties",
+        "title": "Rent",
+        "titleHighlight": "Properties",
+        "description": "Long-term and short-term rentals. Apartments, houses, and vacation stays.",
+        "longTerm": "Long-term",
+        "shortTerm": "Short-term"
+      }
+    }
   },
   "searchModes": {
     "realEstate": {
@@ -248,7 +264,9 @@
       "faq": "FAQ",
       "termsOfService": "Terms of Service",
       "privacyPolicy": "Privacy Policy"
-    }
+    },
+    "copyrightName": "adinfinity",
+    "allRightsReserved": "All rights reserved."
   },
   "search": {
     "location": "Location",

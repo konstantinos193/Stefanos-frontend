@@ -15,14 +15,14 @@ export const FooterCopyright = () => {
         <p className="text-gray-400 text-sm text-center md:text-left">
           © {currentYear}{' '}
           <a
-            href="https://example.com/"
+            href="https://adinfinity.gr/"
             target="_blank"
             rel="noopener noreferrer"
             className="text-accent-blue hover:text-blue-400 transition-colors duration-200 font-medium"
           >
-            Example Company
+            {t('footer.copyrightName')}
           </a>
-          . All rights reserved.
+          . {t('footer.allRightsReserved')}
         </p>
         <div className="flex items-center gap-6 text-sm">
           <Link

@@ -1,21 +1,25 @@
 'use client'
 
+import { useState } from 'react'
 import Image from 'next/image'
 import { RealEstateSearchForm } from '@/components/forms/RealEstateSearchForm'
+import { RentalSearchForm } from '@/components/forms/RentalSearchForm'
 import { HeroStats } from './HeroStats'
 import { useTranslation } from '@/lib/hooks/useTranslation'
 
+type Tab = 'buy' | 'rent'
+
 export const MobileHeroSection = () => {
   const t = useTranslation()
+  const [activeTab, setActiveTab] = useState<Tab>('buy')
 
   return (
     <section className="relative bg-white min-h-[100vh] min-h-[100dvh] flex items-start justify-center overflow-hidden pt-16">
-      {/* Logo background */}
       <div className="absolute inset-0 flex items-center justify-center opacity-10">
         <div className="relative w-full max-w-3xl h-full flex items-center justify-center">
-          <Image 
-            src="/logoetc.png" 
-            alt="SMH Real Estate" 
+          <Image
+            src="/logoetc.png"
+            alt="SMH Real Estate"
             width={600}
             height={240}
             className="w-full h-full object-contain"
@@ -24,33 +28,55 @@ export const MobileHeroSection = () => {
           />
         </div>
       </div>
-      
-      {/* Light overlay for text readability - stronger on mobile */}
+
       <div className="absolute inset-0 bg-gradient-to-b from-white/75 via-white/60 to-white/75" />
-      
-      {/* Subtle pattern overlay */}
       <div className="absolute inset-0 hero-bg-pattern-mobile" />
-      
-      {/* Content container - optimized for mobile scrolling with proper spacing */}
+
       <div className="relative w-full px-4 pt-6 pb-8">
         <div className="flex flex-col items-center text-center w-full space-y-3">
-          {/* Title and Description - more compact */}
-          <div className="w-full mb-1">
-            <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2 leading-tight px-2">
-              {t('hero.title')}
-              <span className="block text-[#d4af37] mt-1">{t('hero.titleHighlight')}</span>
-            </h1>
-            <p className="text-xs sm:text-sm text-gray-700 mb-3 max-w-xs mx-auto leading-relaxed px-2">
-              {t('hero.description')}
-            </p>
+          {/* Tabs: Buy | Rent */}
+          <div className="w-full max-w-sm mx-auto">
+            <div className="inline-flex rounded-full bg-white/90 backdrop-blur-sm border border-gray-200 p-1 shadow-md">
+              <button
+                type="button"
+                onClick={() => setActiveTab('buy')}
+                className={`rounded-full px-4 py-2 text-sm font-semibold transition-all focus:outline-none focus:ring-2 focus:ring-[#d4af37] focus:ring-offset-2 ${
+                  activeTab === 'buy' ? 'bg-[#d4af37] text-gray-900' : 'text-gray-600 hover:bg-gray-100'
+                }`}
+              >
+                {t('hero.parts.buy.tabLabel')}
+              </button>
+              <button
+                type="button"
+                onClick={() => setActiveTab('rent')}
+                className={`rounded-full px-4 py-2 text-sm font-semibold transition-all focus:outline-none focus:ring-2 focus:ring-[#d4af37] focus:ring-offset-2 ${
+                  activeTab === 'rent' ? 'bg-[#d4af37] text-gray-900' : 'text-gray-600 hover:bg-gray-100'
+                }`}
+              >
+                {t('hero.parts.rent.tabLabel')}
+              </button>
+            </div>
           </div>
-          
-          {/* Search Form - full width on mobile */}
-          <div className="w-full max-w-sm mx-auto mb-3 px-2">
-            <RealEstateSearchForm />
+
+          <div className="w-full max-w-sm mx-auto mb-2 px-2">
+            {activeTab === 'buy' && (
+              <>
+                <p className="text-xs sm:text-sm text-gray-700 mb-3 leading-relaxed">
+                  {t('hero.parts.buy.description')}
+                </p>
+                <RealEstateSearchForm intention="buy" idPrefix="buy" />
+              </>
+            )}
+            {activeTab === 'rent' && (
+              <>
+                <p className="text-xs sm:text-sm text-gray-700 mb-3 leading-relaxed">
+                  {t('hero.parts.rent.description')}
+                </p>
+                <RentalSearchForm />
+              </>
+            )}
           </div>
-          
-          {/* Stats - compact horizontal layout for mobile */}
+
           <div className="w-full max-w-sm mx-auto px-2">
             <HeroStats />
           </div>
@@ -59,4 +85,3 @@ export const MobileHeroSection = () => {
     </section>
   )
 }
-

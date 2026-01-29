@@ -17,6 +17,8 @@ type RealEstateSearchData = {
 }
 
 type RealEstateSearchFormProps = {
+  intention?: 'buy' | 'rent'
+  idPrefix?: string
   onSubmit?: (data: RealEstateSearchData) => void
 }
 
@@ -50,7 +52,9 @@ const getBathroomOptions = (t: (key: string) => string) => [
   { value: '4', label: '4+' }
 ]
 
-export const RealEstateSearchForm = ({ onSubmit }: RealEstateSearchFormProps) => {
+const makeId = (prefix: string | undefined, id: string) => (prefix ? `${prefix}-${id}` : id)
+
+export const RealEstateSearchForm = ({ intention, idPrefix, onSubmit }: RealEstateSearchFormProps) => {
   const t = useTranslation()
   const router = useRouter()
   const pathname = usePathname()
@@ -75,18 +79,17 @@ export const RealEstateSearchForm = ({ onSubmit }: RealEstateSearchFormProps) =>
     }
 
     const params = new URLSearchParams()
+    if (intention) params.set('intention', intention)
     if (searchData.location) params.set('location', searchData.location)
     if (searchData.propertyType) {
-      // Property type is already in uppercase format matching backend enum
       params.set('type', searchData.propertyType)
     }
     if (searchData.minPrice) params.set('minPrice', searchData.minPrice)
     if (searchData.maxPrice) params.set('maxPrice', searchData.maxPrice)
-    if (searchData.bedrooms) {
-      params.set('guests', searchData.bedrooms)
-    }
+    if (searchData.bedrooms) params.set('guests', searchData.bedrooms)
 
-    router.push(`/${lang}/results?${params.toString()}`)
+    const route = intention ? 'properties' : 'results'
+    router.push(`/${lang}/${route}?${params.toString()}`)
   }
 
   const handleInputChange = (field: keyof RealEstateSearchData, value: string) => {
@@ -101,7 +104,7 @@ export const RealEstateSearchForm = ({ onSubmit }: RealEstateSearchFormProps) =>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-4">
         <div className="lg:col-span-1">
           <LocationAutocomplete
-            id="location"
+            id={makeId(idPrefix, 'location')}
             label={t('search.location')}
             placeholder={t('search.locationPlaceholder')}
             value={searchData.location}
@@ -111,7 +114,7 @@ export const RealEstateSearchForm = ({ onSubmit }: RealEstateSearchFormProps) =>
         
         <div>
           <CustomSelect
-            id="propertyType"
+            id={makeId(idPrefix, 'propertyType')}
             label={t('search.propertyType')}
             value={searchData.propertyType}
             onChange={(value) => handleInputChange('propertyType', value)}
@@ -122,7 +125,7 @@ export const RealEstateSearchForm = ({ onSubmit }: RealEstateSearchFormProps) =>
         
         <div>
           <CustomSelect
-            id="bedrooms"
+            id={makeId(idPrefix, 'bedrooms')}
             label={t('search.bedrooms')}
             value={searchData.bedrooms}
             onChange={(value) => handleInputChange('bedrooms', value)}
@@ -133,7 +136,7 @@ export const RealEstateSearchForm = ({ onSubmit }: RealEstateSearchFormProps) =>
         
         <div>
           <CustomSelect
-            id="bathrooms"
+            id={makeId(idPrefix, 'bathrooms')}
             label={t('search.bathrooms')}
             value={searchData.bathrooms}
             onChange={(value) => handleInputChange('bathrooms', value)}
@@ -144,7 +147,7 @@ export const RealEstateSearchForm = ({ onSubmit }: RealEstateSearchFormProps) =>
         
         <div>
           <CustomInput
-            id="minPrice"
+            id={makeId(idPrefix, 'minPrice')}
             label={t('search.minPrice')}
             placeholder={t('search.minPricePlaceholder')}
             value={searchData.minPrice}
@@ -155,7 +158,7 @@ export const RealEstateSearchForm = ({ onSubmit }: RealEstateSearchFormProps) =>
         
         <div>
           <CustomInput
-            id="maxPrice"
+            id={makeId(idPrefix, 'maxPrice')}
             label={t('search.maxPrice')}
             placeholder={t('search.maxPricePlaceholder')}
             value={searchData.maxPrice}
@@ -168,7 +171,7 @@ export const RealEstateSearchForm = ({ onSubmit }: RealEstateSearchFormProps) =>
       <div className="mt-4 sm:mt-5 md:mt-6 flex justify-center">
         <button
           type="submit"
-          id="search-properties-button-real-estate"
+          id={idPrefix ? `search-properties-button-${idPrefix}` : 'search-properties-button-real-estate'}
           className="w-full sm:w-auto px-8 py-3 bg-[#d4af37] hover:bg-[#b8941f] text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-[#d4af37] focus:ring-offset-2 transform hover:scale-105 active:scale-95"
         >
           {t('search.searchProperties')}
