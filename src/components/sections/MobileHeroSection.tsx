@@ -15,6 +15,8 @@ export const MobileHeroSection = () => {
 
   return (
     <section className="relative bg-white min-h-[100vh] min-h-[100dvh] flex items-start justify-center overflow-hidden pt-16">
+      {/* Background image */}
+      <div className="absolute inset-0 hero-bg-image" aria-hidden />
       <div className="absolute inset-0 flex items-center justify-center opacity-10">
         <div className="relative w-full max-w-3xl h-full flex items-center justify-center">
           <Image

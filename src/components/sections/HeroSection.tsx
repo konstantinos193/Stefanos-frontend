@@ -15,6 +15,8 @@ export const HeroSection = () => {
 
   return (
     <section className="relative bg-white min-h-[85vh] md:min-h-[90vh] flex items-center justify-center overflow-hidden">
+      {/* Background image */}
+      <div className="absolute inset-0 hero-bg-image" aria-hidden />
       {/* Logo background */}
       <div className="absolute inset-0 flex items-center justify-center opacity-10">
         <div className="relative w-full max-w-4xl h-full flex items-center justify-center">

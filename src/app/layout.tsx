@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
+import './header-footer.css'
 import { HtmlLangUpdater } from '@/components/layout/HtmlLangUpdater'
 import { LanguageProvider } from '@/lib/contexts/LanguageContext'
 import { StatsProvider } from '@/lib/contexts/StatsContext'
@@ -8,16 +9,17 @@ import { AuthInitializer } from '@/components/auth/AuthInitializer'
 
 const inter = Inter({ subsets: ['latin'] })
 
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
+  userScalable: true,
+}
+
 export const metadata: Metadata = {
   title: {
     default: 'SMH Real Estate',
     template: '%s | SMH Real Estate'
-  },
-  viewport: {
-    width: 'device-width',
-    initialScale: 1,
-    maximumScale: 5,
-    userScalable: true,
   },
   description: 'SMH Real Estate - Αξιόπιστη πλατφόρμα ακινήτων με σύγχρονη διαχείριση κρατήσεων | SMH Real Estate - Trusted real estate platform with modern booking management',
   keywords: ['real estate', 'ακίνητα', 'booking', 'κρατήσεις', 'property management', 'SMH'],

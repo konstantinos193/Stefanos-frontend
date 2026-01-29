@@ -10,34 +10,25 @@ export const FooterCopyright = () => {
   const t = useTranslation()
   
   return (
-    <div className="pt-8 border-t border-gray-800">
-      <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-        <p className="text-gray-400 text-sm text-center md:text-left">
-          © {currentYear}{' '}
-          <a
-            href="https://adinfinity.gr/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-accent-blue hover:text-blue-400 transition-colors duration-200 font-medium"
-          >
-            {t('footer.copyrightName')}
-          </a>
-          . {t('footer.allRightsReserved')}
-        </p>
-        <div className="flex items-center gap-6 text-sm">
-          <Link
-            href={`/${language}/terms`}
-            className="text-gray-400 hover:text-accent-blue transition-colors duration-200"
-          >
-            {t('footer.links.termsOfService')}
-          </Link>
-          <Link
-            href={`/${language}/privacy`}
-            className="text-gray-400 hover:text-accent-blue transition-colors duration-200"
-          >
-            {t('footer.links.privacyPolicy')}
-          </Link>
-        </div>
+    <div className="site-footer-copyright flex flex-col md:flex-row items-center justify-between gap-4">
+      <p className="text-center md:text-left">
+        © {currentYear}{' '}
+        <a
+          href="https://adinfinity.gr/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {t('footer.copyrightName')}
+        </a>
+        . {t('footer.allRightsReserved')}
+      </p>
+      <div className="flex items-center gap-6">
+        <Link href={`/${language}/terms`}>
+          {t('footer.links.termsOfService')}
+        </Link>
+        <Link href={`/${language}/privacy`}>
+          {t('footer.links.privacyPolicy')}
+        </Link>
       </div>
     </div>
   )

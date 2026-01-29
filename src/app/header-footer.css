@@ -1,0 +1,93 @@
+/**
+ * Standalone styles for site header and footer.
+ * Base colour: #2A2D2C. Change here to update header/footer everywhere.
+ */
+
+/* ---- Header (desktop & mobile) ---- */
+.site-header {
+  background-color: #2a2d2c;
+  border-bottom: 1px solid #3d403f;
+  color: #f3f4f6;
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+}
+
+.site-header a,
+.site-header button {
+  color: inherit;
+}
+
+/* ---- Footer ---- */
+.site-footer {
+  background-color: #2a2d2c;
+  color: #d1d5db;
+  border-top: 1px solid #3d403f;
+}
+
+.site-footer h3 {
+  color: #ffffff;
+}
+
+.site-footer a {
+  color: #9ca3af;
+  text-decoration: none;
+}
+
+.site-footer a:hover {
+  color: #3b82f6;
+}
+
+/* Remove default blue focus outline; use gold ring for keyboard focus */
+.site-footer a:focus,
+.site-footer button:focus {
+  outline: none;
+}
+
+.site-footer a:focus-visible,
+.site-footer button:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px #2a2d2c, 0 0 0 4px #d4af37;
+}
+
+/* Footer newsletter input – matches dark base */
+.site-footer .site-footer-input {
+  background-color: #1e2120;
+  border: 1px solid #4a4d4c;
+  color: #ffffff;
+  border-radius: 0.5rem;
+}
+
+.site-footer .site-footer-input::placeholder {
+  color: #9ca3af;
+}
+
+.site-footer .site-footer-input:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.5);
+}
+
+/* Footer copyright line – visible on dark background */
+.site-footer-copyright {
+  padding-top: 2rem;
+  border-top: 1px solid #3d403f;
+}
+
+.site-footer-copyright p {
+  color: #9ca3af;
+  font-size: 0.875rem;
+  text-align: center;
+}
+
+.site-footer-copyright a {
+  color: #60a5fa;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.site-footer-copyright a:hover {
+  color: #93c5fd;
+}
+
+.site-footer-copyright > div {
+  font-size: 0.875rem;
+}

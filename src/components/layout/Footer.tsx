@@ -22,7 +22,7 @@ export const Footer = () => {
   };
   
   return (
-    <footer className="bg-black text-gray-300 border-t border-gray-800">
+    <footer className="site-footer">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
         {/* Main Footer Content */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12 mb-12">
@@ -133,7 +133,7 @@ export const Footer = () => {
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder={t('footer.enterEmail')}
                   required
-                  className="flex-1 px-4 py-2.5 bg-gray-900 border border-gray-700 text-white placeholder-gray-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent-blue focus:border-accent-blue text-sm"
+                  className="site-footer-input flex-1 px-4 py-2.5 text-sm"
                 />
                 <button
                   type="submit"

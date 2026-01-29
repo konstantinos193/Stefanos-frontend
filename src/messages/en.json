@@ -1,11 +1,18 @@
 {
   "navigation": {
     "home": "Home",
+    "rent": "Rent",
+    "rentShortTerm": "Short-term",
+    "rentLongTerm": "Long-term",
+    "buy": "Buy",
     "editions": "20 Editions",
     "services": "Services",
     "properties": "Properties",
     "booking": "Booking",
-    "about": "About"
+    "about": "About",
+    "language": "Language",
+    "english": "English",
+    "greek": "Greek"
   },
   "hero": {
     "title": "Find Your",

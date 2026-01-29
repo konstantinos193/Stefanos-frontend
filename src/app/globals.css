@@ -21,6 +21,14 @@
 }
 
 @layer utilities {
+  /* Hero background image (city skyline) */
+  .hero-bg-image {
+    background-image: url('/background for header.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
   /* Optimized hero background patterns */
   .hero-bg-pattern {
     background-image: 

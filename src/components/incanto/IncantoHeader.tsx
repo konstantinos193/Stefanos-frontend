@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, Suspense } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { Navigation } from '@/components/layout/Navigation'
@@ -33,9 +33,11 @@ export const IncantoHeader = () => {
             />
           </Link>
 
-          {/* Navigation */}
+          {/* Navigation (Suspense required for useSearchParams) */}
           <nav className={styles.nav}>
-            <Navigation />
+            <Suspense fallback={<span aria-hidden="true" />}>
+              <Navigation />
+            </Suspense>
           </nav>
 
           {/* Actions */}

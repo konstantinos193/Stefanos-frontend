@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, Suspense } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { Navigation } from './Navigation'
@@ -13,45 +13,45 @@ export const Header = () => {
 
   return (
     <>
-      {/* Desktop Header */}
-      <header className="hidden md:block header border-b border-gray-900 shadow-lg bg-black/95 backdrop-blur-sm relative overflow-visible z-40 h-24">
-        <div className="w-full h-full relative">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full">
-            <div className="flex items-center justify-between h-full relative">
-              {/* Desktop Navigation */}
-              <div className="hidden lg:block flex-1">
+      {/* Desktop Header - sticky so header + logo stay at top when scrolling */}
+      <header className="site-header hidden md:block sticky top-0 overflow-visible z-40 h-24">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full">
+          <div className="flex items-center justify-between h-full">
+            {/* Logo - attached to header, sized to fit with padding */}
+            <Link
+              href="/"
+              className="flex items-center flex-shrink-0 group transition-all duration-300 ease-in-out hover:opacity-90 h-full py-3"
+            >
+              <div className="relative h-14 sm:h-16 md:h-20 flex-shrink-0" style={{ width: 'auto', minWidth: '64px' }}>
+                <Image
+                  src="/logoetc.png"
+                  alt="SMH Real Estate"
+                  width={200}
+                  height={96}
+                  className="h-full w-auto object-contain object-center drop-shadow-lg transition-transform duration-300 group-hover:scale-105"
+                  style={{ width: 'auto', height: '100%' }}
+                  priority
+                  unoptimized
+                />
+              </div>
+            </Link>
+
+            {/* Desktop Navigation - centered (Suspense required for useSearchParams) */}
+            <div className="hidden lg:flex flex-1 justify-center">
+              <Suspense fallback={<nav className="flex items-center justify-center space-x-2" aria-hidden="true" />}>
                 <Navigation />
+              </Suspense>
+            </div>
+
+            {/* Right side items */}
+            <div className="flex items-center space-x-2 flex-shrink-0">
+              <LanguageSwitcher />
+              <div className="hidden sm:block">
+                <UserMenu />
               </div>
             </div>
           </div>
-          
-          {/* Right side items - positioned absolutely at the right edge */}
-          <div className="absolute right-4 sm:right-6 lg:right-8 top-0 h-full flex items-center space-x-2 z-50">
-            <LanguageSwitcher />
-            <div className="hidden sm:block">
-              <UserMenu />
-            </div>
-          </div>
         </div>
-
-        {/* Logo - Fixed position, stays in front and gets left behind when scrolling */}
-        <Link 
-          href="/" 
-          className="fixed top-0 left-0 flex items-center group transition-all duration-300 ease-in-out hover:opacity-90 p-4 sm:p-6 z-[100] h-24"
-        >
-          <div className="relative h-16 sm:h-20 md:h-24 flex-shrink-0" style={{ width: 'auto', minWidth: '64px' }}>
-            <Image 
-              src="/logoetc.png" 
-              alt="SMH Real Estate" 
-              width={200}
-              height={96}
-              className="h-full w-auto object-contain drop-shadow-lg transition-transform duration-300 group-hover:scale-105"
-              style={{ width: 'auto', height: '100%' }}
-              priority
-              unoptimized
-            />
-          </div>
-        </Link>
       </header>
 
       {/* Mobile Header */}

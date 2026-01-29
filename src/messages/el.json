@@ -1,11 +1,18 @@
 {
   "navigation": {
     "home": "Αρχική",
+    "rent": "Ενοικίαση",
+    "rentShortTerm": "Βραχυπρόθεσμη",
+    "rentLongTerm": "Μακροπρόθεσμη",
+    "buy": "Αγορά",
     "editions": "20 Εκδόσεις",
     "services": "Εξυπηρετήσεις",
     "properties": "Ακίνητα",
     "booking": "Κράτηση",
-    "about": "Σχετικά"
+    "about": "Σχετικά",
+    "language": "Γλώσσα",
+    "english": "English",
+    "greek": "Ελληνικά"
   },
   "hero": {
     "title": "Βρείτε Το",
