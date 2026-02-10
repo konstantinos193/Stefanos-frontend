@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { clsx } from 'clsx'
 import { useLanguage } from '@/lib/contexts/LanguageContext'
@@ -124,6 +125,25 @@ export const MobileMenu = ({ isOpen, onClose }: MobileMenuProps) => {
               </Link>
             )
           })}
+
+          {/* Incanto Hotel link */}
+          <a
+            href="https://incanto-hotel.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={onClose}
+            className="flex items-center gap-3 px-4 py-3 rounded-lg text-base font-medium text-gray-300 active:bg-gray-900 active:text-white transition-all duration-200 active:scale-[0.98]"
+          >
+            <Image
+              src="/incanto-logo.png"
+              alt="Incanto Hotel"
+              width={22}
+              height={22}
+              className="rounded-sm object-contain"
+              unoptimized
+            />
+            Incanto Hotel
+          </a>
 
           <div className="pt-4 mt-2 border-t border-gray-800">
             <div className="sm:hidden space-y-2">

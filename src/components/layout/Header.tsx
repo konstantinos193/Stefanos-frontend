@@ -43,6 +43,26 @@ export const Header = () => {
               </Suspense>
             </div>
 
+            {/* Incanto Hotel link */}
+            <a
+              href="https://incanto-hotel.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-gray-800/60 hover:bg-gray-700/80 border border-gray-700/50 transition-all duration-200 group flex-shrink-0"
+            >
+              <Image
+                src="/incanto-logo.png"
+                alt="Incanto Hotel"
+                width={24}
+                height={24}
+                className="rounded-sm object-contain transition-transform duration-200 group-hover:scale-110"
+                unoptimized
+              />
+              <span className="text-sm font-medium text-gray-300 group-hover:text-white transition-colors duration-200">
+                Incanto Hotel
+              </span>
+            </a>
+
             {/* Right side items */}
             <div className="flex items-center space-x-2 flex-shrink-0">
               <LanguageSwitcher />
