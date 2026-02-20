@@ -4,7 +4,6 @@
     "rent": "Rent",
     "rentShortTerm": "Short-term",
     "rentLongTerm": "Long-term",
-    "buy": "Buy",
     "editions": "20 Editions",
     "services": "Services",
     "properties": "Properties",
@@ -17,14 +16,8 @@
   "hero": {
     "title": "Find Your",
     "titleHighlight": "Property",
-    "description": "Your trusted real estate partner in Greece. Buy, sell, or rent properties with confidence.",
+    "description": "Your trusted real estate partner in Greece. Rent properties with confidence.",
     "parts": {
-      "buy": {
-        "tabLabel": "Buy properties",
-        "title": "Buy",
-        "titleHighlight": "Properties",
-        "description": "Find your perfect home. Browse properties for sale across Greece."
-      },
       "rent": {
         "tabLabel": "Rent properties",
         "title": "Rent",
@@ -96,17 +89,9 @@
   "intentions": {
     "title": "What are you looking for?",
     "subtitle": "Select your intention and find properties that match your needs",
-    "buy": {
-      "label": "Buy",
-      "description": "Find your perfect home"
-    },
     "rent": {
       "label": "Rent",
       "description": "Rent a property for every need"
-    },
-    "sell": {
-      "label": "Sell",
-      "description": "Sell your property with ease"
     }
   },
   "auth": {
@@ -177,7 +162,7 @@
     },
     "realEstate": {
       "title": "Real Estate",
-      "description": "Find and sell properties with complete transparency"
+      "description": "Find and rent properties with complete transparency"
     },
     "maintenance": {
       "title": "Maintenance",
@@ -302,7 +287,7 @@
     "studio": "Studio",
     "commercial": "Commercial",
     "condo": "Condo",
-    "room": "Room",
+    "room": "Apartment",
     "storage": "Storage",
     "plot": "Plot",
     "garage": "Garage",
@@ -323,7 +308,7 @@
   },
   "servicesOverview": {
     "title": "What We Offer",
-    "subtitle": "Comprehensive real estate solutions for buying, selling, and property management",
+    "subtitle": "Comprehensive real estate solutions for property management",
     "getStarted": "Get Started Today",
     "getStartedDescription": "Contact us to learn how we can help you achieve your real estate goals",
     "exploreProperties": "Explore Properties",
@@ -345,7 +330,7 @@
       "title": "Our Story",
       "paragraph1": "Our company was founded with a vision to transform the real estate experience. We combine deep local knowledge with modern technology to provide our clients with exceptional service.",
       "paragraph2": "Over the years, we have built a reputation for integrity, professionalism, and results. Our team of experienced professionals understands the unique needs of each client and works tirelessly to exceed expectations.",
-      "paragraph3": "From luxury properties to investment opportunities, we offer comprehensive real estate services that help our clients achieve their goals, whether they are buying, selling, or managing properties."
+      "paragraph3": "From luxury properties to investment opportunities, we offer comprehensive real estate services that help our clients achieve their goals, whether they are renting or managing properties."
     },
     "mission": {
       "title": "Our Mission & Values",

@@ -2,7 +2,7 @@ import { apiClient } from './client';
 import { mockBookings, allMockProperties } from '@/lib/mockData';
 
 // Set to true to use mock data, false to use real API
-const USE_MOCK_DATA = true;
+const USE_MOCK_DATA = false;
 
 export interface CreateBookingDto {
   propertyId: string;

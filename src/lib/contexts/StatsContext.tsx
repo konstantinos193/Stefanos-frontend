@@ -5,7 +5,7 @@ import { apiClient } from '@/lib/api/client'
 import { allMockProperties } from '@/lib/mockData'
 
 // Set to true to use mock data, false to use real API
-const USE_MOCK_DATA = true
+const USE_MOCK_DATA = false;
 
 type StatsData = {
   properties: number

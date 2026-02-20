@@ -18,13 +18,13 @@ const services = [
     ),
     title: { en: 'Real Estate Services', el: 'Υπηρεσίες Ακινήτων' },
     description: {
-      en: 'Comprehensive real estate solutions for buying, selling, and leasing properties across Greece. Find your perfect property with our advanced search tools and expert guidance.',
-      el: 'Ολοκληρωμένες λύσεις ακινήτων για αγορά, πώληση και ενοικίαση ακινήτων σε όλη την Ελλάδα. Βρείτε το ιδανικό σας ακίνητο με τα προηγμένα εργαλεία αναζήτησης και την εμπειρογνωμοσύνη μας.'
+      en: 'Comprehensive real estate solutions for leasing properties across Greece. Find your perfect rental property with our advanced search tools and expert guidance.',
+      el: 'Ολοκληρωμένες λύσεις ακινήτων για ενοικίαση ακινήτων σε όλη την Ελλάδα. Βρείτε το ιδανικό σας ακίνητο για ενοικίαση με τα προηγμένα εργαλεία αναζήτησης και την εμπειρογνωμοσύνη μας.'
     },
     features: {
       en: [
         'Property Search & Discovery',
-        'Buy, Sell & Lease Services',
+        'Rental Services',
         'Market Analysis & Pricing',
         'Legal Support & Documentation',
         'Property Valuation',
@@ -32,7 +32,7 @@ const services = [
       ],
       el: [
         'Αναζήτηση & Εύρεση Ακινήτων',
-        'Υπηρεσίες Αγοράς, Πώλησης & Ενοικίασης',
+        'Υπηρεσίες Ενοικίασης',
         'Ανάλυση Αγοράς & Τιμολόγηση',
         'Νομική Υποστήριξη & Έγγραφα',
         'Αξιολόγηση Ακινήτων',
@@ -173,8 +173,8 @@ const services = [
     ),
     title: { en: 'Financial Services', el: 'Χρηματοοικονομικές Υπηρεσίες' },
     description: {
-      en: 'Expert financial guidance for property purchases and investments. We help you secure the best financing options, manage mortgages, and optimize your real estate portfolio.',
-      el: 'Επαγγελματική χρηματοοικονομική καθοδήγηση για αγορές και επενδύσεις ακινήτων. Σας βοηθάμε να εξασφαλίσετε τις καλύτερες επιλογές χρηματοδότησης, να διαχειριστείτε υποθήκες και να βελτιστοποιήσετε το χαρτοφυλάκιό σας.'
+      en: 'Expert financial guidance for property investments and rentals. We help you secure the best financing options, manage mortgages, and optimize your real estate portfolio.',
+      el: 'Επαγγελματική χρηματοοικονομική καθοδήγηση για επενδύσεις και ενοικιάσεις ακινήτων. Σας βοηθάμε να εξασφαλίσετε τις καλύτερες επιλογές χρηματοδότησης, να διαχειριστείτε υποθήκες και να βελτιστοποιήσετε το χαρτοφυλάκιό σας.'
     },
     features: {
       en: [
@@ -205,8 +205,8 @@ const services = [
     ),
     title: { en: 'Property Photography', el: 'Φωτογραφία Ακινήτων' },
     description: {
-      en: 'Professional photography to showcase your property in the best light. High-quality visuals that attract more potential buyers and renters.',
-      el: 'Επαγγελματική φωτογραφία για να προβάλετε το ακίνητό σας με τον καλύτερο τρόπο. Υψηλής ποιότητας οπτικό υλικό που προσελκύει περισσότερους πιθανούς αγοραστές και ενοικιαστές.'
+      en: 'Professional photography to showcase your property in the best light. High-quality visuals that attract more potential renters.',
+      el: 'Επαγγελματική φωτογραφία για να προβάλετε το ακίνητό σας με τον καλύτερο τρόπο. Υψηλής ποιότητας οπτικό υλικό που προσελκύει περισσότερους πιθανούς ενοικιαστές.'
     },
     features: {
       en: [
@@ -277,47 +277,6 @@ export function ServicesOverview({ lang }: ServicesOverviewProps) {
             <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
               {t('servicesOverview.subtitle')}
             </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Properties for Sale Section */}
-      <section className="py-16 lg:py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-gray-50 rounded-lg p-8 md:p-12">
-            <div className="flex flex-col md:flex-row items-center justify-between gap-8">
-              <div className="flex-1 text-center md:text-left">
-                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                  {currentLang === 'el' ? 'Ακίνητα Προς Πώληση' : 'Properties for Sale'}
-                </h2>
-                <p className="text-lg text-gray-600 mb-6 leading-relaxed">
-                  {currentLang === 'el' 
-                    ? 'Ανακαλύψτε μια εκλεκτή συλλογή ακινήτων προς πώληση σε όλη την Ελλάδα. Από διαμερίσματα και οικοδομές έως βίλες και επενδυτικές ευκαιρίες.'
-                    : 'Discover an exclusive collection of properties for sale across Greece. From apartments and buildings to villas and investment opportunities.'}
-                </p>
-                <div className="flex flex-col sm:flex-row gap-4">
-                  <Link
-                    href={`/${language}/properties?type=sale`}
-                    className="px-8 py-3 bg-[#d4af37] text-white rounded-lg font-semibold hover:bg-[#b8941f] transition-colors duration-200 text-center"
-                  >
-                    {currentLang === 'el' ? 'Δείτε Όλα τα Ακίνητα' : 'View All Properties'}
-                  </Link>
-                  <Link
-                    href={`/${language}/properties?type=sale&featured=true`}
-                    className="px-8 py-3 bg-transparent border-2 border-[#d4af37] text-[#d4af37] rounded-lg font-semibold hover:bg-[#d4af37]/10 transition-colors duration-200 text-center"
-                  >
-                    {currentLang === 'el' ? 'Προτεινόμενα' : 'Featured Properties'}
-                  </Link>
-                </div>
-              </div>
-              <div className="flex-shrink-0">
-                <div className="w-24 h-24 md:w-32 md:h-32 rounded-full bg-[#d4af37] flex items-center justify-center">
-                  <svg className="w-12 h-12 md:w-16 md:h-16 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
-                  </svg>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </section>

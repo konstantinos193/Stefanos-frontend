@@ -18,9 +18,12 @@ export const RecentAdditionsSection = ({ properties: initialProperties }: Recent
   const [isVisible, setIsVisible] = useState(false)
   const [properties, setProperties] = useState<Property[]>(initialProperties || [])
   const [loading, setLoading] = useState(!initialProperties)
+  const [refreshKey, setRefreshKey] = useState(0)
 
   useEffect(() => {
     setIsVisible(true)
+    // Force refresh on mount to get latest data
+    setRefreshKey(prev => prev + 1)
   }, [])
 
   useEffect(() => {
@@ -32,13 +35,38 @@ export const RecentAdditionsSection = ({ properties: initialProperties }: Recent
 
       try {
         setLoading(true)
+        
+        // Get all recent properties
         const response = await searchPropertiesServer({
           limit: '8',
           page: '1',
           sortBy: 'createdAt',
           sortOrder: 'desc'
         })
-        setProperties(response.data.properties.slice(0, 8))
+        
+        // Prioritize Incanto Apartments if it exists
+        const allProperties: Property[] = response.data.properties
+        const incantoProperty = allProperties.find(p => 
+          p.titleEn.toLowerCase().includes("l'incanto") || 
+          p.titleGr.toLowerCase().includes("l'incanto") ||
+          p.titleEn.toLowerCase().includes('incanto') || 
+          p.titleGr.toLowerCase().includes('incanto')
+        )
+        
+        let finalProperties: Property[] = []
+        
+        // If Incanto exists, put it first
+        if (incantoProperty) {
+          finalProperties = [incantoProperty]
+          // Add other properties (excluding Incanto to avoid duplicates)
+          const otherProperties = allProperties.filter(p => p.id !== incantoProperty.id)
+          finalProperties = [...finalProperties, ...otherProperties]
+        } else {
+          finalProperties = allProperties
+        }
+        
+        // Limit to 8 properties
+        setProperties(finalProperties.slice(0, 8))
       } catch (error) {
         console.error('Error fetching properties:', error)
         setProperties([])
@@ -48,7 +76,7 @@ export const RecentAdditionsSection = ({ properties: initialProperties }: Recent
     }
 
     fetchProperties()
-  }, [initialProperties])
+  }, [initialProperties, refreshKey])
 
   const displayProperties = properties || []
 

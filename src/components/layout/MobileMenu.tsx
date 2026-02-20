@@ -62,15 +62,6 @@ export const MobileMenu = ({ isOpen, onClose }: MobileMenuProps) => {
             {t('navigation.home')}
           </Link>
 
-          {/* Αγορά – button (link) */}
-          <Link
-            href={`/${language}/results?mode=sale`}
-            onClick={onClose}
-            className="block px-4 py-3 rounded-lg text-base font-medium text-gray-300 active:bg-gray-900 active:text-white transition-all duration-200 active:scale-[0.98]"
-          >
-            {t('navigation.buy')}
-          </Link>
-
           {/* Ενοικίαση ακινήτων – expandable (Short-term / Long-term) */}
           <div className="rounded-lg overflow-hidden">
             <button
@@ -132,7 +123,7 @@ export const MobileMenu = ({ isOpen, onClose }: MobileMenuProps) => {
             target="_blank"
             rel="noopener noreferrer"
             onClick={onClose}
-            className="flex items-center gap-3 px-4 py-3 rounded-lg text-base font-medium text-gray-300 active:bg-gray-900 active:text-white transition-all duration-200 active:scale-[0.98]"
+            className="flex items-center gap-3 px-4 py-3 rounded-lg text-base font-medium bg-gray-900/90 border border-gray-600 text-white hover:bg-gray-800 hover:border-accent-gold hover:text-accent-gold transition-all duration-200 active:scale-[0.98] shadow-lg"
           >
             <Image
               src="/incanto-logo.png"
@@ -146,22 +137,7 @@ export const MobileMenu = ({ isOpen, onClose }: MobileMenuProps) => {
           </a>
 
           <div className="pt-4 mt-2 border-t border-gray-800">
-            <div className="sm:hidden space-y-2">
-              <Link
-                href={`/${language}/auth/login`}
-                onClick={onClose}
-                className="block w-full px-4 py-3.5 rounded-lg text-base font-medium text-header-text active:text-white active:bg-gray-900 transition-all duration-200 text-center focus:outline-none focus:ring-2 focus:ring-accent-blue focus:ring-offset-2 focus:ring-offset-black min-h-[44px] flex items-center justify-center active:scale-[0.98]"
-              >
-                {t('auth.login')}
-              </Link>
-              <Link
-                href={`/${language}/auth/register`}
-                onClick={onClose}
-                className="block w-full px-4 py-3.5 rounded-lg text-base font-medium bg-accent-blue active:bg-blue-600 text-white transition-all duration-200 text-center focus:outline-none focus:ring-2 focus:ring-accent-blue focus:ring-offset-2 focus:ring-offset-black shadow-md active:shadow-lg min-h-[44px] flex items-center justify-center active:scale-[0.98]"
-              >
-                {t('auth.register')}
-              </Link>
-            </div>
+            {/* Mobile menu footer content can go here if needed */}
           </div>
         </div>
       </div>

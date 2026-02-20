@@ -13,17 +13,9 @@ interface PropertiesContentProps {
 
 const getIntentionTitle = (intention: string | undefined, lang: string): string => {
   const titles: Record<string, { en: string; el: string }> = {
-    buy: {
-      en: 'Properties for Sale',
-      el: 'Ακίνητα προς Πώληση'
-    },
     rent: {
       en: 'Properties for Rent',
       el: 'Ακίνητα προς Ενοικίαση'
-    },
-    sell: {
-      en: 'List Your Property',
-      el: 'Προσθέστε το Ακίνητό σας'
     }
   }
 
@@ -36,17 +28,9 @@ const getIntentionTitle = (intention: string | undefined, lang: string): string 
 
 const getIntentionDescription = (intention: string | undefined, lang: string): string => {
   const descriptions: Record<string, { en: string; el: string }> = {
-    buy: {
-      en: 'Find your perfect property to buy',
-      el: 'Βρείτε το ιδανικό ακίνητο για αγορά'
-    },
     rent: {
       en: 'Discover properties available for rent',
       el: 'Ανακαλύψτε ακίνητα διαθέσιμα προς ενοικίαση'
-    },
-    sell: {
-      en: 'List your property and reach thousands of buyers',
-      el: 'Προσθέστε το ακίνητό σας και φτάστε σε χιλιάδες αγοραστές'
     }
   }
 

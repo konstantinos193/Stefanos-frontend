@@ -5,8 +5,8 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { Navigation } from './Navigation'
 import { LanguageSwitcher } from './LanguageSwitcher'
-import { UserMenu } from './UserMenu'
 import { MobileHeader } from './MobileHeader'
+import { IncantoHotelButton } from '../ui/IncantoHotelButton'
 
 export const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
@@ -43,32 +43,10 @@ export const Header = () => {
               </Suspense>
             </div>
 
-            {/* Incanto Hotel link */}
-            <a
-              href="https://incanto-hotel.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-gray-800/60 hover:bg-gray-700/80 border border-gray-700/50 transition-all duration-200 group flex-shrink-0"
-            >
-              <Image
-                src="/incanto-logo.png"
-                alt="Incanto Hotel"
-                width={24}
-                height={24}
-                className="rounded-sm object-contain transition-transform duration-200 group-hover:scale-110"
-                unoptimized
-              />
-              <span className="text-sm font-medium text-gray-300 group-hover:text-white transition-colors duration-200">
-                Incanto Hotel
-              </span>
-            </a>
-
             {/* Right side items */}
-            <div className="flex items-center space-x-2 flex-shrink-0">
+            <div className="flex items-center space-x-4 flex-shrink-0">
+              <IncantoHotelButton />
               <LanguageSwitcher />
-              <div className="hidden sm:block">
-                <UserMenu />
-              </div>
             </div>
           </div>
         </div>

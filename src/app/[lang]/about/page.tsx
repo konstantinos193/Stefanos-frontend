@@ -45,7 +45,7 @@ export default async function AboutPage({ params }: Props) {
                     {dict.about?.history?.paragraph2 || 'Over the years, we have built a reputation for integrity, professionalism, and results. Our team of experienced professionals understands the unique needs of each client and works tirelessly to exceed expectations.'}
                   </p>
                   <p>
-                    {dict.about?.history?.paragraph3 || 'From luxury properties to investment opportunities, we offer comprehensive real estate services that help our clients achieve their goals, whether they are buying, selling, or managing properties.'}
+                    {dict.about?.history?.paragraph3 || 'From luxury properties to investment opportunities, we offer comprehensive real estate services that help our clients achieve their goals, whether they are renting or managing properties.'}
                   </p>
                 </div>
               </div>

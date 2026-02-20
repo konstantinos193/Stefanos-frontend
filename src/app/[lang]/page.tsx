@@ -25,7 +25,7 @@ export default async function HomePage({ params }: Props) {
         {/* 1. Hero Section - Real estate search form */}
         <HeroWrapper />
         
-        {/* 2. Intentions Section - Buy / Rent / Sell - Core real estate actions */}
+        {/* 2. Intentions Section - Rent - Core real estate actions */}
         <IntentionsSection />
         
         {/* 3. Recent Additions Section - New properties */}

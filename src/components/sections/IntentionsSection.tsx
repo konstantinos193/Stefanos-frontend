@@ -7,8 +7,8 @@ import { HouseIcon, KeyIcon, MoneyIcon } from '@/components/icons'
 import { useTranslation } from '@/lib/hooks/useTranslation'
 
 type IntentionOption = {
-  id: 'buy' | 'rent' | 'sell'
-  icon: 'house' | 'key' | 'money'
+  id: 'rent'
+  icon: 'key'
   translationKey: string
   href?: string
 }
@@ -45,19 +45,9 @@ export const IntentionsSection = ({
   
   const intentions: IntentionOption[] = useMemo(() => [
     {
-      id: 'buy',
-      icon: 'house',
-      translationKey: 'buy'
-    },
-    {
       id: 'rent',
       icon: 'key',
       translationKey: 'rent'
-    },
-    {
-      id: 'sell',
-      icon: 'money',
-      translationKey: 'sell'
     }
   ], [])
 
@@ -93,7 +83,7 @@ export const IntentionsSection = ({
         </div>
 
         <div 
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 max-w-6xl mx-auto"
+          className="flex justify-center max-w-6xl mx-auto"
           aria-labelledby="intentions-heading"
         >
           {intentions.map((intention) => {
@@ -113,7 +103,7 @@ export const IntentionsSection = ({
                   'focus:outline-none focus:ring-2 focus:ring-[#d4af37]/50 focus:ring-offset-2 focus:ring-offset-white',
                   'hover:scale-[1.02] active:scale-[0.98]',
                   'touch-manipulation min-h-[240px] sm:min-h-[260px]',
-                  'cursor-pointer'
+                  'cursor-pointer max-w-sm w-full'
                 )}
               >
                 {/* Base background layer */}

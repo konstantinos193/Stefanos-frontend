@@ -17,7 +17,7 @@ type RealEstateSearchData = {
 }
 
 type RealEstateSearchFormProps = {
-  intention?: 'buy' | 'rent'
+  intention?: 'rent'
   idPrefix?: string
   onSubmit?: (data: RealEstateSearchData) => void
 }

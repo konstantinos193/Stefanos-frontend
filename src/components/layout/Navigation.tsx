@@ -31,7 +31,6 @@ export const Navigation = ({ className = '' }: NavigationProps) => {
 
   const mode = searchParams?.get('mode')
   const isRentActive = pathname?.includes('/results') && mode === 'rent'
-  const isBuyActive = pathname?.includes('/results') && mode === 'sale'
 
   const linkClass = (isActive: boolean) =>
     clsx(
@@ -49,17 +48,6 @@ export const Navigation = ({ className = '' }: NavigationProps) => {
 
   return (
     <nav className={clsx('flex items-center justify-center space-x-2', className)}>
-      {/* Αγορά – button (link) */}
-      <Link
-        href={`/${language}/results?mode=sale`}
-        className={buttonClass(!!isBuyActive)}
-      >
-        {t('navigation.buy')}
-        {isBuyActive && (
-          <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-accent-gold rounded-full" />
-        )}
-      </Link>
-
       {/* Ενοικίαση ακινήτων – button with dropdown (Short-term / Long-term) */}
       <div className="relative" ref={rentRef}>
         <button

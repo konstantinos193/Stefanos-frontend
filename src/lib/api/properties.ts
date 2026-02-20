@@ -4,7 +4,7 @@ import { Property, PropertiesResponse, PropertySearchParams } from '@/types/prop
 import { allMockProperties } from '@/lib/mockData';
 
 // Set to true to use mock data, false to use real API
-const USE_MOCK_DATA = true;
+const USE_MOCK_DATA = false;
 
 // Helper function to filter and paginate mock properties
 function filterMockProperties(params: PropertySearchParams): PropertiesResponse {

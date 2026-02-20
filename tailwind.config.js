@@ -10,6 +10,7 @@ module.exports = {
       colors: {
         'header-text': '#f3f4f6', // Very light gray (gray-100) for better visibility on dark header background
         'accent-blue': '#3b82f6', // Blue-500 equivalent
+        'accent-gold': '#d4af37', // Gold color for luxury branding
       },
     },
   },
