@@ -33,19 +33,6 @@ export const HeroSection = () => {
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-10 w-full py-8 sm:py-10 md:py-12 lg:py-14">
         <div className="flex flex-col items-center text-center w-full">
-          {/* Incanto Logo - Main display */}
-          <div className="w-full max-w-2xl mx-auto mb-6 sm:mb-8">
-            <Image
-              src="/incanto-logo.png"
-              alt="Incanto Hotel"
-              width={400}
-              height={200}
-              className="w-full h-auto object-contain drop-shadow-2xl"
-              priority
-              unoptimized
-            />
-          </div>
-
           {/* Content: rental only */}
           <div className="w-full max-w-4xl mx-auto mb-4 sm:mb-5 md:mb-6 px-2 sm:px-0">
             <p className="text-sm sm:text-base md:text-lg text-gray-700 max-w-2xl mx-auto mb-4 sm:mb-5 leading-relaxed">

@@ -123,13 +123,7 @@
     "enabled": "Enabled",
     "disabled": "Disabled"
   },
-  "footer": {
-    "newsletter": "Newsletter",
-    "newsletterDescription": "Subscribe to get updates on new properties and offers",
-    "enterEmail": "Enter your email",
-    "subscribe": "Subscribe"
-  },
-  "common": {
+    "common": {
     "loading": "Loading...",
     "error": "Error",
     "success": "Success",
@@ -234,10 +228,12 @@
     "followUs": "Follow Us",
     "address": "Address",
     "phone": "Phone",
+    "mobilePhone": "Mobile",
     "email": "Email",
-    "addressValue": "Arta, Greece",
-    "phoneValue": "+30 XXX XXX XXXX",
-    "emailValue": "email@example.com",
+    "addressValue": "Al. Panagouli 2, Filippiada PC 48200",
+    "phoneValue": "+30 2683 022 484",
+    "mobilePhoneValue": "+30 6984132555",
+    "emailValue": "smholdings.gr@gmail.com",
     "sections": {
       "company": "Company",
       "services": "Services",

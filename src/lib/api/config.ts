@@ -1,4 +1,4 @@
-export const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001/api';
+export const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'https://stefanos-backend.onrender.com/api';
 
 export const apiConfig = {
   baseURL: API_BASE_URL,

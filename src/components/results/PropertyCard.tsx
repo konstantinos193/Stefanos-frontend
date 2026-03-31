@@ -2,7 +2,6 @@
 
 import { memo, useMemo, useState, useEffect } from 'react'
 import Link from 'next/link'
-import Image from 'next/image'
 import { Property } from '@/types/property'
 import { useTranslation } from '@/lib/hooks/useTranslation'
 
@@ -53,15 +52,12 @@ const PropertyCardComponent = ({ property, lang = 'en' }: PropertyCardProps) => 
   return (
     <Link href={`/${lang}/properties/${property.id}`}>
       <div className="bg-white rounded-lg shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden group cursor-pointer">
-        <div className="relative h-48 sm:h-56 md:h-64 overflow-hidden bg-gray-200">
+        <div className="relative w-full h-48 sm:h-56 md:h-64 overflow-hidden bg-gray-200">
           {hasImage && imageUrl && !imageError ? (
-            <Image
+            <img
               src={imageUrl}
               alt={title}
-              fill
-              className="object-cover group-hover:scale-105 transition-transform duration-300"
-              sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"
-              unoptimized
+              className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
               onError={() => setImageError(true)}
             />
           ) : (

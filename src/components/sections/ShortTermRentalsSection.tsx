@@ -6,7 +6,7 @@ import { useLanguage } from '@/lib/contexts/LanguageContext'
 import Link from 'next/link'
 import { PropertyCard } from '@/components/results/PropertyCard'
 import { Property } from '@/types/property'
-import { searchPropertiesServer } from '@/lib/api/properties'
+import { propertiesApi } from '@/lib/api/properties'
 
 export const ShortTermRentalsSection = () => {
   const t = useTranslation()
@@ -20,7 +20,7 @@ export const ShortTermRentalsSection = () => {
       try {
         setLoading(true)
         // Fetch short-term rentals (minStay < 30 days)
-        const response = await searchPropertiesServer({
+        const response = await propertiesApi.search({
           limit: '6',
           page: '1',
           sortBy: 'createdAt',

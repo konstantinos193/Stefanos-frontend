@@ -26,18 +26,6 @@ export const RecentAdditionsSection = ({ properties }: RecentAdditionsSectionPro
       aria-labelledby="incanto-properties-heading"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-8 lg:mb-12">
-          <h2
-            id="incanto-properties-heading"
-            className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4"
-          >
-            {t('recentAdditions.title')}
-          </h2>
-          <p className="text-lg lg:text-xl text-gray-600 max-w-3xl mx-auto">
-            {t('recentAdditions.subtitle')}
-          </p>
-        </div>
-
         {properties.length > 0 ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
             {properties.map((property, index) => {
@@ -183,19 +171,6 @@ export const RecentAdditionsSection = ({ properties }: RecentAdditionsSectionPro
           </div>
         )}
 
-        {properties.length > 0 && (
-          <div className="text-center mt-8 lg:mt-12">
-            <Link
-              href={`/${language}/properties`}
-              className="inline-flex items-center gap-2 bg-gradient-to-r from-[#d4af37] to-[#b8941f] text-white font-semibold py-3 px-8 rounded-xl hover:from-[#b8941f] hover:to-[#d4af37] transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-[#d4af37]/30 hover:scale-105 active:scale-95"
-            >
-              <span>{t('recentAdditions.viewAllProperties')}</span>
-              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-              </svg>
-            </Link>
-          </div>
-        )}
       </div>
     </section>
   )
