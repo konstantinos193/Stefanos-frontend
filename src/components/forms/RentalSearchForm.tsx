@@ -35,7 +35,7 @@ export const RentalSearchForm = () => {
 
   const [mode, setMode] = useState<'longTerm' | 'shortTerm'>('longTerm')
   const [shortTermData, setShortTermData] = useState<ShortTermSearchData>({
-    location: 'Arta, Greece',
+    location: '',
     checkIn: '',
     checkOut: '',
     guests: '1'

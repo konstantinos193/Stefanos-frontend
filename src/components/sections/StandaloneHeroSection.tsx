@@ -34,7 +34,7 @@ export const StandaloneHeroSection = () => {
 
   const [searchMode, setSearchMode] = useState<string>('booking')
   const [searchData, setSearchData] = useState<BookingSearchData>({
-    location: 'Arta, Greece',
+    location: '',
     checkIn: '',
     checkOut: '',
     guests: '1'

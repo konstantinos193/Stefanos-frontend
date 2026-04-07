@@ -38,7 +38,7 @@ export const SearchForm = ({ onSubmit }: SearchFormProps) => {
   const lang = langMatch ? langMatch[1] : 'en'
 
   const [searchData, setSearchData] = useState<BookingSearchData>({
-    location: 'Arta, Greece', // Default to Arta as per requirements
+    location: '', // Default to Arta as per requirements
     checkIn: '',
     checkOut: '',
     guests: '1'

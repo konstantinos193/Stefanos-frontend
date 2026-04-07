@@ -62,7 +62,7 @@ export const RealEstateSearchForm = ({ intention, idPrefix, onSubmit }: RealEsta
   const lang = langMatch ? langMatch[1] : 'en'
 
   const [searchData, setSearchData] = useState<RealEstateSearchData>({
-    location: 'Arta, Greece', // Default to Arta as per requirements
+    location: '',
     propertyType: '',
     minPrice: '',
     maxPrice: '',
