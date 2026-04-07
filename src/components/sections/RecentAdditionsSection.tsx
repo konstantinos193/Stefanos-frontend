@@ -117,18 +117,6 @@ export const RecentAdditionsSection = ({ properties }: RecentAdditionsSectionPro
                             {location}
                           </p>
 
-                          <div className="mb-4">
-                            <span className="text-2xl lg:text-3xl font-bold text-gray-900">
-                              €{property.basePrice.toFixed(0)}
-                              {(!property.minStay || property.minStay < 30) && (
-                                <span className="text-sm lg:text-base font-normal text-gray-600 ml-1">/night</span>
-                              )}
-                              {property.minStay && property.minStay >= 30 && (
-                                <span className="text-sm lg:text-base font-normal text-gray-600 ml-1">/month</span>
-                              )}
-                            </span>
-                          </div>
-
                           {amenities.length > 0 && (
                             <div className="flex flex-wrap gap-2">
                               {amenities.map((amenity, idx) => (
@@ -148,12 +136,6 @@ export const RecentAdditionsSection = ({ properties }: RecentAdditionsSectionPro
                           )}
                         </div>
 
-                        <Link
-                          href={`/${language}/properties/${property.id}`}
-                          className="w-full mt-4 bg-gradient-to-r from-[#d4af37] to-[#b8941f] text-white font-semibold py-3 px-4 rounded-xl hover:from-[#b8941f] hover:to-[#d4af37] transition-all duration-300 shadow-md hover:shadow-lg hover:shadow-[#d4af37]/30 group-hover:scale-[1.02] active:scale-[0.98] text-center"
-                        >
-                          {t('recentAdditions.viewDetails')}
-                        </Link>
                       </div>
                     </div>
                   </div>
