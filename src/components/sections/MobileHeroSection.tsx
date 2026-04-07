@@ -34,19 +34,6 @@ export const MobileHeroSection = () => {
 
       <div className="relative w-full px-4 pt-6 pb-8">
         <div className="flex flex-col items-center text-center w-full space-y-4">
-          {/* Incanto Logo - Main display */}
-          <div className="w-full max-w-xs mx-auto mb-4">
-            <Image
-              src="/incanto-logo.png"
-              alt="Incanto Hotel"
-              width={280}
-              height={140}
-              className="w-full h-auto object-contain drop-shadow-xl"
-              priority
-              unoptimized
-            />
-          </div>
-
           <div className="w-full max-w-sm mx-auto mb-2 px-2">
             <p className="text-xs sm:text-sm text-gray-700 mb-3 leading-relaxed">
               {t('hero.parts.rent.description')}

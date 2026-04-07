@@ -4,6 +4,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { LanguageSwitcher } from './LanguageSwitcher'
 import { MobileMenu } from './MobileMenu'
+import { IncantoHotelButton } from '../ui/IncantoHotelButton'
 
 type MobileHeaderProps = {
   isMobileMenuOpen: boolean
@@ -36,6 +37,7 @@ export const MobileHeader = ({ isMobileMenuOpen, setIsMobileMenuOpen }: MobileHe
 
           {/* Right side items */}
           <div className="flex items-center space-x-2 ml-auto">
+            <IncantoHotelButton />
             <LanguageSwitcher />
             
             {/* Mobile menu button */}

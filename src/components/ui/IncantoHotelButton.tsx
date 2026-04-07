@@ -31,7 +31,7 @@ export const IncantoHotelButton = () => {
       {/* Text content */}
       <div className="flex flex-col items-start min-w-0">
         <span className="text-sm font-semibold leading-tight text-white">
-          Incanto Hotel
+          L'Incanto Apartments
         </span>
         <span className="text-xs text-slate-400 leading-tight">
           Visit Website
