@@ -1,7 +1,6 @@
 'use client'
 
 import { memo, useMemo, useState, useEffect } from 'react'
-import Link from 'next/link'
 import { Property } from '@/types/property'
 import { useTranslation } from '@/lib/hooks/useTranslation'
 
@@ -50,8 +49,8 @@ const PropertyCardComponent = ({ property, lang = 'en' }: PropertyCardProps) => 
   }, [imageUrl])
 
   return (
-    <Link href={`/${lang}/properties/${property.id}`}>
-      <div className="bg-white rounded-lg shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden group cursor-pointer">
+    <div>
+      <div className="bg-white rounded-lg shadow-md transition-all duration-300 overflow-hidden group">
         <div className="relative w-full h-48 sm:h-56 md:h-64 overflow-hidden bg-gray-200">
           {hasImage && imageUrl && !imageError ? (
             <img
@@ -95,19 +94,7 @@ const PropertyCardComponent = ({ property, lang = 'en' }: PropertyCardProps) => 
             {location}
           </p>
 
-          <div className="flex items-center justify-between mb-3">
-            <div className="flex items-baseline gap-1">
-              <span className="text-2xl font-bold text-[#d4af37]">
-                €{property.basePrice.toFixed(0)}
-              </span>
-              {/* Hide daily rate for long-term rentals (minStay >= 30 days) */}
-              {(!property.minStay || property.minStay < 30) && (
-                <span className="text-sm text-gray-600">/night</span>
-              )}
-              {property.minStay && property.minStay >= 30 && (
-                <span className="text-sm text-gray-600">/month</span>
-              )}
-            </div>
+          <div className="flex items-center justify-end mb-3">
             <div className="flex items-center gap-3 text-sm text-gray-600">
               {property.bedrooms > 0 && (
                 <span className="flex items-center gap-1">
@@ -155,7 +142,7 @@ const PropertyCardComponent = ({ property, lang = 'en' }: PropertyCardProps) => 
           )}
         </div>
       </div>
-    </Link>
+    </div>
   )
 }
 

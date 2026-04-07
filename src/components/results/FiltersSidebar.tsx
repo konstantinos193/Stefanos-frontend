@@ -160,10 +160,11 @@ export const FiltersSidebar = ({ lang = 'en', intention }: FiltersSidebarProps) 
         </div>
 
         <div>
-          <label htmlFor="guests" className="block text-sm font-medium text-gray-700 mb-2">
-            {currentType === 'APARTMENT' 
-              ? t('results.filters.apartmentCapacity') 
+          <label htmlFor="guests" className="flex items-center gap-1.5 text-sm font-medium text-gray-700 mb-2">
+            {currentType === 'APARTMENT'
+              ? t('results.filters.apartmentCapacity')
               : t('results.filters.guests')}
+            <span className="text-xs font-normal text-gray-400">(18+)</span>
           </label>
           <input
             id="guests"

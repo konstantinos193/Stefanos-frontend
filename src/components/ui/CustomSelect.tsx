@@ -11,6 +11,7 @@ type SelectOption = {
 type CustomSelectProps = {
   id?: string
   label?: string
+  subtitle?: string
   value: string
   onChange: (value: string) => void
   options: SelectOption[]
@@ -24,6 +25,7 @@ type CustomSelectProps = {
 export const CustomSelect = ({
   id,
   label,
+  subtitle,
   value,
   onChange,
   options,
@@ -132,11 +134,14 @@ export const CustomSelect = ({
         <label
           htmlFor={id}
           className={cn(
-            'block text-xs sm:text-sm md:text-sm font-medium text-gray-700 mb-1 sm:mb-2',
+            'flex items-center gap-1.5 text-xs sm:text-sm md:text-sm font-medium text-gray-700 mb-1 sm:mb-2',
             labelClassName
           )}
         >
           {label}
+          {subtitle && (
+            <span className="text-xs font-normal text-gray-400">({subtitle})</span>
+          )}
         </label>
       )}
       <div ref={selectRef} className="relative">

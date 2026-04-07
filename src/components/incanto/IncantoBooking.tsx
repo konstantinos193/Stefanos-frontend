@@ -177,8 +177,9 @@ export function IncantoBooking({ lang, variant = 'standalone' }: IncantoBookingP
 
         {/* Guests */}
         <div className={styles.formGroup}>
-          <label className={`${styles.label} ${isOverlay ? styles.labelOverlay : styles.labelStandalone}`}>
+          <label className={`flex items-center gap-1.5 ${styles.label} ${isOverlay ? styles.labelOverlay : styles.labelStandalone}`}>
             {t('booking.form.guests')}
+            <span className="text-xs font-normal text-gray-400">(18+)</span>
           </label>
           <CustomSelect
             value={guests.toString()}

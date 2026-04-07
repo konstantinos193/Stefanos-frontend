@@ -156,6 +156,7 @@ export const RentalSearchForm = () => {
               <CustomSelect
                 id="rent-st-guests"
                 label={t('search.guests')}
+                subtitle="18+"
                 value={shortTermData.guests}
                 onChange={(v) => handleShortTermChange('guests', v)}
                 options={getGuestOptions(t)}

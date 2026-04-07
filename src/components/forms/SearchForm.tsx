@@ -142,6 +142,7 @@ export const SearchForm = ({ onSubmit }: SearchFormProps) => {
           <CustomSelect
             id="guests"
             label={t('search.guests')}
+            subtitle="18+"
             value={searchData.guests}
             onChange={(value) => handleInputChange('guests', value)}
             options={getGuestOptions(t)}

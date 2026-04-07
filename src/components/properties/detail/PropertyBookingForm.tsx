@@ -171,8 +171,9 @@ export function PropertyBookingForm({ property, lang }: PropertyBookingFormProps
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
+          <label className="flex items-center gap-1.5 text-sm font-medium text-gray-700 mb-2">
             {lang === 'gr' ? 'Επισκέπτες' : 'Guests'}
+            <span className="text-xs font-normal text-gray-400">(18+)</span>
           </label>
           <CustomSelect
             value={guests.toString()}

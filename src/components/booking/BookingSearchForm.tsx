@@ -90,8 +90,9 @@ export const BookingSearchForm = () => {
         </div>
         
         <div>
-          <label htmlFor="guests" className="block text-sm font-medium text-gray-700 mb-2">
+          <label htmlFor="guests" className="flex items-center gap-1.5 text-sm font-medium text-gray-700 mb-2">
             {t('booking.search.guests')}
+            <span className="text-xs font-normal text-gray-400">(18+)</span>
           </label>
           <select
             id="guests"
